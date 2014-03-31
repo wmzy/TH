@@ -33,7 +33,7 @@ namespace TH.WebUI.Areas.Recruitment.Controllers
         public ActionResult Type(int Id)
         {
             int count;
-            IEnumerable<FullTimeJob> fullTimeJobs = fullTimeJobService.GetFullTimeJobsTypeId(Id, 1, 20, out count);
+            IEnumerable<Job> fullTimeJobs = fullTimeJobService.GetFullTimeJobsTypeId(Id, 1, 20, out count);
 
             ViewData["count"] = count;
             //

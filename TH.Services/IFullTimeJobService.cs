@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace TH.Services
 {
-    public interface IFullTimeJobService
+    public interface IJobService
     {
-        IEnumerable<FullTimeJobType> GetTypes();
-
-        IEnumerable<FullTimeJob> GetFullTimeJobsTypeId(int id, int pageIndex, int pageSize, out int recordCount);
-
-        void AddCompany(Company company);
+        //IEnumerable<Job> GetJobsTypeId(int id, int pageIndex, int pageSize, out int recordCount);
     }
 }

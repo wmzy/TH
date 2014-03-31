@@ -16,8 +16,7 @@ namespace TH.Repositories
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<FullTimeJob> FullTimeJobs { get; set; }
-        public DbSet<FullTimeJobType> FullTimeJobTypes { get; set; }
+        public DbSet<Job> FullTimeJobs { get; set; }
         public DbSet<Company> Companys { get; set; }
         public DbSet<Genre> Genres { get; set; }
 

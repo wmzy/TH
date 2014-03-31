@@ -8,11 +8,11 @@ using System.Collections.Generic;
 
 namespace TH.Repositories
 {
-    public class MySameCityRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class THRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         public THDbContext DbContext { get; private set; }
         public DbSet<TEntity> DbSet { get; private set; }
-        public MySameCityRepository(THDbContext context)
+        public THRepository(THDbContext context)
         {
             //Guard.ArgumentNotNull(context, "context");
             this.DbContext = context;

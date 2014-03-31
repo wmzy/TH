@@ -8,7 +8,7 @@ using TH.Repositories.Entities;
 
 namespace TH.Repositories
 {
-    public class ProductRepository : MySameCityRepository<Product>, IProductRepository
+    public class ProductRepository : THRepository<Product>, IProductRepository
     {
         public ProductRepository(THDbContext dbContext)
             : base(dbContext)

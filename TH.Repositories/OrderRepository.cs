@@ -8,7 +8,7 @@ using TH.Repositories.Entities;
 
 namespace TH.Repositories
 {
-    public class OrderRepository : MySameCityRepository<Order>, IOrderRepository
+    public class OrderRepository : THRepository<Order>, IOrderRepository
     {
         public OrderRepository(THDbContext dbContext)
             : base(dbContext)

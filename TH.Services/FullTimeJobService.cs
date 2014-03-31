@@ -8,25 +8,12 @@ using TH.Repositories.Entities;
 
 namespace TH.Services
 {
-    public class FullTimeJobService : ServiceBase, IFullTimeJobService, IDisposable
+    public class FullTimeJobService : ServiceBase, IJobService, IDisposable
     {
-        readonly IFullTimeJobRepository fullTimeJobRepository;
-        public FullTimeJobService(IFullTimeJobRepository fullTimeJobRepository)
-        {
-            this.fullTimeJobRepository = fullTimeJobRepository;
-        }
-        public IEnumerable<FullTimeJobType> GetTypes()
-        {
-            return this.fullTimeJobRepository.GetTypes();
-        }
-        public IEnumerable<FullTimeJob> GetFullTimeJobsTypeId(int Id, int pageIndex, int pageSize, out int recordCount)
-        {
-            return fullTimeJobRepository.GetFullTimeJobsByTypeId(Id, pageIndex, pageSize, out recordCount);
-        }
-
-        public void AddCompany(Company company)
-        {
-            fullTimeJobRepository.AddCompany(company);
-        }
+        readonly IJobRepository fullTimeJobRepository;
+        //public FullTimeJobService(IJobRepository fullTimeJobRepository)
+        //{
+        //    this.fullTimeJobRepository = fullTimeJobRepository;
+        //}
     }
 }

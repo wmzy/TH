@@ -1,0 +1,47 @@
+﻿@model MySameCity.WebUI.Areas.Recruitment.Models.FullTimeJobModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Title)
+    @Html.EditorFor(m => m.Title)
+    @Html.ValidationMessageFor(m => m.Title)
+
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+    @Html.LabelFor(m => m.CityId)
+    @Html.EditorFor(m => m.CityId)
+    @Html.LabelFor(m => m.RegionId)
+    @Html.EditorFor(m => m.RegionId)
+    @Html.LabelFor(m => m.TypeId)
+    @Html.EditorFor(m => m.TypeId)
+    @Html.LabelFor(m => m.WageL)
+    @Html.EditorFor(m => m.WageL)
+    @Html.LabelFor(m => m.WageT)
+    @Html.EditorFor(m => m.WageT)
+    @Html.LabelFor(m => m.JobDescription)
+    @Html.EditorFor(m => m.JobDescription)
+    @Html.LabelFor(m => m.SexRequire)
+    @Html.EditorFor(m => m.SexRequire)
+    @Html.RadioButtonFor(m => m.SexRequire, 0)
+    @Html.RadioButtonFor(m => m.SexRequire, 1)
+    @Html.LabelFor(m => m.EducationRequire)
+    @Html.EditorFor(m => m.EducationRequire)
+    @Html.LabelFor(m => m.WorkYearsL)
+    @Html.EditorFor(m => m.WorkYearsL)
+    @Html.LabelFor(m => m.WorkYearsT)
+    @Html.EditorFor(m => m.WorkYearsT)
+    @Html.LabelFor(m => m.RecruitCount)
+    @Html.EditorFor(m => m.RecruitCount)
+    @Html.LabelFor(m => m.CompanyId)
+    @Html.EditorFor(m => m.CompanyId)
+    @Html.LabelFor(m => m.TagId)
+    @Html.EditorFor(m => m.TagId)
+
+    <input type="submit" />
+}

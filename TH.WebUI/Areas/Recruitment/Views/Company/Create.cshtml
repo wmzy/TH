@@ -1,0 +1,35 @@
+﻿@model MySameCity.WebUI.Areas.Recruitment.Models.CompanyModel
+
+@{
+    ViewBag.Title = "Create Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name);
+    @Html.TextBoxFor(m => m.Name);
+    @Html.LabelFor(m => m.NickName);
+    @Html.TextBoxFor(m => m.NickName);
+    @Html.LabelFor(m => m.Address);
+    @Html.TextBoxFor(m => m.Address);
+    @Html.LabelFor(m => m.Introduction);
+    @Html.TextBoxFor(m => m.Introduction);
+    @Html.LabelFor(m => m.LegalPerson);
+    @Html.TextBoxFor(m => m.LegalPerson);
+    @Html.LabelFor(m => m.RegistrationNumber);
+    @Html.TextBoxFor(m => m.RegistrationNumber);
+    @Html.LabelFor(m => m.SizeL);
+    @Html.TextBoxFor(m => m.SizeL);
+    @Html.LabelFor(m => m.SizeT);
+    @Html.TextBoxFor(m => m.SizeT);
+    @Html.LabelFor(m => m.Trade);
+    @Html.TextBoxFor(m => m.Trade);
+    @Html.LabelFor(m => m.Type);
+    @Html.TextBoxFor(m => m.Type);
+    @Html.LabelFor(m => m.Website);
+    @Html.TextBoxFor(m => m.Website);
+    
+    <input type="submit"/>
+}

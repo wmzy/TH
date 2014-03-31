@@ -1,0 +1,16 @@
+﻿@using MySameCity.Repositories.Entities;
+@model IEnumerable<FullTimeJob>
+
+@{
+    ViewBag.Title = "Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Type</h2>
+<ul>
+    @foreach (FullTimeJob f in Model)
+    {
+        <li><a href="@Url.Action("List", new {Id = f.Id})">@f.Title</a></li>
+    }
+</ul>
+<p>@ViewData["count"]</p>

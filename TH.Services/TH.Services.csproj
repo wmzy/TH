@@ -69,11 +69,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MySameCity.Extensions\TH.Extensions.csproj">
+    <ProjectReference Include="..\TH.Extensions\TH.Extensions.csproj">
       <Project>{8c50c3e3-45ae-42f3-8dc4-39bb0fbb966b}</Project>
       <Name>TH.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MySameCity.Repositories\TH.Repositories.csproj">
+    <ProjectReference Include="..\TH.Repositories\TH.Repositories.csproj">
       <Project>{569be9cb-0950-40e9-bc87-be9d8174dc4f}</Project>
       <Name>TH.Repositories</Name>
     </ProjectReference>

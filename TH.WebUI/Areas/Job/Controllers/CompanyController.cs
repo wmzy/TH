@@ -49,7 +49,7 @@ namespace TH.WebUI.Areas.Recruitment.Controllers
         // POST: /Recruitment/Company/Create
 
         [HttpPost]
-        public ActionResult Create(CompanyModel companyModel)
+        public ActionResult Create(JobModel companyModel)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace TH.WebUI.Areas.Recruitment.Controllers
         // POST: /Recruitment/Company/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, CompanyModel c)
+        public ActionResult Edit(int id, JobModel c)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace TH.WebUI.Areas.Recruitment.Controllers
         // POST: /Recruitment/Company/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, CompanyModel c)
+        public ActionResult Delete(int id, JobModel c)
         {
             try
             {

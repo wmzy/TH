@@ -60,6 +60,8 @@
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Region.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Wage.cs" />
+    <Compile Include="Entities\WorkYears.cs" />
     <Compile Include="JobRepository.cs" />
     <Compile Include="IJobRepository.cs" />
     <Compile Include="IOrderRepository.cs" />

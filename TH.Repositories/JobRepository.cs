@@ -25,7 +25,7 @@ namespace TH.Repositories
             return this.Get(f => f.Id == FullTimeJobId).FirstOrDefault();
         }
 
-        public IEnumerable<Job> GetJobsByName(string name, int pageIndex, int pageSize, out int recordCount)
+        public IEnumerable<Job> GetJobsByName(string name, int pageIndex, int pageSize, out int? recordCount)
         {
             recordCount = this.DbSet.Count();
             return this.Get(f => f.Name == name, pageIndex, pageSize, f => f.CreatedDate, false);

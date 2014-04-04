@@ -198,10 +198,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Recruitment\Controllers\CompanyController.cs" />
-    <Compile Include="Areas\Recruitment\Controllers\FullTimeJobController.cs" />
-    <Compile Include="Areas\Recruitment\Models\CompanyModels.cs" />
-    <Compile Include="Areas\Recruitment\RecruitmentAreaRegistration.cs" />
+    <Compile Include="Areas\Job\Controllers\CompanyController.cs" />
+    <Compile Include="Areas\Job\Controllers\JobController.cs" />
+    <Compile Include="Areas\Job\ViewModels\JobViewModels.cs" />
+    <Compile Include="Areas\Job\JobAreaRegistration.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -289,10 +289,11 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Areas\Recruitment\Views\Web.config" />
-    <Content Include="Areas\Recruitment\Views\FullTimeJob\Index.cshtml" />
-    <Content Include="Areas\Recruitment\Views\FullTimeJob\Type.cshtml" />
-    <Content Include="Areas\Recruitment\Views\Company\Create.cshtml" />
+    <Content Include="Areas\Job\Views\Web.config" />
+    <Content Include="Areas\Job\Views\FullTimeJob\Index.cshtml" />
+    <Content Include="Areas\Job\Views\FullTimeJob\Type.cshtml" />
+    <Content Include="Areas\Job\Views\Company\Create.cshtml" />
+    <Content Include="Areas\Job\Views\Job\Create.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -354,7 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Recruitment\Views\Shared\" />
+    <Folder Include="Areas\Job\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -367,6 +368,10 @@
     <ProjectReference Include="..\TH.Repositories\TH.Repositories.csproj">
       <Project>{569be9cb-0950-40e9-bc87-be9d8174dc4f}</Project>
       <Name>TH.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TH.Services\TH.Services.csproj">
+      <Project>{5c475c82-7d37-4955-b9df-d454b70d0924}</Project>
+      <Name>TH.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

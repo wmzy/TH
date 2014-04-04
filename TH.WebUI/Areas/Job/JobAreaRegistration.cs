@@ -2,22 +2,22 @@
 
 namespace TH.WebUI.Areas.Recruitment
 {
-    public class RecruitmentAreaRegistration : AreaRegistration
+    public class JobAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Recruitment";
+                return "Job";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Recruitment_default",
-                "Recruitment/{controller}/{action}/{id}",
-                new { controller = "FullTimeJob", action = "Index", id = UrlParameter.Optional }
+                "Job_default",
+                "Job/{controller}/{action}/{id}",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

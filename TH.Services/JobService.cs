@@ -8,7 +8,7 @@ using TH.Repositories.Entities;
 
 namespace TH.Services
 {
-    public class FullTimeJobService : ServiceBase, IJobService, IDisposable
+    public class JobService : ServiceBase, IJobService, IDisposable
     {
         readonly IJobRepository fullTimeJobRepository;
         //public FullTimeJobService(IJobRepository fullTimeJobRepository)

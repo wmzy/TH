@@ -23,18 +23,11 @@ namespace TH.Repositories.Entities
         public string Phone { get; set; }
         public string MobilePhone { get; set; }
         public string Address { get; set; }
-        public string PostCode { get; set; }
-
         public string PhotoURL { get; set; }
         public DateTime? Birthday { get; set; }
         public string Sex { get; set; }
         public string AboutMe { get; set; }
         public DateTime? CreateDate { get; set; }
-
-        public int? CountryId { get; set; }
-        public int? ProvinceId { get; set; }
-        public int? CityId { get; set; }
-
-        public virtual ICollection<Company> CompaniesAgented { get; set; } // 代理的公司
+        public City City { get; set; }
     }
 }

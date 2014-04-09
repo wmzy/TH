@@ -294,6 +294,7 @@
     <Content Include="Areas\Job\Views\FullTimeJob\Type.cshtml" />
     <Content Include="Areas\Job\Views\Company\Create.cshtml" />
     <Content Include="Areas\Job\Views\Job\Create.cshtml" />
+    <Content Include="Areas\Job\Views\Shared\EditorTemplates\Enum.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -355,7 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Job\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

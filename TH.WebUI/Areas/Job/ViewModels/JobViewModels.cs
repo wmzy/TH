@@ -26,7 +26,7 @@ namespace TH.WebUI.Areas.Job.ViewModels
         public string WorkYears { get; set; }  // 工作年限
         [DisplayName("薪资范围")]
         public string Wage { get; set; }      // 薪资范围
-        [DisplayName("工作描述")]
+        [DisplayName("职位描述")]
         public string JobDescription { get; set; }
         [DisplayName("招聘单位或个体简介")]
         public string CompanyIntroduction { set; get; } //招聘单位或个体简介

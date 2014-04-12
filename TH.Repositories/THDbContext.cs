@@ -26,15 +26,15 @@ namespace TH.Repositories
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.CompaniesAgented)
-                .WithMany(c => c.Agencies)
-                .Map(m =>
-                {
-                    m.MapLeftKey("UserId");
-                    m.MapRightKey("CompanyId");
-                    m.ToTable("User_Company");
-                });
+            //modelBuilder.Entity<User>()
+            //    .HasMany(u => u.CompaniesAgented)
+            //    .WithMany(c => c.Agencies)
+            //    .Map(m =>
+            //    {
+            //        m.MapLeftKey("UserId");
+            //        m.MapRightKey("CompanyId");
+            //        m.ToTable("User_Company");
+            //    });
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -12,19 +12,13 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>CachedTimeSource</legend>
-        <p><span>招聘单位或经营个体</span></p>
-        @Html.LabelFor(m => m.Company)
+        <legend>发布招聘信息</legend>
         @Html.EditorForModel();
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

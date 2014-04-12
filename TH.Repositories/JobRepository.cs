@@ -37,10 +37,10 @@ namespace TH.Repositories
         //    return this.Get(f => f.Type.FullTimeJobTypeId == Id, pageIndex, pageSize, f => f.CreatedDate, false);
         //}
 
-        public void AddCompany(Company company)
+        public IEnumerable<Job> GetJobsByName(string name, int pageIndex, int pageSize, out int recordCount)
         {
-            DbContext.Companys.Add(company);
-            DbContext.SaveChanges();
+            recordCount = this.DbSet.Count();
+            return this.Get(f => f.Name == name, pageIndex, pageSize, f => f.CreatedDate, false);
         }
     }
 }

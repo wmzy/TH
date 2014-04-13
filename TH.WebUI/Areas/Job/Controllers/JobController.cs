@@ -21,10 +21,10 @@ namespace TH.WebUI.Areas.Job.Controllers
         //
         // GET: /Job/
 
-        public ActionResult Index(int id, int pageIndex, int pageSize)
+        public ActionResult Index(int pageIndex, int pageSize)
         {
-            int? recordCount;
-            IEnumerable<Job> jobs = jobService.GetJobs(id, pageIndex, pageSize, out recordCount);
+            int recordCount;
+            IEnumerable<Job> jobs = jobService.GetJobs(pageIndex, pageSize, out recordCount);
 
             ViewData["recordCount"] = recordCount;
 
@@ -51,6 +51,14 @@ namespace TH.WebUI.Areas.Job.Controllers
         [HttpPost]
         public ActionResult Create(JobCreateViewModel m)
         {
+            if (ModelState.IsValid)
+            {
+                jobService.CreateJob(new Job { 
+                    Company = m.Company,
+                    CompanyIntroduction = m.CompanyIntroduction,
+
+                });
+            }
             return View(m);
         }
 

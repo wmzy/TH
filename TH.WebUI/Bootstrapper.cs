@@ -32,7 +32,7 @@ namespace TH.WebUI
 
     public static void RegisterTypes(IUnityContainer container)
     {
-        container.RegisterType<IFullTimeJobService, FullTimeJobService>();
+        container.RegisterType<IJobService, JobService>();
         container.RegisterType<IJobRepository, JobRepository>();
     }
   }

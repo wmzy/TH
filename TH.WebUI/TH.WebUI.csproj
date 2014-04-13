@@ -200,7 +200,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Job\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Job\Controllers\JobController.cs" />
     <Compile Include="Areas\Job\ViewModels\JobViewModels.cs" />
     <Compile Include="Areas\Job\JobAreaRegistration.cs" />
@@ -292,9 +291,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Job\Views\Web.config" />
-    <Content Include="Areas\Job\Views\FullTimeJob\Index.cshtml" />
-    <Content Include="Areas\Job\Views\FullTimeJob\Type.cshtml" />
-    <Content Include="Areas\Job\Views\Company\Create.cshtml" />
     <Content Include="Areas\Job\Views\Job\Create.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

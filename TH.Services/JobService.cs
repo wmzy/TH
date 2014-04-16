@@ -30,5 +30,10 @@ namespace TH.Services
         {
             return jobRepository.GetJobs(pageIndex, pageSize, out recordCount);
         }
+
+        public void CreateJob(Job job)
+        {
+
+        }
     }
 }

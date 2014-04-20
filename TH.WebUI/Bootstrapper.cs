@@ -3,6 +3,7 @@ using Microsoft.Practices.Unity;
 using Unity.Mvc4;
 using TH.Services;
 using TH.Repositories;
+using TH.Repositories.Entities;
 
 namespace TH.WebUI
 {
@@ -33,7 +34,7 @@ namespace TH.WebUI
     public static void RegisterTypes(IUnityContainer container)
     {
         container.RegisterType<IJobService, JobService>();
-        container.RegisterType<IJobRepository, JobRepository>();
+        container.RegisterType<IRepository<Job>, THRepository<Job>>();
     }
   }
 }

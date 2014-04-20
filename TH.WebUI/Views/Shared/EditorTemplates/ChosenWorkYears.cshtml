@@ -1,0 +1,9 @@
+﻿@model string
+@using System.Linq;
+
+@Html.DropDownListFor(m => m, "应届毕业、1—10年、10年以上"
+  .Split(new Char[] { '、' }).AsQueryable().Select(i => new SelectListItem()
+  {
+      Text = i,
+      Value = i
+  }), "", new { @class = "chosen-select" })

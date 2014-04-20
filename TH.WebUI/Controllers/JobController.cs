@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TH.Services;
-using TH.WebUI.Areas.Job.ViewModels;
+using TH.WebUI.ViewModels;
 
-namespace TH.WebUI.Areas.Job.Controllers
+namespace TH.WebUI.Controllers
 {
     using TH.Repositories.Entities;
+    using WebMatrix.WebData;
 
+    [Authorize]
     public class JobController : Controller
     {
         readonly IJobService jobService;
@@ -21,8 +24,10 @@ namespace TH.WebUI.Areas.Job.Controllers
         //
         // GET: /Job/
 
-        public ActionResult Index(int pageIndex, int pageSize)
+        [AllowAnonymous]
+        public ActionResult Index(int pageIndex = 0, int pageSize = 0)
         {
+            return View();
             int recordCount;
             IEnumerable<Job> jobs = jobService.GetJobs(pageIndex, pageSize, out recordCount);
 
@@ -35,6 +40,7 @@ namespace TH.WebUI.Areas.Job.Controllers
         //
         // GET: /Job/Home/Details/{id}
 
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             Job job = jobService.GetJobById(id);
@@ -56,7 +62,7 @@ namespace TH.WebUI.Areas.Job.Controllers
                 jobService.CreateJob(new Job { 
                     Company = m.Company,
                     CompanyIntroduction = m.CompanyIntroduction,
-
+                    Publisher = new User {UserId = WebSecurity.CurrentUserId}
                 });
             }
             return View(m);

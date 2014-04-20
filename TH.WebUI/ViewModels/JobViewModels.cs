@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace TH.WebUI.Areas.Job.ViewModels
+namespace TH.WebUI.ViewModels
 {
     public class JobIndexViewModel
     {
@@ -14,22 +15,31 @@ namespace TH.WebUI.Areas.Job.ViewModels
     {
         [DisplayName("招聘单位或经营个体")]
         public string Company { set; get; }     // 招聘单位或经营个体
+        [UIHint("ChosenJobName")]
         [DisplayName("职位名称")]
         public string Name { get; set; }        // 职位名称
         [DisplayName("招聘人数")]
+        [Range(0, 100)]
         public int? RecruitCount { get; set; }  // 招聘人数
+        [UIHint("ChosenLocation")]
         [DisplayName("工作地点")]
         public string Location { get; set; }    // 工作地点
+        [UIHint("ChosenEducationRequire")]
         [DisplayName("学历要求")]
         public string EducationRequire { get; set; }    // 学历要求
+        [UIHint("ChosenWorkYears")]
         [DisplayName("工作年限")]
         public string WorkYears { get; set; }  // 工作年限
+        [UIHint("ChosenWage")]
         [DisplayName("薪资范围")]
         public string Wage { get; set; }      // 薪资范围
+        [MaxLength(500)]
         [DisplayName("职位描述")]
         public string JobDescription { get; set; }
+        [MaxLength(500)]
         [DisplayName("招聘单位或个体简介")]
         public string CompanyIntroduction { set; get; } //招聘单位或个体简介
+        [MaxLength(300)]
         [DisplayName("岗位要求")]
         public string Requirements { set; get; }    //岗位要求
         [DisplayName("联系方式")]

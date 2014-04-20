@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "首页";
 }
 @section featured {
     <section class="featured">
@@ -9,37 +9,44 @@
                 <h2>@ViewBag.Message</h2>
             </hgroup>
             <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
             </p>
         </div>
     </section>
 }
-<h3>We suggest the following:</h3>
-<ol class="round">
+<h3>发布供求信息</h3>
+<ul class="round">
     <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
+        @Html.ActionLink("招聘", "Index", "Job");
+        @Html.ActionLink("求职", "Index", "JobHunting");
     </li>
-
     <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
+        @Html.ActionLink("工程招标、发包工程", "");
+        @Html.ActionLink("承揽工程", "");
     </li>
-
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
+    <li class="two">
+        @Html.ActionLink("出租、出售工程机械", "");
+        @Html.ActionLink("求租、求购工程机械", "");
     </li>
-</ol>
+    <li class="two">
+        @Html.ActionLink("出租、出售工程设备及小型机具", "");
+        @Html.ActionLink("求租、求购工程设备及小型机具", "");
+    </li>
+    <li class="two">
+        @Html.ActionLink("出售建筑材料", "");
+        @Html.ActionLink("求购建筑材料", "");
+    </li>
+    <li class="two">
+        @Html.ActionLink("试验、检测", "");
+        @Html.ActionLink("寻找试验、检测资质单位", "");
+    </li>
+    <li class="two">
+        @Html.ActionLink("聘用证件持有人（兼职）", "");
+        @Html.ActionLink("证件注册、挂靠", "");
+    </li>
+    <li class="two">
+        @Html.ActionLink("融资、贷款", "");
+    </li>
+    <li class="two">
+        @Html.ActionLink("相关供求信息", "");
+    </li>
+</ul>

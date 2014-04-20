@@ -1,0 +1,9 @@
+﻿@model string
+@using System.Linq;
+
+@Html.DropDownListFor(m => m, "1000-2000元、2000-3000元、3000-4000元、4000-5000元、5000-8000元、8000-10000元、10000-15000元、15000以上、面议"
+  .Split(new Char[] { '、' }).AsQueryable().Select(i => new SelectListItem()
+  {
+      Text = i,
+      Value = i
+  }), "", new { @class = "chosen-select" })

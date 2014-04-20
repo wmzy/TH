@@ -1,0 +1,9 @@
+﻿@model string
+@using System.Linq;
+
+@Html.DropDownListFor(m => m, "公司总经理、公司副总经理、会计、出纳、项目经理、项目副经理、项目总工、人力专员、行政专员、技术员、工程部长、试验检测工程师、试验员、安全员、领工员、测量员、资料员、后勤管理、造价师、预算员、总监、监理员、园林景观设计、市政技术员、市政工程师、给排水设计师、其它"
+  .Split(new Char[] { '、' }).AsQueryable().Select(i => new SelectListItem()
+  {
+      Text = i,
+      Value = i
+  }), "", new { @class = "chosen-select" })

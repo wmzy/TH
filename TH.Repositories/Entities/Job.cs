@@ -27,5 +27,6 @@ namespace TH.Repositories.Entities
         public string CompanyIntroduction { set; get; } //招聘单位或个体简介
         public string Requirements { set; get; }    //岗位要求
         public string Contact { set; get; }    // 联系方式
+        public User Publisher { set; get; }  // 发布者
     }
 }

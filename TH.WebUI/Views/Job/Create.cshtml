@@ -1,0 +1,37 @@
+﻿@model JobCreateViewModel
+@using TH.WebUI.ViewModels
+
+@{
+    ViewBag.Title = "发布招聘信息";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/chosen")
+}
+
+<h2>发布招聘信息</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>发布招聘信息</legend>
+        @Html.EditorForModel()
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/chosen")
+    <script>
+        $(".chosen-select").chosen({
+            allow_single_deselect: true,
+            width: "312px",
+            placeholder_text_single: "选择一个"
+        })
+    </script>
+}

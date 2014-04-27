@@ -5,7 +5,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MySameCity.Repositories.Entities
+namespace TH.Repositories.Entities
 {
     [Table("Tag")]
     public class Tag

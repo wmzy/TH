@@ -7,7 +7,7 @@ namespace TH.Repositories.Entities
 {
     public class Wage
     {
-        float Low { get; set; }
-        float Top { get; set; }
+        public float Low { get; set; }
+        public float Top { get; set; }
     }
 }

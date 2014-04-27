@@ -3,39 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-
+using Microsoft.AspNet.Identity.EntityFramework;
 using TH.Repositories.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TH.Repositories
 {
-    public class THDbContext: DbContext
+    public class THDbContext : IdentityDbContext<User>
     {
         public THDbContext()
-            : base("name=TH")
+            : base("THConnection")
         {
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Job> FullTimeJobs { get; set; }
-        public DbSet<Company> Companys { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-
-        //public DbSet<Order> Orders { get; set; }
-        //public DbSet<OrderLine> OrderLines { get; set; }
-        //public DbSet<Product> Products { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<User>()
-            //    .HasMany(u => u.CompaniesAgented)
-            //    .WithMany(c => c.Agencies)
-            //    .Map(m =>
-            //    {
-            //        m.MapLeftKey("UserId");
-            //        m.MapRightKey("CompanyId");
-            //        m.ToTable("User_Company");
-            //    });
-            base.OnModelCreating(modelBuilder);
-        }
+        public DbSet<Job> Jobs { get; set; }
     }
 }

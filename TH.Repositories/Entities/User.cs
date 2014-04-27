@@ -5,16 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TH.Repositories.Entities
 {
     [Table("User")]
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
         public string RealName { get; set; }
         public string Nickname { get; set; }
 

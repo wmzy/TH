@@ -9,10 +9,9 @@ namespace TH.Services
 {
     public interface IJobService
     {
-        //IEnumerable<Job> GetJobsTypeId(int id, int pageIndex, int pageSize, out int recordCount);
-        IEnumerable<Job> GetJobs(int pageIndex, int pageSize, out int recordCount);
+        IQueryable<Job> GetJobs(int pageIndex, int pageSize, out int recordCount);
 
-        IEnumerable<Job> GetJobByLocation(int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
+        IEnumerable<Job> GetJobByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
 
         Job GetJobById(int id);
 

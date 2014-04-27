@@ -19,18 +19,16 @@ namespace TH.Repositories
             this.DbSet = this.DbContext.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> Get()
+        public IQueryable<TEntity> Get()
         {
             return this.DbSet.AsQueryable();
         }
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter)
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
             return this.DbSet.Where(filter).AsQueryable();
         }
-        public IEnumerable<TEntity> Get<TKey>(Expression<Func<TEntity, bool>> filter, int pageIndex, int pageSize, Expression<Func<TEntity, TKey>> sortKeySelector, bool isAsc = true)
+        public IQueryable<TEntity> Get<TKey>(Expression<Func<TEntity, bool>> filter, int pageIndex, int pageSize, Expression<Func<TEntity, TKey>> sortKeySelector, bool isAsc = true)
         {
-            //Guard.ArgumentNotNull(filter, "predicate");
-            //Guard.ArgumentNotNull(sortKeySelector, "sortKeySelector");
             if (isAsc)
             {
                 return this.DbSet
@@ -59,6 +57,7 @@ namespace TH.Repositories
             //Guard.ArgumentNotNull(instance, "instance");
             this.DbSet.Attach(instance);
             this.DbContext.Entry(instance).State = EntityState.Added;
+            
             this.DbContext.SaveChanges();
         }
         public void Update(TEntity instance)

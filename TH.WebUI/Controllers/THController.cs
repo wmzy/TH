@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using TH.Extensions;
 
 namespace TH.WebUI.Controllers
 {
-    [ExceptionPolicy("defaultPolicy")]
-    public class THController : ExtendedController
+    public class THController
     {
         public IList<IDisposable> DisposableObjects { get; private set; }
         public THController()
@@ -25,7 +23,7 @@ namespace TH.WebUI.Controllers
             }
         }
 
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (disposing)
             {
@@ -37,7 +35,6 @@ namespace TH.WebUI.Controllers
                     }
                 }
             }
-            base.Dispose(disposing);
         }
     }
 }

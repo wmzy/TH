@@ -1,0 +1,9 @@
+﻿@model string
+@using System.Linq;
+
+@Html.DropDownListFor(m => m, "呼和浩特、阿拉善盟、巴彦淖尔市、鄂尔多斯市、包头市、乌兰察布市、锡林郭勒盟、赤峰市、通辽市、兴安盟、呼伦贝尔市"
+  .Split(new Char[] { '、' }).AsQueryable().Select(i => new SelectListItem()
+  {
+      Text = i,
+      Value = i
+  }), "", new { @class = "chosen-select" })

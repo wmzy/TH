@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TH.WebUI.ViewModels.JobIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>JobIndex</h2>
+<ul>
+    @foreach (var j in Model)
+{
+    <li>
+        <a href="@Url.Action("Details", new {id = j.Id})">@j.Title ww</a>
+        <div>
+            <h3>@j.Title</h3>
+            <ul>
+                <li>职位名称:@j.Name</li>
+                <li>招聘单位:@j.Company</li>
+                <li>工作地点:@j.Location</li>
+                <li>薪资范围:@j.Wage</li>
+                <li>招聘人数:@j.RecruitCount</li>
+                <li>发布时间:@j.CreatedDate</li>
+            </ul>
+        </div>
+    </li>
+}
+</ul>
+@section scripts
+{
+    <script type="text/javascript">
+        $('#element').tooltip('show');
+    </script>
+}

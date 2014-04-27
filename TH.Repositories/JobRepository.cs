@@ -20,9 +20,9 @@ namespace TH.Repositories
             return this.Get(f => true, pageIndex, pageSize, f => f.CreatedDate, false);
         }
 
-        public Job GetJob(int FullTimeJobId)
+        public Job GetJob(int jobId)
         {
-            return this.Get(f => f.Id == FullTimeJobId).FirstOrDefault();
+            return this.Get(f => f.Id == jobId).FirstOrDefault();
         }
 
         public IEnumerable<Job> GetJobsByName(string name, int pageIndex, int pageSize, out int? recordCount)

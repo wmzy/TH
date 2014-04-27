@@ -14,11 +14,11 @@ namespace TH.Repositories.Entities
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Title { get; set; }
-        public City City { get; set; }
-        public Region Region { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
         public DateTime? CreatedDate { get; set; }   //发布时间
         public User Publisher { get; set; }     // 发布者
-        public Genre Genre { get; set; }        // 信息类型
+        public string Genre { get; set; }        // 信息类型
         
         //联系方式Contact
         public string Telephone { get; set; }

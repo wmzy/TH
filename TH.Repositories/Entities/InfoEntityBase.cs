@@ -18,11 +18,10 @@ namespace TH.Repositories.Entities
         public string Region { get; set; }
         public DateTime? CreatedDate { get; set; }   //发布时间
         public User Publisher { get; set; }     // 发布者
-        public string Genre { get; set; }        // 信息类型
         
         //联系方式Contact
-        public string Telephone { get; set; }
-        public string MobilePhone { get; set; }
-        public string QQ { get; set; }
+        public string Telephones { get; set; }      // 联系电话';'分隔
+        public string ContactPerson { get; set; } // 联系人
+        public int Views { set; get; }  //浏览量
     }
 }

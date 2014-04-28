@@ -27,6 +27,11 @@ namespace TH.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Index(int pageIndex = 1, int pageSize = 10)
         {
+            if (pageIndex < 1 || pageSize < 0)
+            {
+                return HttpNotFound();
+            }
+
             int recordCount;
 
             IEnumerable<JobIndexViewModel> jobs = _jobService.GetJobs(pageIndex, pageSize, out recordCount).Select(j => new JobIndexViewModel
@@ -54,9 +59,21 @@ namespace TH.WebUI.Controllers
         public ActionResult Details(int id)
         {
             Job job = _jobService.GetJobById(id);
-
+            JobDetailsViewModel jobDetails = new JobDetailsViewModel
+            {
+                Company = job.Company,
+                CompanyIntroduction = job.CompanyIntroduction,
+                ContactPerson = job.ContactPerson,
+                EducationRequire = job.EducationRequire,
+                JobDescription = job.JobDescription,
+                Location = job.Location,
+                Name = job.Name,
+                RecruitCount = job.RecruitCount,
+                Title = job.Title,
+                Telephones = job.Telephones
+            };
             //
-            return View(job);
+            return View(jobDetails);
         }
         
         public ActionResult Create()
@@ -75,7 +92,11 @@ namespace TH.WebUI.Controllers
                     CompanyIntroduction = m.CompanyIntroduction,
                     Publisher = new User { Id = User.Identity.GetUserId()},
                     CreatedDate = DateTime.Now,
-                    City = ControllerContext.HttpContext.Request.UserHostAddress
+                    City = ControllerContext.HttpContext.Request.UserHostAddress,
+                    ContactPerson = m.ContactPerson,
+                    Telephones = m.Telephones,
+                    EducationRequire = m.EducationRequire,
+                    Location = m.Location
                 });
             }
             return View(m);

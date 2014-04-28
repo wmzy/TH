@@ -25,6 +25,5 @@ namespace TH.Repositories.Entities
         public string WorkYears { get; set; }  // 工作年限
         public string CompanyIntroduction { set; get; } //招聘单位或个体简介
         public string Requirements { set; get; }    //岗位要求
-        public string Contact { set; get; }    // 联系方式
     }
 }

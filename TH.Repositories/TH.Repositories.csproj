@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201404281440041_modify job model.Designer.cs">
       <DependentUpon>201404281440041_modify job model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404300245217_AddJobHuntings.cs" />
+    <Compile Include="Migrations\201404300245217_AddJobHuntings.Designer.cs">
+      <DependentUpon>201404300245217_AddJobHuntings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="THDbContext.cs" />
@@ -104,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404281440041_modify job model.resx">
       <DependentUpon>201404281440041_modify job model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404300245217_AddJobHuntings.resx">
+      <DependentUpon>201404300245217_AddJobHuntings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

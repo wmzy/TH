@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\ManageInfoController.cs" />
     <Compile Include="Controllers\THController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -175,8 +176,8 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\FullTimeJobModels.cs" />
     <Compile Include="ViewModels\JobViewModels.cs" />
+    <Compile Include="ViewModels\ManageInfoViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -185,6 +186,19 @@
     <Content Include="Content\chosen\chosen-sprite.png" />
     <Content Include="Content\chosen\chosen.css" />
     <Content Include="Content\chosen\chosen.min.css" />
+    <Content Include="Content\DataTables\back_disabled.png" />
+    <Content Include="Content\DataTables\back_enabled.png" />
+    <Content Include="Content\DataTables\back_enabled_hover.png" />
+    <Content Include="Content\DataTables\favicon.ico" />
+    <Content Include="Content\DataTables\forward_disabled.png" />
+    <Content Include="Content\DataTables\forward_enabled.png" />
+    <Content Include="Content\DataTables\forward_enabled_hover.png" />
+    <Content Include="Content\DataTables\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\sort_asc.png" />
+    <Content Include="Content\DataTables\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\sort_both.png" />
+    <Content Include="Content\DataTables\sort_desc.png" />
+    <Content Include="Content\DataTables\sort_desc_disabled.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -198,6 +212,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -239,6 +255,8 @@
     <Content Include="Views\Shared\EditorTemplates\ChosenWage.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ChosenWorkYears.cshtml" />
     <Content Include="Views\Job\Details.cshtml" />
+    <Content Include="Views\Job\Edit.cshtml" />
+    <Content Include="Views\ManageInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

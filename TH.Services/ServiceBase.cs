@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace TH.Services
 {
@@ -10,20 +8,20 @@ namespace TH.Services
         public IList<IDisposable> DisposableObjects { get; private set; }
         public ServiceBase()
         {
-            this.DisposableObjects = new List<IDisposable>();
+            DisposableObjects = new List<IDisposable>();
         }
          protected void AddDisposableObject(object obj)
         {
-            IDisposable disposable = obj as IDisposable;
+            var disposable = obj as IDisposable;
             if (null != disposable)
             {
-                this.DisposableObjects.Add(disposable);
+                DisposableObjects.Add(disposable);
             }
         }
 
          public void Dispose()
          {
-             foreach (IDisposable obj in this.DisposableObjects)
+             foreach (var obj in DisposableObjects)
              {
                  if (null != obj)
                  {

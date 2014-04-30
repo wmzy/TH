@@ -14,6 +14,7 @@ namespace TH.Services
         IEnumerable<Job> GetJobByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
 
         Job GetJobById(int id);
+        IQueryable<Job> GetJobsByUserId(string userId);
 
         void CreateJob(Job job);
     }

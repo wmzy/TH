@@ -17,5 +17,6 @@ namespace TH.Repositories
         }
 
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobHunting> JobHuntings { get; set; }
     }
 }

@@ -29,6 +29,9 @@ namespace TH.WebUI
 
             bundles.Add(new StyleBundle("~/Content/chosen").Include("~/Content/chosen/chosen.css"));
             bundles.Add(new ScriptBundle("~/bundles/chosen").Include("~/Scripts/chosen.jquery.js"));
+
+            bundles.Add(new StyleBundle("~/Content/DataTables").Include("~/Content/DataTables/jquery.dataTables.css"));
+            bundles.Add(new ScriptBundle("~/bundles/DataTables").Include("~/Scripts/jquery.dataTables.js"));
         }
     }
 }

@@ -17,5 +17,9 @@ namespace TH.Services
         IQueryable<Job> GetJobsByUserId(string userId);
 
         void CreateJob(Job job);
+
+        void Update(Job job);
+
+        void OwnerDelete(string ownerId, int id);
     }
 }

@@ -25,6 +25,6 @@ namespace TH.Repositories.Entities
         public string Sex { get; set; }
         public string AboutMe { get; set; }
         public DateTime? CreateDate { get; set; }
-        public City City { get; set; }
+        public string City { get; set; }
     }
 }

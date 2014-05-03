@@ -110,8 +110,12 @@ namespace TH.WebUI.Controllers
         public ActionResult Edit(int id)
         {
             Job job = _jobService.GetJobById(id);
+            if (job.Publisher.Id != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
 
-            JobEditViewModel jobEdit = new JobEditViewModel
+            var jobEdit = new JobEditViewModel
             {
                 Id = job.Id,
                 Company = job.Company,
@@ -133,9 +137,36 @@ namespace TH.WebUI.Controllers
         }
 
         [HttpPost]
+        public ActionResult Edit(JobEditViewModel model)
+        {
+            Job job = _jobService.GetJobById(model.Id);
+
+            if (job.Publisher.Id != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+
+            job.Title = model.Title;
+            job.Company = model.Company;
+            job.Name = model.Name;
+            job.RecruitCount = model.RecruitCount;
+            job.Location = model.Location;
+            job.EducationRequire = model.EducationRequire;
+            job.WorkYears = model.WorkYears;
+            job.Wage = model.Wage;
+            job.JobDescription = model.JobDescription;
+            job.CompanyIntroduction = model.CompanyIntroduction;
+            job.Requirements = model.Requirements;
+            job.ContactPerson = model.ContactPerson;
+
+            _jobService.Update(job);
+
+            return RedirectToAction("Details", new { id = job.Id });
+        }
+
         public ActionResult Delete(int id)
         {
-
+            _jobService.OwnerDelete(User.Identity.GetUserId(), id);
             return RedirectToAction("Index");
         }
     }

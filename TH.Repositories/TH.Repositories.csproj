@@ -75,17 +75,13 @@
     <Compile Include="IJobRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="JobRepository.cs" />
-    <Compile Include="Migrations\201404270831588_InitialCreate.cs" />
-    <Compile Include="Migrations\201404270831588_InitialCreate.Designer.cs">
-      <DependentUpon>201404270831588_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201405021807280_InitialCreate.cs" />
+    <Compile Include="Migrations\201405021807280_InitialCreate.Designer.cs">
+      <DependentUpon>201405021807280_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404281440041_modify job model.cs" />
-    <Compile Include="Migrations\201404281440041_modify job model.Designer.cs">
-      <DependentUpon>201404281440041_modify job model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404300245217_AddJobHuntings.cs" />
-    <Compile Include="Migrations\201404300245217_AddJobHuntings.Designer.cs">
-      <DependentUpon>201404300245217_AddJobHuntings.cs</DependentUpon>
+    <Compile Include="Migrations\201405031430338_AddJobHunting.cs" />
+    <Compile Include="Migrations\201405031430338_AddJobHunting.Designer.cs">
+      <DependentUpon>201405031430338_AddJobHunting.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,14 +99,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404270831588_InitialCreate.resx">
-      <DependentUpon>201404270831588_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405021807280_InitialCreate.resx">
+      <DependentUpon>201405021807280_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404281440041_modify job model.resx">
-      <DependentUpon>201404281440041_modify job model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404300245217_AddJobHuntings.resx">
-      <DependentUpon>201404300245217_AddJobHuntings.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405031430338_AddJobHunting.resx">
+      <DependentUpon>201405031430338_AddJobHunting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

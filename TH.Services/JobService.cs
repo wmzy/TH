@@ -10,7 +10,7 @@ namespace TH.Services
 {
     public class JobService : ServiceBase, IJobService
     {
-        readonly IRepository<Job> _jobRepository;
+        private readonly IRepository<Job> _jobRepository;
         public JobService(IRepository<Job> jobRepository)
         {
             _jobRepository = jobRepository;
@@ -42,6 +42,22 @@ namespace TH.Services
         public void CreateJob(Job job)
         {
             _jobRepository.Add(job);
+        }
+
+
+        public void Update(Job job)
+        {
+            _jobRepository.Update(job);
+        }
+
+        public void OwnerDelete(string ownerId, int id)
+        {
+            var job = GetJobById(id);
+
+            if (job.Publisher.Id == ownerId)
+            {
+                _jobRepository.Delete(job);
+            }
         }
     }
 }

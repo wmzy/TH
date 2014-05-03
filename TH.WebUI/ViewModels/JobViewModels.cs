@@ -104,6 +104,7 @@ namespace TH.WebUI.ViewModels
     public class JobEditViewModel
     {
         [UIHint("HiddenInput")]
+        [Required]
         public int Id { get; set; }
 
         [DisplayName("标题")]

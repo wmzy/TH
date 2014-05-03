@@ -16,6 +16,19 @@ namespace TH.Repositories
         {
         }
 
+        //https://github.com/rustd/AspnetIdentitySample
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Change the name of the table to be Users instead of AspNetUsers
+            modelBuilder.Entity<IdentityUser>()
+                .ToTable("Users");
+            modelBuilder.Entity<User>()
+                .ToTable("Users");
+        }
+
+
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobHunting> JobHuntings { get; set; }
     }

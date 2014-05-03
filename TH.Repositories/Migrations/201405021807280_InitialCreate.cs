@@ -8,36 +8,33 @@ namespace TH.Repositories.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Job",
+                "dbo.JobHuntings",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Company = c.String(),
                         Name = c.String(),
-                        RecruitCount = c.Int(),
-                        Location = c.String(),
-                        EducationRequire = c.String(),
+                        Nation = c.String(),
+                        Age = c.Int(nullable: false),
+                        WorkYears = c.Int(nullable: false),
+                        Education = c.String(),
+                        WorkExperience = c.String(),
+                        Job = c.String(),
                         Wage = c.String(),
-                        JobDescription = c.String(),
-                        WorkYears = c.String(),
-                        CompanyIntroduction = c.String(),
-                        Requirements = c.String(),
-                        Contact = c.String(),
+                        Introduction = c.String(),
                         Title = c.String(),
                         City = c.String(),
                         Region = c.String(),
                         CreatedDate = c.DateTime(),
-                        Genre = c.String(),
-                        Telephone = c.String(),
-                        MobilePhone = c.String(),
-                        QQ = c.String(),
+                        Telephones = c.String(),
+                        ContactPerson = c.String(),
+                        Views = c.Int(nullable: false),
                         Publisher_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Publisher_Id);
+                .ForeignKey("dbo.Users", t => t.Publisher_Id);
             
             CreateTable(
-                "dbo.AspNetUsers",
+                "dbo.Users",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -56,20 +53,10 @@ namespace TH.Repositories.Migrations
                         Sex = c.String(),
                         AboutMe = c.String(),
                         CreateDate = c.DateTime(),
+                        City = c.String(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
-                        City_CityId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.City", t => t.City_CityId);
-            
-            CreateTable(
-                "dbo.City",
-                c => new
-                    {
-                        CityId = c.Int(nullable: false, identity: true),
-                        CityName = c.String(),
-                    })
-                .PrimaryKey(t => t.CityId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -81,7 +68,7 @@ namespace TH.Repositories.Migrations
                         User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id, cascadeDelete: true);
+                .ForeignKey("dbo.Users", t => t.User_Id, cascadeDelete: true);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -92,7 +79,7 @@ namespace TH.Repositories.Migrations
                         ProviderKey = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.LoginProvider, t.ProviderKey })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true);
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true);
             
             CreateTable(
                 "dbo.AspNetUserRoles",
@@ -103,7 +90,7 @@ namespace TH.Repositories.Migrations
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true);
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -114,23 +101,50 @@ namespace TH.Repositories.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Job",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Company = c.String(),
+                        Name = c.String(),
+                        RecruitCount = c.Int(),
+                        Location = c.String(),
+                        EducationRequire = c.String(),
+                        Wage = c.String(),
+                        JobDescription = c.String(),
+                        WorkYears = c.String(),
+                        CompanyIntroduction = c.String(),
+                        Requirements = c.String(),
+                        Title = c.String(),
+                        City = c.String(),
+                        Region = c.String(),
+                        CreatedDate = c.DateTime(),
+                        Telephones = c.String(),
+                        ContactPerson = c.String(),
+                        Views = c.Int(nullable: false),
+                        Publisher_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.Publisher_Id);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Job", "Publisher_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Job", "Publisher_Id", "dbo.Users");
+            DropForeignKey("dbo.JobHuntings", "Publisher_Id", "dbo.Users");
+            DropForeignKey("dbo.AspNetUserClaims", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.Users");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "City_CityId", "dbo.City");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.Users");
+            DropTable("dbo.Job");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.City");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Job");
+            DropTable("dbo.Users");
+            DropTable("dbo.JobHuntings");
         }
     }
 }

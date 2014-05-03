@@ -4,7 +4,7 @@
 }
 @section Styles
 {
-    @Styles.Render("~/Centent/DataTables")
+    @Styles.Render("~/Content/DataTables")
 }
 <h2>我发布的信息</h2>
 <table id="table_info">
@@ -20,8 +20,8 @@
         @foreach (var m in Model)
         {
             <tr>
-                <td>@m.Title</td>
-                <td>@m.Genre</td>
+                <td>@Html.ActionLink(m.Title, "Details", m.ControllerName, new { id = m.Id })</td>
+                <td>@Html.ActionLink(m.Genre, "Index", m.ControllerName, new { id = m.Id })</td>
                 <td>@m.CreateDate</td>
                 <td>@Html.ActionLink("删除", "Delete", m.ControllerName, new { id = m.Id }, new { @class = "btn btn-default btn-lg" }) 
                 @Html.ActionLink("编辑", "Edit", m.ControllerName, new { id = m.Id }, new { @class = "btn btn-default btn-lg" })</td>
@@ -35,14 +35,7 @@
     @Scripts.Render("~/bundles/DataTables")
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#table_info').dataTable({
-                "aaSorting": [[0]],
-                "aoColumns": [
-                    null,
-                    null,
-                    null
-                ]
-            });
+            $('#table_info').dataTable();
         });
     </script>
 }

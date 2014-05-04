@@ -29,8 +29,10 @@ namespace TH.WebUI
             //builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly).Where(
             //    t => t.Name.EndsWith("Repository")).AsImplementedInterfaces();
 
-            builder.RegisterGeneric(typeof(THRepository<>)).As(typeof(IRepository<>));// .WithParameter(new NamedParameter("context", new THDbContext()));可替换为：
-            builder.Register(c => new THDbContext());
+            builder.RegisterGeneric(typeof(THRepository<>)).As(typeof(IRepository<>));
+
+            //实现one context per request
+            builder.RegisterType<THDbContext>().InstancePerHttpRequest();
 
             // Build the container and store it for later use.
             var container = builder.Build();

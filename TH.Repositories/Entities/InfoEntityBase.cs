@@ -21,6 +21,8 @@ namespace TH.Repositories.Entities
         
         //联系方式Contact
         public string Telephones { get; set; }      // 联系电话';'分隔
+
+        public DateTime? ValidDate { get; set; }     // 有效期
         public string ContactPerson { get; set; } // 联系人
         public int Views { set; get; }  //浏览量
     }

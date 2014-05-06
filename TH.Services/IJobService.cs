@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TH.Services
 {
-    public interface IJobService
+    public interface IJobService : IService
     {
         IQueryable<Job> GetJobs(int pageIndex, int pageSize, out int recordCount);
 

@@ -8,13 +8,12 @@ using TH.Repositories.Entities;
 
 namespace TH.Services
 {
-    public class JobHuntingService : ServiceBase, IJobHuntingService
+    public class JobHuntingService : IJobHuntingService
     {
         private readonly IRepository<JobHunting> _jobHuntingRepository;
         public JobHuntingService(IRepository<JobHunting> jobHuntingRepository)
         {
             _jobHuntingRepository = jobHuntingRepository;
-            AddDisposableObject(_jobHuntingRepository);
         }
 
         public IQueryable<JobHunting> GetJobHuntings(int pageIndex, int pageSize, out int recordCount)

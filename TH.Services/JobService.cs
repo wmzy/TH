@@ -8,13 +8,12 @@ using TH.Repositories.Entities;
 
 namespace TH.Services
 {
-    public class JobService : ServiceBase, IJobService
+    public class JobService : IJobService
     {
         private readonly IRepository<Job> _jobRepository;
         public JobService(IRepository<Job> jobRepository)
         {
             _jobRepository = jobRepository;
-            AddDisposableObject(_jobRepository);
         }
 
         public Job GetJobById(int id)

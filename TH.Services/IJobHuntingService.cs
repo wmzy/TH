@@ -7,7 +7,7 @@ using TH.Repositories.Entities;
 
 namespace TH.Services
 {
-    public interface IJobHuntingService
+    public interface IJobHuntingService : IService
     {
         IQueryable<JobHunting> GetJobHuntings(int pageIndex, int pageSize, out int recordCount);
 

@@ -23,8 +23,8 @@ namespace TH.WebUI
             // Register components.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);//注册所有的Controller
 
-            builder.RegisterAssemblyTypes(typeof(ServiceBase).Assembly).Where(
-                t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(IService).Assembly).Where(
+                t => t.IsSubclassOf(typeof(IService)) && t.IsClass).AsImplementedInterfaces();
 
             //builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly).Where(
             //    t => t.Name.EndsWith("Repository")).AsImplementedInterfaces();

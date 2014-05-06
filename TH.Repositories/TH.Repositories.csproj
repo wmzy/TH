@@ -62,8 +62,6 @@
     <Compile Include="Entities\Job.cs" />
     <Compile Include="Entities\JobHunting.cs" />
     <Compile Include="Entities\Machine.cs" />
-    <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\OrderLine.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Project.cs" />
@@ -72,9 +70,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Wage.cs" />
     <Compile Include="Entities\WorkYears.cs" />
-    <Compile Include="IJobRepository.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="JobRepository.cs" />
     <Compile Include="Migrations\201405021807280_InitialCreate.cs" />
     <Compile Include="Migrations\201405021807280_InitialCreate.Designer.cs">
       <DependentUpon>201405021807280_InitialCreate.cs</DependentUpon>

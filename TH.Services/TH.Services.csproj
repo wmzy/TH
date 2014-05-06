@@ -55,12 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContractProjectService.cs" />
+    <Compile Include="IContractProjectService.cs" />
     <Compile Include="IJobHuntingService.cs" />
     <Compile Include="IJobService.cs" />
+    <Compile Include="IProjectService.cs" />
+    <Compile Include="IService.cs" />
     <Compile Include="JobHuntingService.cs" />
     <Compile Include="JobService.cs" />
+    <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TH.Extensions\TH.Extensions.csproj">

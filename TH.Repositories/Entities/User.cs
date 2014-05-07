@@ -9,7 +9,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TH.Repositories.Entities
 {
-    [Table("User")]
     public class User : IdentityUser
     {
         public string RealName { get; set; }
@@ -24,7 +23,12 @@ namespace TH.Repositories.Entities
         public DateTime? Birthday { get; set; }
         public string Sex { get; set; }
         public string AboutMe { get; set; }
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public string City { get; set; }
+
+        public User()
+        {
+            CreateDate = DateTime.Now;
+        }
     }
 }

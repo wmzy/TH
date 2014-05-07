@@ -34,7 +34,7 @@ namespace TH.WebUI.Controllers
 
             int recordCount;
 
-            IEnumerable<JobIndexViewModel> jobs = _jobService.GetJobs(pageIndex, pageSize, out recordCount).Select(j => new JobIndexViewModel
+            IEnumerable<JobIndexViewModel> jobs = _jobService.Get(pageIndex, pageSize, out recordCount).Select(j => new JobIndexViewModel
             {
                 Id = j.Id,
                 Title = j.Title,
@@ -53,7 +53,7 @@ namespace TH.WebUI.Controllers
         }
 
         //
-        // GET: /Job/Home/Details/{id}
+        // GET: /Job/Details/{id}
 
         [AllowAnonymous]
         public ActionResult Details(int id)
@@ -84,27 +84,24 @@ namespace TH.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(JobCreateViewModel m)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(m);
+
+            var job = new Job
             {
-                var job = new Job
-                {
-                    Title = m.Title,
-                    Company = m.Company,
-                    CompanyIntroduction = m.CompanyIntroduction,
-                    Publisher = new User {Id = User.Identity.GetUserId()},
-                    CreatedDate = DateTime.Now,
-                    City = ControllerContext.HttpContext.Request.UserHostAddress,
-                    ContactPerson = m.ContactPerson,
-                    Telephones = m.Telephones,
-                    EducationRequire = m.EducationRequire,
-                    Location = m.Location
-                };
-                _jobService.CreateJob(job);
+                Title = m.Title,
+                Company = m.Company,
+                CompanyIntroduction = m.CompanyIntroduction,
+                Publisher = new User {Id = User.Identity.GetUserId()},
+                CreatedDate = DateTime.Now,
+                City = ControllerContext.HttpContext.Request.UserHostAddress,
+                ContactPerson = m.ContactPerson,
+                Telephones = m.Telephones,
+                EducationRequire = m.EducationRequire,
+                Location = m.Location
+            };
+            _jobService.Create(job);
 
-                return RedirectToAction("Details", new { id = job.Id });
-            }
-
-            return View(m);
+            return RedirectToAction("Details", new { id = job.Id });
         }
 
         public ActionResult Edit(int id)

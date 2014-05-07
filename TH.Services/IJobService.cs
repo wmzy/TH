@@ -9,14 +9,14 @@ namespace TH.Services
 {
     public interface IJobService : IService
     {
-        IQueryable<Job> GetJobs(int pageIndex, int pageSize, out int recordCount);
+        IQueryable<Job> Get(int pageIndex, int pageSize, out int recordCount);
 
-        IEnumerable<Job> GetJobByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
+        IEnumerable<Job> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
 
         Job GetJobById(int id);
-        IQueryable<Job> GetJobsByUserId(string userId);
+        IQueryable<Job> GetByUserId(string userId);
 
-        void CreateJob(Job job);
+        void Create(Job job);
 
         void Update(Job job);
 

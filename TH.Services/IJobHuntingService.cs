@@ -9,11 +9,11 @@ namespace TH.Services
 {
     public interface IJobHuntingService : IService
     {
-        IQueryable<JobHunting> GetJobHuntings(int pageIndex, int pageSize, out int recordCount);
+        IQueryable<JobHunting> Get(int pageIndex, int pageSize, out int recordCount);
 
-        void CreateJobHunting(JobHunting job);
+        void Create(JobHunting job);
 
-        JobHunting GetJobHuntingById(int id);
+        JobHunting GetById(int id);
 
         void Update(JobHunting jobHunting);
 

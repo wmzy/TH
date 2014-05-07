@@ -29,7 +29,7 @@ namespace TH.WebUI.Controllers
             }
 
             int recordCount;
-            IEnumerable<JobHuntingIndexViewModel> jobHuntings = _jobHuntingService.GetJobHuntings(pageIndex, pageSize, out recordCount).Select(j => new JobHuntingIndexViewModel
+            IEnumerable<JobHuntingIndexViewModel> jobHuntings = _jobHuntingService.Get(pageIndex, pageSize, out recordCount).Select(j => new JobHuntingIndexViewModel
             {
                 Id = j.Id,
                 Title = j.Title,
@@ -51,7 +51,7 @@ namespace TH.WebUI.Controllers
         // GET: /JobHunting/Details/5
         public ActionResult Details(int id)
         {
-            JobHunting jobHunting = _jobHuntingService.GetJobHuntingById(id);
+            JobHunting jobHunting = _jobHuntingService.GetById(id);
             var jobHuntingDetails = new JobHuntingDetailsViewModel
             {
                 Id = jobHunting.Id,
@@ -106,7 +106,7 @@ namespace TH.WebUI.Controllers
                     WorkYears = model.WorkYears,
                     Introduction = model.Introduction
                 };
-                _jobHuntingService.CreateJobHunting(job);
+                _jobHuntingService.Create(job);
 
                 return RedirectToAction("Details", new { id = job.Id });
             }
@@ -118,7 +118,7 @@ namespace TH.WebUI.Controllers
         // GET: /JobHunting/Edit/5
         public ActionResult Edit(int id)
         {
-            JobHunting jobHunting = _jobHuntingService.GetJobHuntingById(id);
+            JobHunting jobHunting = _jobHuntingService.GetById(id);
             if (jobHunting.Publisher.Id != User.Identity.GetUserId())
             {
                 return HttpNotFound();
@@ -148,7 +148,7 @@ namespace TH.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(JobHuntingEditViewModel model)
         {
-            JobHunting jobHunting = _jobHuntingService.GetJobHuntingById(model.Id);
+            JobHunting jobHunting = _jobHuntingService.GetById(model.Id);
 
             if (jobHunting.Publisher.Id != User.Identity.GetUserId())
             {

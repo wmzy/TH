@@ -22,7 +22,7 @@ namespace TH.WebUI.Controllers
         public ActionResult Index()
         {
 
-            var jobs = _jobService.GetJobsByUserId(User.Identity.GetUserId());
+            var jobs = _jobService.GetByUserId(User.Identity.GetUserId());
             var infoView = jobs.Select(j => new InfoViewModel
             {
                 Id = j.Id,

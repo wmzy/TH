@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace TH.Repositories.Entities
+﻿namespace TH.Repositories.Entities
 {
     /// <summary>
     /// 全职招聘
     /// </summary>
-    [Table("Job")]
     public class Job : InfoEntityBase
     {
         public string Company { set; get; }     // 招聘单位或经营个体

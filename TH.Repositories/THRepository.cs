@@ -2,76 +2,68 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using TH.Repositories.Infrastructure;
 
 namespace TH.Repositories
 {
     public class THRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public THDbContext DbContext { get; private set; }
-        public DbSet<TEntity> DbSet { get; private set; }
-        public THRepository(THDbContext context)
+        private THDbContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
+        public THRepository(IDatabaseFactory databaseFactory)
         {
-            DbContext = context;
-            DbSet = DbContext.Set<TEntity>();
+            DatabaseFactory = databaseFactory;
+            _dbSet = DataContext.Set<TEntity>();
+        }
+
+        protected IDatabaseFactory DatabaseFactory{get;private set;}
+
+        protected THDbContext DataContext
+        {
+            get { return _dbContext ?? (_dbContext = DatabaseFactory.Get()); }
         }
 
         public IQueryable<TEntity> Get()
         {
-            return DbSet.AsQueryable();
+            return _dbSet.AsQueryable();
         }
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
-            return DbSet.Where(filter).AsQueryable();
+            return _dbSet.Where(filter).AsQueryable();
         }
         public IQueryable<TEntity> Get<TKey>(Expression<Func<TEntity, bool>> filter, int pageIndex, int pageSize, Expression<Func<TEntity, TKey>> sortKeySelector, bool isAsc = true)
         {
             if (isAsc)
             {
-                return DbSet
-                    .Where(filter)
-                    .OrderBy(sortKeySelector)
-                    .Skip(pageSize * (pageIndex - 1))
-                    .Take(pageSize).AsQueryable();
+                return _dbSet.Where(filter).OrderBy(sortKeySelector).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
             }
 
-            return DbSet
-                .Where(filter)
-                .OrderByDescending(sortKeySelector)
-                .Skip(pageSize * (pageIndex - 1))
-                .Take(pageSize).AsQueryable();
+            return _dbSet.Where(filter).OrderByDescending(sortKeySelector).Skip(pageSize * (pageIndex - 1)).Take(pageSize);
         }
 
         public int Count(Expression<Func<TEntity, bool>> predicate)
         {
-            return DbSet.Where(predicate).Count();
+            return _dbSet.Where(predicate).Count();
         }
 
         public void Add(TEntity instance)
         {
-            DbSet.Attach(instance);
-            DbContext.Entry(instance).State = EntityState.Added;
-            
-            DbContext.SaveChanges();
+            _dbSet.Add(instance);
         }
         public void Update(TEntity instance)
         {
-            DbSet.Attach(instance);
-            DbContext.Entry(instance).State = EntityState.Modified;
-            DbContext.SaveChanges();
+            _dbSet.Attach(instance);
+            DataContext.Entry(instance).State = EntityState.Modified;
         }
         public void Delete(TEntity instance)
         {
-            DbSet.Attach(instance);
-            DbContext.Entry(instance).State = EntityState.Deleted;
-            DbContext.SaveChanges();
+            _dbSet.Remove(instance);
         }
-
-        public void Dispose()
+        public void Delete(Expression<Func<TEntity, bool>> where)
         {
-            if (DbContext != null)
-            {
-                DbContext.Dispose();
-            }
+            var instances = _dbSet.Where(where);
+            foreach (var instance in instances)
+                _dbSet.Remove(instance);
         }
     }
 }

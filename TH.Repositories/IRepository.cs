@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace TH.Repositories
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         IQueryable<TEntity> Get();
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter);
@@ -16,5 +16,6 @@ namespace TH.Repositories
         void Update(TEntity instance);
         void Add(TEntity instance);
         void Delete(TEntity instance);
+        void Delete(Expression<Func<TEntity, bool>> where);
     }
 }

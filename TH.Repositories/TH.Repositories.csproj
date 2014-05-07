@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\JobConfiguration.cs" />
+    <Compile Include="Configuration\JobHuntingConfiguration.cs" />
+    <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Company.cs" />
@@ -63,13 +66,18 @@
     <Compile Include="Entities\JobHunting.cs" />
     <Compile Include="Entities\Machine.cs" />
     <Compile Include="Entities\Post.cs" />
-    <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Region.cs" />
     <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Wage.cs" />
     <Compile Include="Entities\WorkYears.cs" />
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\Page.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Migrations\201405021807280_InitialCreate.cs" />
     <Compile Include="Migrations\201405021807280_InitialCreate.Designer.cs">

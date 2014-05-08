@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using TH.Repositories.Entities;
+using TH.Model;
 
 namespace TH.WebUI.ViewModels
 {

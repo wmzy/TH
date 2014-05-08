@@ -1,6 +1,4 @@
-﻿using TH.Repositories.Entities;
-
-namespace TH.Repositories.Infrastructure
+﻿namespace TH.Repositories.Infrastructure
 {
 public class DatabaseFactory : Disposable, IDatabaseFactory
 {

@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
 using Microsoft.AspNet.Identity;
 
 namespace TH.WebUI.Controllers
 {
-    using Repositories.Entities;
-
     [Authorize]
     public class JobController : Controller
     {
@@ -91,7 +90,7 @@ namespace TH.WebUI.Controllers
                 Title = m.Title,
                 Company = m.Company,
                 CompanyIntroduction = m.CompanyIntroduction,
-                Publisher = new User {Id = User.Identity.GetUserId()},
+                PublisherId = User.Identity.GetUserId(),
                 CreatedDate = DateTime.Now,
                 City = ControllerContext.HttpContext.Request.UserHostAddress,
                 ContactPerson = m.ContactPerson,
@@ -99,6 +98,7 @@ namespace TH.WebUI.Controllers
                 EducationRequire = m.EducationRequire,
                 Location = m.Location
             };
+
             _jobService.Create(job);
 
             return RedirectToAction("Details", new { id = job.Id });

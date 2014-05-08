@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TH.Model;
 using TH.Repositories;
-using TH.Repositories.Entities;
 using TH.Repositories.Infrastructure;
+using TH.Repositories.Repository;
 
 namespace TH.Services
 {
     public class JobHuntingService : IJobHuntingService
     {
-        private readonly IRepository<JobHunting> _jobHuntingRepository;
+        private readonly IJobHuntingRepository _jobHuntingRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public JobHuntingService(IRepository<JobHunting> jobHuntingRepository, IUnitOfWork unitOfWork)
+        public JobHuntingService(IJobHuntingRepository jobHuntingRepository, IUnitOfWork unitOfWork)
         {
             _jobHuntingRepository = jobHuntingRepository;
             _unitOfWork = unitOfWork;

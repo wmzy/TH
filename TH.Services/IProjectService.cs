@@ -1,4 +1,4 @@
-﻿using TH.Repositories.Entities;
+﻿using TH.Model;
 
 namespace TH.Services
 {
@@ -8,5 +8,9 @@ namespace TH.Services
         void Create(Project project);
 
         Project GetById(int id);
+
+        void OwnerDelete(string p, int id);
+
+        void Update(Project project);
     }
 }

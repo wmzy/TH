@@ -52,50 +52,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\InfoEntityBaseConfiguration.cs" />
     <Compile Include="Configuration\JobConfiguration.cs" />
     <Compile Include="Configuration\JobHuntingConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
-    <Compile Include="Entities\City.cs" />
-    <Compile Include="Entities\Comment.cs" />
-    <Compile Include="Entities\Company.cs" />
-    <Compile Include="Entities\ContractProject.cs" />
-    <Compile Include="Entities\Exceptions.cs" />
-    <Compile Include="Entities\Genre.cs" />
-    <Compile Include="Entities\InfoEntityBase.cs" />
-    <Compile Include="Entities\Job.cs" />
-    <Compile Include="Entities\JobHunting.cs" />
-    <Compile Include="Entities\Machine.cs" />
-    <Compile Include="Entities\Post.cs" />
-    <Compile Include="Entities\Project.cs" />
-    <Compile Include="Entities\Region.cs" />
-    <Compile Include="Entities\Tag.cs" />
-    <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\Wage.cs" />
-    <Compile Include="Entities\WorkYears.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Page.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="Migrations\201405021807280_InitialCreate.cs" />
-    <Compile Include="Migrations\201405021807280_InitialCreate.Designer.cs">
-      <DependentUpon>201405021807280_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201405081030483_InitialCreate.cs" />
+    <Compile Include="Migrations\201405081030483_InitialCreate.Designer.cs">
+      <DependentUpon>201405081030483_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201405031430338_AddJobHunting.cs" />
-    <Compile Include="Migrations\201405031430338_AddJobHunting.Designer.cs">
-      <DependentUpon>201405031430338_AddJobHunting.cs</DependentUpon>
+    <Compile Include="Migrations\201405081056322_AddJobHuntingConfiguration.cs" />
+    <Compile Include="Migrations\201405081056322_AddJobHuntingConfiguration.Designer.cs">
+      <DependentUpon>201405081056322_AddJobHuntingConfiguration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ContractProjectRepository.cs" />
+    <Compile Include="Repository\JobHuntingRepository.cs" />
+    <Compile Include="Repository\JobRepository.cs" />
+    <Compile Include="Repository\MachineRepository.cs" />
+    <Compile Include="Repository\ProjectRepository.cs" />
     <Compile Include="THDbContext.cs" />
-    <Compile Include="THRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TH.Extensions\TH.Extensions.csproj">
       <Project>{05a3ff74-cf0f-406b-b2ca-87ba8a1052f8}</Project>
       <Name>TH.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TH.Model\TH.Model.csproj">
+      <Project>{e0741d13-c605-4c76-b2e2-e26e66de2a36}</Project>
+      <Name>TH.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -103,11 +96,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405021807280_InitialCreate.resx">
-      <DependentUpon>201405021807280_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405081030483_InitialCreate.resx">
+      <DependentUpon>201405081030483_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405031430338_AddJobHunting.resx">
-      <DependentUpon>201405031430338_AddJobHunting.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405081056322_AddJobHuntingConfiguration.resx">
+      <DependentUpon>201405081056322_AddJobHuntingConfiguration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,10 +23,11 @@ namespace TH.WebUI
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerHttpRequest();
             builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().InstancePerHttpRequest();
 
-            builder.RegisterAssemblyTypes(typeof(IService).Assembly).Where(
-                t => t.IsSubclassOf(typeof(IService)) && t.IsClass).AsImplementedInterfaces().InstancePerHttpRequest();
+            builder.RegisterAssemblyTypes(typeof(RepositoryBase<>).Assembly).Where(
+                t => t.Name.EndsWith("Repository") && t.IsClass).AsImplementedInterfaces().InstancePerHttpRequest();
 
-            builder.RegisterGeneric(typeof(THRepository<>)).As(typeof(IRepository<>)).InstancePerHttpRequest();
+            builder.RegisterAssemblyTypes(typeof(IService).Assembly).Where(
+                t => t.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerHttpRequest();
             
             // Build the container and store it for later use.
             var container = builder.Build();

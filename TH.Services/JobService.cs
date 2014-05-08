@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TH.Model;
 using TH.Repositories;
-using TH.Repositories.Entities;
 using TH.Repositories.Infrastructure;
+using TH.Repositories.Repository;
 
 namespace TH.Services
 {
     public class JobService : IJobService
     {
-        private readonly IRepository<Job> _jobRepository;
+        private readonly IJobRepository _jobRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public JobService(IRepository<Job> jobRepository, IUnitOfWork unitOfWork)
+        public JobService(IJobRepository jobRepository, IUnitOfWork unitOfWork)
         {
             _jobRepository = jobRepository;
             _unitOfWork = unitOfWork;

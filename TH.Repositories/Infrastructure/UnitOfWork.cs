@@ -4,7 +4,7 @@ namespace TH.Repositories.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDatabaseFactory databaseFactory;
-        private THDbContext dataContext;
+        private THDbContext _dataContext;
 
         public UnitOfWork(IDatabaseFactory databaseFactory)
         {
@@ -13,7 +13,7 @@ namespace TH.Repositories.Infrastructure
 
         protected THDbContext DataContext
         {
-            get { return dataContext ?? (dataContext = databaseFactory.Get()); }
+            get { return _dataContext ?? (_dataContext = databaseFactory.Get()); }
         }
 
         public void Commit()

@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TH.Repositories.Entities;
+using TH.Model;
 
 namespace TH.Repositories.Configuration
 {
@@ -12,7 +12,8 @@ namespace TH.Repositories.Configuration
     {
         public JobHuntingConfiguration()
         {
-            ToTable("JobHunting");
+            ToTable("JobHuntings");
+            Property(j => j.Title).HasMaxLength(40).IsFixedLength();
         }
     }
 }

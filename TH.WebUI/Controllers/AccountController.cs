@@ -8,8 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using TH.Model;
 using TH.Repositories;
-using TH.Repositories.Entities;
 using TH.WebUI.ViewModels;
 
 namespace TH.WebUI.Controllers

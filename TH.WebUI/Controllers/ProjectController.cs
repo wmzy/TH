@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using TH.Repositories.Entities;
+using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
 
@@ -57,7 +57,7 @@ namespace TH.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Details(int id)
         {
-            Project project = _projectService.GetProjectById(id);
+            Project project = _projectService.GetById(id);
             var proDetails = new ProjectDetailsViewModel()
             {
                 Company = project.Company,
@@ -78,54 +78,52 @@ namespace TH.WebUI.Controllers
         public ActionResult Edit(int id)
         {
             Project project = _projectService.GetById(id);
-            if (job.Publisher.Id != User.Identity.GetUserId())
+            if (project.Publisher.Id != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            var jobEdit = new JobEditViewModel
+            var projectEdit = new ProjectEditViewModel
             {
                 Id = project.Id,
                 Company = project.Company,
-                CompanyIntroduction = project.CompanyIntroduction,
+                City = project.City,
                 ContactPerson = project.ContactPerson,
-                EducationRequire = project.EducationRequire,
-                JobDescription = project.JobDescription,
-                Location = project.Location,
-                Name = project.Name,
-                RecruitCount = project.RecruitCount,
-                Requirements = project.Requirements,
+                ProjectName = project.ProjectName,
+                Require = project.Require,
+                StartTime = project.StartTime,
+                TimeLimit = project.TimeLimit,
+                ValidDate = project.ValidDate,
                 Telephones = project.Telephones,
                 Title = project.Title,
-                Wage = project.Wage,
-                WorkYears = project.WorkYears
+                Content = project.Content
             };
 
-            return View(jobEdit);
+            return View(projectEdit);
         }
 
         [HttpPost]
-        public ActionResult Edit(JobEditViewModel model)
+        public ActionResult Edit(ProjectEditViewModel model)
         {
             Project project = _projectService.GetById(model.Id);
 
-            if (job.Publisher.Id != User.Identity.GetUserId())
+            if (project.Publisher.Id != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            project.Title = model.Title;
+            project.Id = model.Id;
             project.Company = model.Company;
-            project.Name = model.Name;
-            project.RecruitCount = model.RecruitCount;
-            project.Location = model.Location;
-            project.EducationRequire = model.EducationRequire;
-            project.WorkYears = model.WorkYears;
-            project.Wage = model.Wage;
-            project.JobDescription = model.JobDescription;
-            project.CompanyIntroduction = model.CompanyIntroduction;
-            project.Requirements = model.Requirements;
+            project.City = model.City;
             project.ContactPerson = model.ContactPerson;
+            project.ProjectName = model.ProjectName;
+            project.Require = model.Require;
+            project.StartTime = model.StartTime;
+            project.TimeLimit = model.TimeLimit;
+            project.ValidDate = model.ValidDate;
+            project.Telephones = model.Telephones;
+            project.Title = model.Title;
+            project.Content = model.Content;
 
             _projectService.Update(project);
 

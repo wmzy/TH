@@ -3,20 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TH.Model;
 using TH.Repositories;
-using TH.Repositories.Entities;
 using TH.Repositories.Infrastructure;
+using TH.Repositories.Repository;
 
 namespace TH.Services
 {
     public class ProjectService : IProjectService
     {
-        private readonly IRepository<Project> _prejectRepository;
+        private readonly IProjectRepository _projectRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public ProjectService(IRepository<Project> prejectRepository, IUnitOfWork unitOfWork)
+        public ProjectService(IProjectRepository prejectRepository, IUnitOfWork unitOfWork)
         {
-            _prejectRepository = prejectRepository;
+            _projectRepository = prejectRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public void Create(Project project)
+        {
+            _projectRepository.Add(project);
+            _unitOfWork.Commit();
+        }
+
+        public Project GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OwnerDelete(string p, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Update(Project project)
+        {
+            throw new NotImplementedException();
         }
     }
 }

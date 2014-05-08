@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using TH.Repositories.Entities;
+using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
 

@@ -55,16 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingMaterialService.cs" />
+    <Compile Include="BuyBuildingMaterialService.cs" />
     <Compile Include="ContractProjectService.cs" />
+    <Compile Include="CredentialService.cs" />
+    <Compile Include="DetectionService.cs" />
+    <Compile Include="EquipmentService.cs" />
+    <Compile Include="FinancingService.cs" />
     <Compile Include="IContractProjectService.cs" />
-    <Compile Include="IJobHuntingService.cs" />
-    <Compile Include="IJobService.cs" />
-    <Compile Include="IProjectService.cs" />
+    <Compile Include="OtherInfoService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="JobHuntingService.cs" />
     <Compile Include="JobService.cs" />
+    <Compile Include="PostService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequireCredentialService.cs" />
+    <Compile Include="RequireDetectionService.cs" />
     <Compile Include="UseEquipmentService.cs" />
     <Compile Include="UseMachineService.cs" />
   </ItemGroup>

@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TH.Extensions", "TH.Extensi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{2486E673-EB88-42DA-86F5-65FF90F84F2A}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
 		doc\网页规划.xls = doc\网页规划.xls
 	EndProjectSection
 EndProject

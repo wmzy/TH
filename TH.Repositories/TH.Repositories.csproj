@@ -74,11 +74,21 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BuildingMaterialRepository.cs" />
+    <Compile Include="Repository\BuyBuildingMaterialRepository.cs" />
     <Compile Include="Repository\ContractProjectRepository.cs" />
+    <Compile Include="Repository\CredentialRepository.cs" />
+    <Compile Include="Repository\DetectionRepository.cs" />
+    <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\FinancingRepository.cs" />
     <Compile Include="Repository\JobHuntingRepository.cs" />
     <Compile Include="Repository\JobRepository.cs" />
     <Compile Include="Repository\MachineRepository.cs" />
+    <Compile Include="Repository\OtherInfoRepository.cs" />
+    <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\RequireCredentialRepository.cs" />
+    <Compile Include="Repository\RequireDetectionRepository.cs" />
     <Compile Include="Repository\UseEquipmentRepository.cs" />
     <Compile Include="Repository\UseMachineRepository.cs" />
     <Compile Include="THDbContext.cs" />

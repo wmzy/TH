@@ -10,6 +10,18 @@ using TH.Repositories.Repository;
 
 namespace TH.Services
 {
+    public interface IJobHuntingService : IService
+    {
+        IQueryable<JobHunting> Get(int pageIndex, int pageSize, out int recordCount);
+
+        void Create(JobHunting job);
+
+        JobHunting GetById(int id);
+
+        void Update(JobHunting jobHunting);
+
+        void OwnerDelete(string ownerId, int id);
+    }
     public class JobHuntingService : IJobHuntingService
     {
         private readonly IJobHuntingRepository _jobHuntingRepository;

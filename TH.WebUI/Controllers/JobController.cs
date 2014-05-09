@@ -57,7 +57,7 @@ namespace TH.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Details(int id)
         {
-            Job job = _jobService.GetJobById(id);
+            Job job = _jobService.GetById(id);
             var jobDetails = new JobDetailsViewModel
             {
                 Company = job.Company,
@@ -106,7 +106,7 @@ namespace TH.WebUI.Controllers
 
         public ActionResult Edit(int id)
         {
-            Job job = _jobService.GetJobById(id);
+            Job job = _jobService.GetById(id);
             if (job.Publisher.Id != User.Identity.GetUserId())
             {
                 return HttpNotFound();
@@ -136,7 +136,7 @@ namespace TH.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(JobEditViewModel model)
         {
-            Job job = _jobService.GetJobById(model.Id);
+            Job job = _jobService.GetById(model.Id);
 
             if (job.Publisher.Id != User.Identity.GetUserId())
             {

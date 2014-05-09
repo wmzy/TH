@@ -10,6 +10,17 @@ using TH.Repositories.Repository;
 
 namespace TH.Services
 {
+    public interface IProjectService : IService
+    {
+
+        void Create(Project project);
+
+        Project GetById(int id);
+
+        void OwnerDelete(string p, int id);
+
+        void Update(Project project);
+    }
     public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;

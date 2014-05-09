@@ -79,6 +79,8 @@
     <Compile Include="Repository\JobRepository.cs" />
     <Compile Include="Repository\MachineRepository.cs" />
     <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\UseEquipmentRepository.cs" />
+    <Compile Include="Repository\UseMachineRepository.cs" />
     <Compile Include="THDbContext.cs" />
   </ItemGroup>
   <ItemGroup>

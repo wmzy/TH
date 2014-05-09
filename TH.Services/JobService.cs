@@ -8,6 +8,21 @@ using TH.Repositories.Repository;
 
 namespace TH.Services
 {
+    public interface IJobService : IService
+    {
+        IQueryable<Job> Get(int pageIndex, int pageSize, out int recordCount);
+
+        IQueryable<Job> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
+
+        Job GetById(int id);
+        IQueryable<Job> GetByUserId(string userId);
+
+        void Create(Job job);
+
+        void Update(Job job);
+
+        void OwnerDelete(string ownerId, int id);
+    }
     public class JobService : IJobService
     {
         private readonly IJobRepository _jobRepository;
@@ -18,7 +33,7 @@ namespace TH.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Job GetJobById(int id)
+        public Job GetById(int id)
         {
             return _jobRepository.Get(m => m.Id == id).FirstOrDefault();
         }
@@ -55,7 +70,7 @@ namespace TH.Services
 
         public void OwnerDelete(string ownerId, int id)
         {
-            var job = GetJobById(id);
+            var job = GetById(id);
 
             if (job.Publisher.Id == ownerId)
             {

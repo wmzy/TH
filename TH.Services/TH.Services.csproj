@@ -65,6 +65,8 @@
     <Compile Include="JobService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UseEquipmentService.cs" />
+    <Compile Include="UseMachineService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TH.Extensions\TH.Extensions.csproj">

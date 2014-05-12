@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNet.Identity;
 using TH.Model;
 using TH.Services;
@@ -23,7 +24,8 @@ namespace TH.WebUI.Controllers
         // GET: /Project/
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<ProjectIndexViewModel> projects = _projectService.Get().Project().To<ProjectIndexViewModel>().ToList();
+            return View(projects);
         }
 
         public ActionResult Create()

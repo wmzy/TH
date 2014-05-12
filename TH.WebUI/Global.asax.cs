@@ -17,6 +17,7 @@ namespace TH.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyResolverConfig.SetResolver();
+            AutoMapperConfig.Configure();
         }
     }
 }

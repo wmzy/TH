@@ -43,6 +43,8 @@ namespace TH.Repositories
             //modelBuilder.Configurations.Add(new InfoEntityBaseConfiguration());
             modelBuilder.Configurations.Add(new JobConfiguration());
             modelBuilder.Configurations.Add(new JobHuntingConfiguration());
+            modelBuilder.Configurations.Add(new PostConfiguration());
+            modelBuilder.Configurations.Add(new CommentConfiguration());
 
             #endregion
         }

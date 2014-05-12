@@ -1,7 +1,7 @@
 ﻿using System;
 namespace TH.Model
 {
-    public abstract class InfoEntityBase
+    public abstract class InfoBase
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -17,7 +17,7 @@ namespace TH.Model
         public string ContactPerson { get; set; }   // 联系人
         public int Views { set; get; }  //浏览量
 
-        protected InfoEntityBase()
+        protected InfoBase()
         {
             CreatedDate = DateTime.Now;
         }

@@ -9,7 +9,7 @@ namespace TH.Model
     /// <summary>
     /// 出租、出售工程设备及小型机具
     /// </summary>
-    public class Equipment : InfoEntityBase
+    public class Equipment : InfoBase
     {
         public string Name { get; set; }    //设备名称	
         public string Model { get; set; }   //型号

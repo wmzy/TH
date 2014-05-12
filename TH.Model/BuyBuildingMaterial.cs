@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TH.Model
 {
-    public class BuyBuildingMaterial : InfoEntityBase
+    public class BuyBuildingMaterial : InfoBase
     {
         public string Name { get; set; }    //建材名称
         public string Model { get; set; }   //规格、型号

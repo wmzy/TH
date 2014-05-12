@@ -9,7 +9,7 @@ namespace TH.Model
     /// <summary>
     /// 聘用证件持有人（兼职）
     /// </summary>
-    public class Credential : InfoEntityBase
+    public class Credential : InfoBase
     {
         public string CompanyName { get; set; }    //企业名称
         public string Type { get; set; }   //所需证件类型

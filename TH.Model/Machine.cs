@@ -1,6 +1,6 @@
 ﻿namespace TH.Model
 {
-    public class Machine : InfoEntityBase
+    public class Machine : InfoBase
     {
         public string Name { get; set; }    //机械名称	
         public string Model { get; set; }   //型号

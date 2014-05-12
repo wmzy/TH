@@ -3,7 +3,7 @@
     /// <summary>
     /// 工程企业或个人承揽工程信息
     /// </summary>
-    public class ContractProject : InfoEntityBase
+    public class ContractProject : InfoBase
     {
         public string Company { set; get; }     // 企业或经营个体
         public string Content { set; get; }     //承揽工程内容

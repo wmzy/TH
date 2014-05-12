@@ -9,7 +9,7 @@ namespace TH.Model
     /// <summary>
     /// 试验、检测
     /// </summary>
-    public class Detection : InfoEntityBase
+    public class Detection : InfoBase
     {
         public string Name { get; set; }    //资质单位名称
         public string QualificationGrade { get; set; }   //资质等级

@@ -5,7 +5,7 @@ namespace TH.Model
     /// <summary>
     /// 工程招标或发包信息
     /// </summary>
-    public class Project : InfoEntityBase
+    public class Project : InfoBase
     {
         public string Company { set; get; }     // 企业或经营个体
         public string ProjectName { get; set; } // 项目名称

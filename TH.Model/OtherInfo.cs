@@ -9,7 +9,7 @@ namespace TH.Model
     /// <summary>
     /// 相关供求信息
     /// </summary>
-    public class OtherInfo : InfoEntityBase
+    public class OtherInfo : InfoBase
     {
         public string CompanyName { get; set; }    //企业或个人名称
         public string Content { set; get; }     //	供求内容

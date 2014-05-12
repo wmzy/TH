@@ -61,7 +61,7 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Financing.cs" />
-    <Compile Include="InfoEntityBase.cs" />
+    <Compile Include="InfoBase.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="JobHunting.cs" />
     <Compile Include="Machine.cs" />

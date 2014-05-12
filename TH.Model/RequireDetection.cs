@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TH.Model
 {
-    public class RequireDetection : InfoEntityBase
+    public class RequireDetection : InfoBase
     {
         public string Name { get; set; }    //工程项目名称	
         public string QualificationGrade { get; set; }   //需要的资质等级

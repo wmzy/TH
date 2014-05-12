@@ -3,7 +3,7 @@
     /// <summary>
     /// 全职招聘
     /// </summary>
-    public class Job : InfoEntityBase
+    public class Job : InfoBase
     {
         public string Company { set; get; }     // 招聘单位或经营个体
         public string Name { get; set; }        // 职位名称

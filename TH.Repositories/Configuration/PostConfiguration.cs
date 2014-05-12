@@ -8,11 +8,12 @@ using TH.Model;
 
 namespace TH.Repositories.Configuration
 {
-    class InfoEntityBaseConfiguration : EntityTypeConfiguration<InfoBase>
+    class PostConfiguration : EntityTypeConfiguration<Post>
     {
-        public InfoEntityBaseConfiguration()
+        public PostConfiguration()
         {
-            HasKey(info => info.Id);
+            ToTable("Posts");
+            HasMany(p => p.Comments).WithRequired().Map(m => m.MapKey("PostId")).WillCascadeOnDelete(true);
         }
     }
 }

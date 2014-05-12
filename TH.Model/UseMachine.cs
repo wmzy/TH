@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TH.Model
 {
-    public class UseMachine : InfoEntityBase
+    public class UseMachine : InfoBase
     {
         public string Name { get; set; }    //机械名称	
         public string Model { get; set; }   //型号

@@ -20,6 +20,8 @@ namespace TH.Services
         void OwnerDelete(string p, int id);
 
         void Update(Project project);
+
+        IQueryable<Project> Get();
     }
     public class ProjectService : IProjectService
     {
@@ -49,6 +51,12 @@ namespace TH.Services
 
 
         public void Update(Project project)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<Project> Get()
         {
             throw new NotImplementedException();
         }

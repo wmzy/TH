@@ -9,7 +9,7 @@ namespace TH.Model
     /// <summary>
     /// 出售建筑材料
     /// </summary>
-    public class BuildingMaterial : InfoEntityBase
+    public class BuildingMaterial : InfoBase
     {
         public string Name { get; set; }    //建材名称	
         public string Model { get; set; }   //规格、型号

@@ -78,5 +78,11 @@ namespace TH.Services
                 _unitOfWork.Commit();
             }
         }
+
+
+        IQueryable<Job> IJobService.GetByLocation(string location, int pageIndex, int pageSize, out int recordCount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

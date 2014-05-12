@@ -1,6 +1,6 @@
 ﻿namespace TH.Model
 {
-    public class JobHunting : InfoEntityBase
+    public class JobHunting : InfoBase
     {
         public string Name { get; set; }//姓名	
         public string Nation { get; set; }//民族	

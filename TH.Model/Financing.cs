@@ -9,7 +9,7 @@ namespace TH.Model
     /// <summary>
     /// 融资、贷款
     /// </summary>
-    public class Financing : InfoEntityBase
+    public class Financing : InfoBase
     {
         public string CompanyName { get; set; }    //企业名称
         public string Range { get; set; }       //	融资范围

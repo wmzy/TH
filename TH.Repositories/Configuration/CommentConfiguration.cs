@@ -14,7 +14,7 @@ namespace TH.Repositories.Configuration
         {
             ToTable("Comments");
             HasRequired(c => c.User).WithMany().HasForeignKey(c => c.UserId).WillCascadeOnDelete(false);
-            HasMany(c => c.Replies).WithOptional().Map(m => m.MapKey("ReplyForId")).WillCascadeOnDelete(true);
+            HasMany(c => c.Replies).WithOptional().Map(m => m.MapKey("ReplyForId")).WillCascadeOnDelete(false);
         }
     }
 }

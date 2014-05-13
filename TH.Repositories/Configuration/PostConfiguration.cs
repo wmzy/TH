@@ -13,7 +13,7 @@ namespace TH.Repositories.Configuration
         public PostConfiguration()
         {
             ToTable("Posts");
-            HasMany(p => p.Comments).WithRequired().Map(m => m.MapKey("PostId")).WillCascadeOnDelete(true);
+            HasMany(p => p.Comments).WithOptional().Map(m => m.MapKey("PostId")).WillCascadeOnDelete(true);
         }
     }
 }

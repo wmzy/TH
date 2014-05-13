@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -33,17 +35,7 @@ namespace TH.WebUI.Controllers
 
             int recordCount;
 
-            IEnumerable<JobIndexViewModel> jobs = _jobService.Get(pageIndex, pageSize, out recordCount).Select(j => new JobIndexViewModel
-            {
-                Id = j.Id,
-                Title = j.Title,
-                Company = j.Company,
-                CreatedDate = j.CreatedDate,
-                Name = j.Name,
-                RecruitCount = j.RecruitCount,
-                Wage = j.Wage,
-                Location = j.Location
-            }).ToList();
+            IEnumerable<JobIndexViewModel> jobs = _jobService.Get(pageIndex, pageSize, out recordCount).Project().To<JobIndexViewModel>().ToList();
 
             ViewData["recordCount"] = recordCount;
 
@@ -58,19 +50,7 @@ namespace TH.WebUI.Controllers
         public ActionResult Details(int id)
         {
             Job job = _jobService.GetById(id);
-            var jobDetails = new JobDetailsViewModel
-            {
-                Company = job.Company,
-                CompanyIntroduction = job.CompanyIntroduction,
-                ContactPerson = job.ContactPerson,
-                EducationRequire = job.EducationRequire,
-                JobDescription = job.JobDescription,
-                Location = job.Location,
-                Name = job.Name,
-                RecruitCount = job.RecruitCount,
-                Title = job.Title,
-                Telephones = job.Telephones
-            };
+            var jobDetails = Mapper.Map<Job, JobDetailsViewModel>(job);
             
             return View(jobDetails);
         }
@@ -81,23 +61,14 @@ namespace TH.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(JobCreateViewModel m)
+        public ActionResult Create(JobCreateViewModel model)
         {
-            if (!ModelState.IsValid) return View(m);
+            if (!ModelState.IsValid) return View(model);
 
-            var job = new Job
-            {
-                Title = m.Title,
-                Company = m.Company,
-                CompanyIntroduction = m.CompanyIntroduction,
-                PublisherId = User.Identity.GetUserId(),
-                CreatedDate = DateTime.Now,
-                City = ControllerContext.HttpContext.Request.UserHostAddress,
-                ContactPerson = m.ContactPerson,
-                Telephones = m.Telephones,
-                EducationRequire = m.EducationRequire,
-                Location = m.Location
-            };
+            var job = Mapper.Map<JobCreateViewModel, Job>(model);
+
+            job.PublisherId = User.Identity.GetUserId();
+            job.City = ControllerContext.HttpContext.Request.UserHostAddress;
 
             _jobService.Create(job);
 
@@ -107,55 +78,31 @@ namespace TH.WebUI.Controllers
         public ActionResult Edit(int id)
         {
             Job job = _jobService.GetById(id);
-            if (job.Publisher.Id != User.Identity.GetUserId())
+            if (job.PublisherId != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            var jobEdit = new JobEditViewModel
-            {
-                Id = job.Id,
-                Company = job.Company,
-                CompanyIntroduction = job.CompanyIntroduction,
-                ContactPerson = job.ContactPerson,
-                EducationRequire = job.EducationRequire,
-                JobDescription = job.JobDescription,
-                Location = job.Location,
-                Name = job.Name,
-                RecruitCount = job.RecruitCount,
-                Requirements = job.Requirements,
-                Telephones = job.Telephones,
-                Title = job.Title,
-                Wage = job.Wage,
-                WorkYears = job.WorkYears
-            };
-
+            var jobEdit = Mapper.Map<Job, JobEditViewModel>(job);
+            
             return View(jobEdit);
         }
 
         [HttpPost]
         public ActionResult Edit(JobEditViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             Job job = _jobService.GetById(model.Id);
 
-            if (job.Publisher.Id != User.Identity.GetUserId())
+            if (job.PublisherId != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
-
-            job.Title = model.Title;
-            job.Company = model.Company;
-            job.Name = model.Name;
-            job.RecruitCount = model.RecruitCount;
-            job.Location = model.Location;
-            job.EducationRequire = model.EducationRequire;
-            job.WorkYears = model.WorkYears;
-            job.Wage = model.Wage;
-            job.JobDescription = model.JobDescription;
-            job.CompanyIntroduction = model.CompanyIntroduction;
-            job.Requirements = model.Requirements;
-            job.ContactPerson = model.ContactPerson;
-
+            Mapper.Map(model, job);
+            
             _jobService.Update(job);
 
             return RedirectToAction("Details", new { id = job.Id });

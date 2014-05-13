@@ -7,7 +7,7 @@ namespace TH.Model
         public string Title { get; set; }
         public string City { get; set; }
         public string Region { get; set; }
-        public DateTime? CreatedDate { get; set; }   //发布时间
+        public DateTime CreatedDate { get; set; }   //发布时间
         public string PublisherId { get; set; }
         public User Publisher { get; set; }     // 发布者
         public DateTime? ValidDate { get; set; }     // 有效期
@@ -20,6 +20,7 @@ namespace TH.Model
         protected InfoBase()
         {
             CreatedDate = DateTime.Now;
+            Views = 0;
         }
     }
 }

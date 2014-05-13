@@ -22,6 +22,8 @@ namespace TH.Repositories
         public DbSet<JobHunting> JobHuntings { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ContractProject> ContractProjects { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         #endregion
 
         //https://github.com/rustd/AspnetIdentitySample

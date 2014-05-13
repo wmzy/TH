@@ -9,7 +9,7 @@ namespace TH.Repositories.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "TH.Repositories.THDbContext";
         }
 

@@ -6,7 +6,7 @@ namespace TH.Model
     public class Comment
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { set; get; }
         public DateTime CommentTime{ set; get; }
         public string Content { set; get; }

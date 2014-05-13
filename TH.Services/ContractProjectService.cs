@@ -1,11 +1,23 @@
-﻿using TH.Model;
+﻿using System.Linq;
+using System.Linq.Expressions;
+using TH.Model;
 using TH.Repositories;
 using TH.Repositories.Infrastructure;
 using TH.Repositories.Repository;
 
 namespace TH.Services
 {
-    public class ContractProjectService : IContractProjectRepository
+    public interface IContractProjectService : IService
+    {
+        IQueryable<ContractProject> Get(int pageIndex, int pageSize, out int recordCount);
+        ContractProject GetById(int id);
+        IQueryable<ContractProject> GetByUserId(string userId);
+        void Create(ContractProject contractProject);
+        void Update(ContractProject contractProject);
+        void OwnerDelete(string ownerId, int id);
+    }
+
+    public class ContractProjectService : IContractProjectService
     {
         private readonly IContractProjectRepository _contractProjectRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -15,44 +27,34 @@ namespace TH.Services
             _unitOfWork = unitOfWork;
         }
 
-        public System.Linq.IQueryable<ContractProject> Get()
+        public IQueryable<ContractProject> Get(int pageIndex, int pageSize, out int recordCount)
         {
             throw new System.NotImplementedException();
         }
 
-        public System.Linq.IQueryable<ContractProject> Get(System.Linq.Expressions.Expression<System.Func<ContractProject, bool>> filter)
+        public ContractProject GetById(int id)
+        {
+            return _contractProjectRepository.Get(cp => cp.Id == id).FirstOrDefault();
+        }
+
+        public IQueryable<ContractProject> GetByUserId(string userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public System.Linq.IQueryable<ContractProject> Get<TOderKey>(System.Linq.Expressions.Expression<System.Func<ContractProject, bool>> filter, int pageIndex, int pageSize, System.Linq.Expressions.Expression<System.Func<ContractProject, TOderKey>> sortKeySelector, bool isAsc = true)
+        public void Create(ContractProject contractProject)
+        {
+            _contractProjectRepository.Add(contractProject);
+            _unitOfWork.Commit();
+        }
+
+        public void Update(ContractProject contractProject)
         {
             throw new System.NotImplementedException();
         }
 
-        public int Count(System.Linq.Expressions.Expression<System.Func<ContractProject, bool>> predicate)
+        public void OwnerDelete(string ownerId, int id)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update(ContractProject instance)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Add(ContractProject instance)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Delete(ContractProject instance)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Delete(System.Linq.Expressions.Expression<System.Func<ContractProject, bool>> where)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

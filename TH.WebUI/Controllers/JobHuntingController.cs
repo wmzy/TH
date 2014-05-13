@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNet.Identity;
 using TH.Model;
 using TH.Services;
@@ -29,18 +31,7 @@ namespace TH.WebUI.Controllers
             }
 
             int recordCount;
-            IEnumerable<JobHuntingIndexViewModel> jobHuntings = _jobHuntingService.Get(pageIndex, pageSize, out recordCount).Select(j => new JobHuntingIndexViewModel
-            {
-                Id = j.Id,
-                Title = j.Title,
-                CreatedDate = j.CreatedDate,
-                Name = j.Name,
-                Age = j.Age,
-                Education = j.Education,
-                Job = j.Job,
-                Nation = j.Nation,
-                WorkYears = j.WorkYears
-            }).ToList();
+            IEnumerable<JobHuntingIndexViewModel> jobHuntings = _jobHuntingService.Get(pageIndex, pageSize, out recordCount).Project().To<JobHuntingIndexViewModel>().ToList();
 
             ViewData["recordCount"] = recordCount;
 
@@ -52,25 +43,7 @@ namespace TH.WebUI.Controllers
         public ActionResult Details(int id)
         {
             JobHunting jobHunting = _jobHuntingService.GetById(id);
-            var jobHuntingDetails = new JobHuntingDetailsViewModel
-            {
-                Id = jobHunting.Id,
-                Title = jobHunting.Title,
-                City = jobHunting.City,
-                Publisher = jobHunting.Publisher,
-                Telephones = jobHunting.Telephones,
-                Views = jobHunting.Views,
-                Name = jobHunting.Name,
-                Nation = jobHunting.Nation,
-                Age = jobHunting.Age,
-                Wage = jobHunting.Wage,
-                WorkYears = jobHunting.WorkYears,
-                WorkExperience = jobHunting.WorkExperience,
-                Education = jobHunting.Education,
-                CreatedDate = jobHunting.CreatedDate,
-                Job = jobHunting.Job,
-                Introduction = jobHunting.Introduction
-            };
+            var jobHuntingDetails = Mapper.Map<JobHunting, JobHuntingDetailsViewModel>(jobHunting);
 
             return View(jobHuntingDetails);
         }
@@ -87,31 +60,14 @@ namespace TH.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(JobHuntingCreateViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var job = new JobHunting
-                {
-                    Title = model.Title,
-                    Publisher = new User {Id = User.Identity.GetUserId()},
-                    CreatedDate = DateTime.Now,
-                    City = ControllerContext.HttpContext.Request.UserHostAddress,
-                    Telephones = model.Telephones,
-                    Education = model.Education,
-                    Age = model.Age,
-                    Name = model.Name,
-                    Job = model.Job,
-                    Nation = model.Nation,
-                    WorkExperience = model.WorkExperience,
-                    Wage = model.Wage,
-                    WorkYears = model.WorkYears,
-                    Introduction = model.Introduction
-                };
-                _jobHuntingService.Create(job);
+            if (!ModelState.IsValid) return View(model);
+            var job = Mapper.Map<JobHuntingCreateViewModel, JobHunting>(model);
 
-                return RedirectToAction("Details", new { id = job.Id });
-            }
+            job.PublisherId = User.Identity.GetUserId();
+            job.City = ControllerContext.HttpContext.Request.UserHostAddress;
+            _jobHuntingService.Create(job);
 
-            return View(model);
+            return RedirectToAction("Details", new { id = job.Id });
         }
 
         //
@@ -119,26 +75,12 @@ namespace TH.WebUI.Controllers
         public ActionResult Edit(int id)
         {
             JobHunting jobHunting = _jobHuntingService.GetById(id);
-            if (jobHunting.Publisher.Id != User.Identity.GetUserId())
+            if (jobHunting.PublisherId != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            var jobHuntingEdit = new JobHuntingEditViewModel
-            {
-                Id = jobHunting.Id,
-                Title = jobHunting.Title,
-                Telephones = jobHunting.Telephones,
-                Name = jobHunting.Name,
-                Nation = jobHunting.Nation,
-                Age = jobHunting.Age,
-                WorkYears = jobHunting.WorkYears,
-                Education = jobHunting.Education,
-                WorkExperience = jobHunting.WorkExperience,
-                Job = jobHunting.Job,
-                Wage = jobHunting.Wage,
-                Introduction = jobHunting.Introduction
-            };
+            var jobHuntingEdit = Mapper.Map<JobHunting, JobHuntingEditViewModel>(jobHunting);
 
             return View(jobHuntingEdit);
         }
@@ -148,24 +90,18 @@ namespace TH.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(JobHuntingEditViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             JobHunting jobHunting = _jobHuntingService.GetById(model.Id);
 
-            if (jobHunting.Publisher.Id != User.Identity.GetUserId())
+            if (jobHunting.PublisherId != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            jobHunting.Title = model.Title;
-            jobHunting.Telephones = model.Telephones;
-            jobHunting.Name = model.Name;
-            jobHunting.Nation = model.Nation;
-            jobHunting.Age = model.Age;
-            jobHunting.Education = model.Education;
-            jobHunting.WorkYears = model.WorkYears;
-            jobHunting.Wage = model.Wage;
-            jobHunting.Job = model.Job;
-            jobHunting.WorkExperience = model.WorkExperience;
-            jobHunting.Introduction = model.Introduction;
+            Mapper.Map(model, jobHunting);
 
             _jobHuntingService.Update(jobHunting);
 

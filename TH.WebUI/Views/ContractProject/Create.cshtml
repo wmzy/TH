@@ -1,0 +1,20 @@
+﻿@model TH.WebUI.ViewModels.ContractProjectCreateViewModel
+
+@{
+    ViewBag.Title = "发布信息";
+}
+
+<h2>发布信息</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>发布招聘信息</legend>
+        @Html.EditorForModel()
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+    </fieldset>
+}

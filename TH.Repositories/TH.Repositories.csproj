@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201405081056322_AddJobHuntingConfiguration.Designer.cs">
       <DependentUpon>201405081056322_AddJobHuntingConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405130635203_SomeChange.cs" />
+    <Compile Include="Migrations\201405130635203_SomeChange.Designer.cs">
+      <DependentUpon>201405130635203_SomeChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BuildingMaterialRepository.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405081056322_AddJobHuntingConfiguration.resx">
       <DependentUpon>201405081056322_AddJobHuntingConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405130635203_SomeChange.resx">
+      <DependentUpon>201405130635203_SomeChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

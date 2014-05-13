@@ -17,7 +17,16 @@ namespace TH.WebUI.Mappings
 
         protected override void Configure()
         {
+            Mapper.CreateMap<Job, JobIndexViewModel>();
+            Mapper.CreateMap<Job, JobDetailsViewModel>();
+            Mapper.CreateMap<Job, JobEditViewModel>();
+
+            Mapper.CreateMap<JobHunting, JobHuntingIndexViewModel>();
+            Mapper.CreateMap<JobHunting, JobHuntingDetailsViewModel>();
+            Mapper.CreateMap<JobHunting, JobHuntingEditViewModel>();
+
             Mapper.CreateMap<Project, ProjectIndexViewModel>();
+            Mapper.CreateMap<ContractProject, ContractProjectDetailsViewModel>();
         }
     }
 }

@@ -37,7 +37,9 @@ namespace TH.WebUI
             bundles.Add(new ScriptBundle("~/bundles/DataTables").Include("~/Scripts/jquery.dataTables.js"));
 
             bundles.Add(new StyleBundle("~/Content/selectize").Include("~/Content/selectize.bootstrap3.css"));
-            bundles.Add(new ScriptBundle("~/bundles/selectize").Include("~/Scripts/selectize.js"));
+            bundles.Add(new ScriptBundle("~/bundles/selectize").Include(
+                "~/Scripts/selectize.js",
+                "~/Scripts/selectize.user.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include("~/Scripts/ckeditor/ckeditor.js"));
         }

@@ -6,7 +6,6 @@ using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TH.Model;
 using TH.Repositories.Configuration;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TH.Repositories
 {
@@ -22,8 +21,23 @@ namespace TH.Repositories
         public DbSet<JobHunting> JobHuntings { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ContractProject> ContractProjects { get; set; }
+        public DbSet<BuildingMaterial> BuildingMaterials { get; set; }
+        public DbSet<BuyBuildingMaterial> BuyBuildingMaterials { get; set; }
+        public DbSet<Credential> Credentials { get; set; }
+        public DbSet<Detection> Detections { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<Financing> Financings { get; set; }
+        public DbSet<Machine> Machines { get; set; }
+        public DbSet<OtherInfo> OtherInfos { get; set; }
+        public DbSet<RequireCredential> RequireCredentials { get; set; }
+        public DbSet<RequireDetection> RequireDetections { get; set; }
+        public DbSet<UseEquipment> UseEquipments { get; set; }
+        public DbSet<UseMachine> UseMachines { get; set; }
+
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<PageHitCounters> PageHitCounterses { get; set; }
         #endregion
 
         //https://github.com/rustd/AspnetIdentitySample
@@ -47,6 +61,7 @@ namespace TH.Repositories
             modelBuilder.Configurations.Add(new JobHuntingConfiguration());
             modelBuilder.Configurations.Add(new PostConfiguration());
             modelBuilder.Configurations.Add(new CommentConfiguration());
+            modelBuilder.Configurations.Add(new PageHitCountersConfiguration());
 
             #endregion
         }

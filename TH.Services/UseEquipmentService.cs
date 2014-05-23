@@ -10,14 +10,15 @@ namespace TH.Services
     public interface IUseEquipmentService : IService
     {
         IQueryable<UseEquipment> Get(int pageIndex, int pageSize, out int recordCount);
-        UseEquipment GetJobById(int id);
         IQueryable<UseEquipment> GetByUserId(string userId);
 
-        void Create(UseEquipment job);
+        void Create(UseEquipment useEquipment);
 
-        void Update(UseEquipment job);
+        void Update(UseEquipment useEquipment);
 
         void OwnerDelete(string ownerId, int id);
+
+        UseEquipment GetById(int id);
     }
 
     public class UseEquipmentService : IUseEquipmentService
@@ -36,27 +37,28 @@ namespace TH.Services
             throw new NotImplementedException();
         }
 
-        public UseEquipment GetJobById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<UseEquipment> GetByUserId(string userId)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(UseEquipment job)
+        public void Create(UseEquipment useEquipment)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(UseEquipment job)
+        public void Update(UseEquipment useEquipment)
         {
             throw new NotImplementedException();
         }
 
         public void OwnerDelete(string ownerId, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public UseEquipment GetById(int id)
         {
             throw new NotImplementedException();
         }

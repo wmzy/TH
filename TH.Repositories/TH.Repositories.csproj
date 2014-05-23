@@ -56,6 +56,7 @@
     <Compile Include="Configuration\InfoEntityBaseConfiguration.cs" />
     <Compile Include="Configuration\JobConfiguration.cs" />
     <Compile Include="Configuration\JobHuntingConfiguration.cs" />
+    <Compile Include="Configuration\PageHitCountersConfiguration.cs" />
     <Compile Include="Configuration\PostConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TH.Model;
 using TH.Repositories.Infrastructure;
@@ -18,7 +19,11 @@ namespace TH.Services
 
         void Update(Post post);
 
-        void OwnerDelete(string ownerId, int id);
+        void OwnerDelete(string userId, int id);
+
+        void AddComment(int postId, Comment comment);
+
+        void DeleteComment(string userId, int id);
     }
 
     public class PostService : IPostService
@@ -34,7 +39,8 @@ namespace TH.Services
 
         public IQueryable<Post> Get(int pageIndex, int pageSize, out int recordCount)
         {
-            throw new NotImplementedException();
+            recordCount = _postRepository.Count(p => true);
+            return _postRepository.Get(p => true, pageIndex, pageSize, p => p.CreateTime, false);
         }
 
         public IQueryable<Post> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount)
@@ -44,27 +50,54 @@ namespace TH.Services
 
         public Post GetById(int id)
         {
-            throw new NotImplementedException();
+            return _postRepository.Get(p => p.Id == id).Include(p => p.Creater).Include(p => p.Comments).FirstOrDefault();
         }
 
         public IQueryable<Post> GetByUserId(string userId)
         {
-            throw new NotImplementedException();
+            return _postRepository.Get(p => p.CreaterId == userId).OrderByDescending(p => p.CreateTime);
         }
 
         public void Create(Post post)
         {
-            throw new NotImplementedException();
+            _postRepository.Add(post);
+            _unitOfWork.Commit();
         }
 
         public void Update(Post post)
         {
-            throw new NotImplementedException();
+            _postRepository.Update(post);
+            _unitOfWork.Commit();
         }
 
-        public void OwnerDelete(string ownerId, int id)
+        public void OwnerDelete(string userId, int id)
         {
-            throw new NotImplementedException();
+            var post = GetById(id);
+            if (userId != post.CreaterId)
+            {
+                throw new Exception("Not Owner");
+            }
+            _postRepository.Delete(post);
+            _unitOfWork.Commit();
+        }
+
+
+        public void AddComment(int postId, Comment comment)
+        {
+            var post = GetById(postId);
+            post.Comments.Add(comment);
+            _unitOfWork.Commit();
+        }
+
+        public void DeleteComment(string userId, int id)
+        {
+            var post = _postRepository.Get(p => p.Comments.Any(c => c.Id == id)).Single();
+            var comment = post.Comments.Single(c => c.Id == id);
+            if (post.CreaterId == userId || comment.UserId == userId)
+            {
+                post.Comments.Remove(comment);
+                _unitOfWork.Commit();
+            }
         }
     }
 }

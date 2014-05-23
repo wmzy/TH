@@ -1,4 +1,74 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=TH/@EntryIndexedValue">TH</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Applicability/=File/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/CustomProperties/=Extension/@EntryIndexedValue">cs</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/CustomProperties/=FileName/@EntryIndexedValue">ViewModels</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/CustomProperties/=ValidateFileName/@EntryIndexedValue">False</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Description/@EntryValue">ViewModels</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Field/=T/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Field/=T/Expression/@EntryValue">clipboard()</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Field/=T/InitialRange/@EntryValue">-1</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Field/=T/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Scope/=50AF970EC1279940A9104D92F89E47E1/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Scope/=50AF970EC1279940A9104D92F89E47E1/Type/@EntryValue">InAspCSharpProject</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=3D843ADC069CF344984DB481D1C04FD4/Text/@EntryValue">using System;&#xD;
+using System.Collections.Generic;&#xD;
+using System.ComponentModel;&#xD;
+using System.ComponentModel.DataAnnotations;&#xD;
+using System.Linq;&#xD;
+using System.Web;&#xD;
+&#xD;
+namespace TH.WebUI.ViewModels&#xD;
+{&#xD;
+    public class $T$IndexViewModel&#xD;
+    {&#xD;
+        public int Id { get; set; }&#xD;
+        [DisplayName("标题")]&#xD;
+        public string Title { get; set; }&#xD;
+        public DateTime? CreatedDate { get; set; }   //发布时间&#xD;
+    }&#xD;
+&#xD;
+    public class $T$CreateViewModel&#xD;
+    {&#xD;
+        [DisplayName("标题")]&#xD;
+        [Required]&#xD;
+        public string Title { get; set; }&#xD;
+        [DisplayName("联系人")]&#xD;
+        [Required]&#xD;
+        public string ContactPerson { set; get; }    // 联系人&#xD;
+        [DisplayName("联系电话")]&#xD;
+        [Required]&#xD;
+        public string Telephones { get; set; }      // 联系电话';'分隔&#xD;
+    }&#xD;
+&#xD;
+    public class $T$DetailsViewModel&#xD;
+    {&#xD;
+        public string Title { get; set; }&#xD;
+&#xD;
+        [DisplayName("联系人")]&#xD;
+        public string ContactPerson { set; get; }    // 联系人&#xD;
+        [DisplayName("联系电话")]&#xD;
+        public string Telephones { get; set; }      // 联系电话&#xD;
+    }&#xD;
+&#xD;
+    public class $T$EditViewModel&#xD;
+    {&#xD;
+        [UIHint("HiddenInput")]&#xD;
+        [Required]&#xD;
+        public int Id { get; set; }&#xD;
+&#xD;
+        [DisplayName("标题")]&#xD;
+        [Required]&#xD;
+        public string Title { get; set; }&#xD;
+        [DisplayName("联系人")]&#xD;
+        [Required]&#xD;
+        public string ContactPerson { set; get; }    // 联系人&#xD;
+        [DisplayName("联系电话")]&#xD;
+        [Required]&#xD;
+        public string Telephones { get; set; }      // 联系电话';'分隔&#xD;
+    }&#xD;
+}</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=490B69A7B0FB944F91FB4740319514A4/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=490B69A7B0FB944F91FB4740319514A4/Applicability/=File/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=490B69A7B0FB944F91FB4740319514A4/CustomProperties/=Extension/@EntryIndexedValue">cs</s:String>
@@ -46,6 +116,140 @@ namespace TH.Services&#xD;
         }&#xD;
     }&#xD;
 }</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Applicability/=File/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/CustomProperties/=Extension/@EntryIndexedValue">cs</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/CustomProperties/=FileName/@EntryIndexedValue">Controller</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/CustomProperties/=ValidateFileName/@EntryIndexedValue">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Description/@EntryValue">Controller</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=t/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=T/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=t/Expression/@EntryValue">decapitalize(T)</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=T/Expression/@EntryValue">clipboard()</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=t/InitialRange/@EntryValue">-1</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=T/InitialRange/@EntryValue">-1</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=t/Order/@EntryValue">1</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Field/=T/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Scope/=50AF970EC1279940A9104D92F89E47E1/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Scope/=50AF970EC1279940A9104D92F89E47E1/Type/@EntryValue">InAspCSharpProject</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5B602254468A074F9B946CA68316E70E/Text/@EntryValue">using System;&#xD;
+using System.Collections.Generic;&#xD;
+using System.Linq;&#xD;
+using System.Web;&#xD;
+using System.Web.Mvc;&#xD;
+using System.Web.Security;&#xD;
+using AutoMapper;&#xD;
+using AutoMapper.QueryableExtensions;&#xD;
+using TH.Model;&#xD;
+using TH.Services;&#xD;
+using TH.WebUI.ViewModels;&#xD;
+using Microsoft.AspNet.Identity;&#xD;
+&#xD;
+namespace TH.WebUI.Controllers&#xD;
+{&#xD;
+    [Authorize]&#xD;
+    public class $T$Controller : Controller&#xD;
+    {&#xD;
+        private readonly I$T$Service _$t$Service;&#xD;
+        public $T$Controller(I$T$Service $t$Service)&#xD;
+        {&#xD;
+            _$t$Service = $t$Service;&#xD;
+        }&#xD;
+&#xD;
+        //&#xD;
+        // GET: /$T$/&#xD;
+&#xD;
+        [AllowAnonymous]&#xD;
+        public ActionResult Index(int pageIndex = 1, int pageSize = 10)&#xD;
+        {&#xD;
+            if (pageIndex &lt; 1 || pageSize &lt; 0)&#xD;
+            {&#xD;
+                return HttpNotFound();&#xD;
+            }&#xD;
+&#xD;
+            int recordCount;&#xD;
+&#xD;
+            IEnumerable&lt;$T$IndexViewModel&gt; $t$s = _$t$Service.Get(pageIndex, pageSize, out recordCount).Project().To&lt;$T$IndexViewModel&gt;().ToList();&#xD;
+&#xD;
+            ViewData["recordCount"] = recordCount;&#xD;
+&#xD;
+            //&#xD;
+            return View($t$s);&#xD;
+        }&#xD;
+&#xD;
+        //&#xD;
+        // GET: /$T$/Details/{id}&#xD;
+&#xD;
+        [AllowAnonymous]&#xD;
+        public ActionResult Details(int id)&#xD;
+        {&#xD;
+            $T$ $t$ = _$t$Service.GetById(id);&#xD;
+            var $t$Details = Mapper.Map&lt;$T$, $T$DetailsViewModel&gt;($t$);&#xD;
+            &#xD;
+            return View($t$Details);&#xD;
+        }&#xD;
+        &#xD;
+        public ActionResult Create()&#xD;
+        {&#xD;
+            return View();&#xD;
+        }&#xD;
+&#xD;
+        [HttpPost]&#xD;
+        public ActionResult Create($T$CreateViewModel model)&#xD;
+        {&#xD;
+            if (!ModelState.IsValid) return View(model);&#xD;
+&#xD;
+            var $t$ = Mapper.Map&lt;$T$CreateViewModel, $T$&gt;(model);&#xD;
+&#xD;
+            $t$.PublisherId = User.Identity.GetUserId();&#xD;
+            $t$.City = ControllerContext.HttpContext.Request.UserHostAddress;&#xD;
+&#xD;
+            _$t$Service.Create($t$);&#xD;
+&#xD;
+            return RedirectToAction("Details", new { id = $t$.Id });&#xD;
+        }&#xD;
+&#xD;
+        public ActionResult Edit(int id)&#xD;
+        {&#xD;
+            $T$ $t$ = _$t$Service.GetById(id);&#xD;
+            if ($t$.PublisherId != User.Identity.GetUserId())&#xD;
+            {&#xD;
+                return HttpNotFound();&#xD;
+            }&#xD;
+&#xD;
+            var $t$Edit = Mapper.Map&lt;$T$, $T$EditViewModel&gt;($t$);&#xD;
+            &#xD;
+            return View($t$Edit);&#xD;
+        }&#xD;
+&#xD;
+        [HttpPost]&#xD;
+        public ActionResult Edit($T$EditViewModel model)&#xD;
+        {&#xD;
+            if (!ModelState.IsValid)&#xD;
+            {&#xD;
+                return View(model);&#xD;
+            }&#xD;
+            $T$ $t$ = _$t$Service.GetById(model.Id);&#xD;
+&#xD;
+            if ($t$.PublisherId != User.Identity.GetUserId())&#xD;
+            {&#xD;
+                return HttpNotFound();&#xD;
+            }&#xD;
+            Mapper.Map(model, $t$);&#xD;
+            &#xD;
+            _$t$Service.Update($t$);&#xD;
+&#xD;
+            return RedirectToAction("Details", new { id = $t$.Id });&#xD;
+        }&#xD;
+&#xD;
+        public ActionResult Delete(int id)&#xD;
+        {&#xD;
+            _$t$Service.OwnerDelete(User.Identity.GetUserId(), id);&#xD;
+            return RedirectToAction("Index");&#xD;
+        }&#xD;
+    }&#xD;
+}&#xD;
+</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FFD53A40DA06AE4AAEC89F53B9318F2A/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FFD53A40DA06AE4AAEC89F53B9318F2A/Description/@EntryValue">Repository</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FFD53A40DA06AE4AAEC89F53B9318F2A/Text/@EntryValue">using TH.Model;&#xD;

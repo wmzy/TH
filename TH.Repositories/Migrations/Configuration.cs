@@ -10,6 +10,7 @@ namespace TH.Repositories.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "TH.Repositories.THDbContext";
         }
 

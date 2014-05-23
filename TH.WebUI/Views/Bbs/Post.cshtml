@@ -1,0 +1,101 @@
+﻿@using Microsoft.AspNet.Identity
+@using TH.WebUI.Common
+@model TH.WebUI.ViewModels.PostDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+<article class="media-body">
+    <h2>@Model.Title</h2>
+    <p>
+        @Model.CreateTime
+    </p>
+    <section class="body-content">
+        @Html.Raw(Model.Content)
+    </section>
+    <p>
+        @if (Model.Creater != null && Model.Creater.Id == User.Identity.GetUserId())
+        {
+            @Html.ActionLink("编辑", "EditPost", new { id = Model.Id })
+        }
+    </p>
+</article>
+<aside>
+    <p>
+        浏览量 @HitCounters.CountOfPage[Request.Url.AbsolutePath]
+    </p>
+</aside>
+<section>
+    <div>
+        @if (Request.IsAuthenticated)
+        {
+            <form id="addComment">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                @Html.Hidden("PostId", Model.Id)
+                <textarea id="Content" name="Content" maxlength="200"></textarea>
+                <button type="button" id="submit">发表评论</button>
+            </form>
+@section scripts
+{
+    @Scripts.Render("~/bundles/ckeditor")
+    <script>
+        CKEDITOR.replace('Content', {
+            plugins: 'basicstyles,toolbar,forms,format,htmlwriter,iframe,wysiwygarea,fakeobjects,link,preview,removeformat,showborders,sourcearea,specialchar,save',
+            skin: 'moono',
+            width: '75%',
+            height: '80px',
+            toolbarGroups: [
+                { name: 'tools', groups: ['mode', 'document', 'spellchecker', 'links'] },
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+            ],
+            // Avoiding Loading External Settings Files
+            customConfig: ''
+        });
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $("#submit").click(function() {
+                if (CKEDITOR.instances.Content.getData() == '') {
+                    alert('内容不能为空');
+                    return;
+                }
+                var btn = $(this).attr({ disabled: "disabled" });
+                $("#addComment > [name='Content']").first().val(CKEDITOR.instances.Content.getData());
+                $.ajax({
+                    type: "POST",
+                    dataType:"json",
+                    url: '@Url.Action("AddComment")',
+                    data: $("#addComment").serialize(),
+                    success: function(model) {
+                        CKEDITOR.instances.Content.setData('');
+                        $("#comment").prepend('<li>' + model.Content + '<h6>----' + model.UserName + '</h6></li>');
+                    },
+                    complete: function () {
+                        btn.removeAttr("disabled");
+                    }
+                });
+            });
+        }());
+    </script>
+}
+        }
+        else
+        {
+            <p>
+                请先 @Html.ActionLink("登录", "Login", "Account", new { returnUrl = Request.Url.AbsolutePath }, null),再评论
+            </p>
+        }
+    </div>
+
+    <ul id="comment">
+        @foreach (var com in Model.Comments)
+        {
+            <li>
+                @Html.Raw(com.Content)
+                <h6>----@com.User.UserName</h6>
+            </li>
+        }
+    </ul>
+
+</section>

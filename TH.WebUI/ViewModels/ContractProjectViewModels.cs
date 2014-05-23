@@ -52,5 +52,6 @@ namespace TH.WebUI.ViewModels
 
     public class ContractProjectEditViewModel
     {
+        public int Id { get; set; }
     }
 }

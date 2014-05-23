@@ -1,0 +1,24 @@
+﻿@model TH.WebUI.ViewModels.PostCreateViewModel
+
+@{
+    ViewBag.Title = "发帖";
+}
+
+<h2>发帖</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.EditorForModel()
+    
+     <p>
+        <input type="submit" value="发布" />
+    </p>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/ckeditor")
+    <script>
+        CKEDITOR.replace('Content');
+    </script>
+}

@@ -49,8 +49,6 @@ namespace TH.Repositories.Infrastructure
         public void Add(TEntity instance)
         {
             _dbSet.Add(instance);
-            //_dbSet.Attach(instance);
-            //_dbContext.Entry(instance).State = EntityState.Added;
         }
         public void Update(TEntity instance)
         {

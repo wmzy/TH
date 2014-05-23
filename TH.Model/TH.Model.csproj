@@ -66,6 +66,7 @@
     <Compile Include="JobHunting.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="OtherInfo.cs" />
+    <Compile Include="PageHitCounters.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

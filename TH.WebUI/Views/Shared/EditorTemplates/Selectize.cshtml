@@ -1,0 +1,18 @@
+﻿@model string
+@using System.Linq;
+
+@{
+    var options = ViewData["option"] as string;
+    var isCreate = ViewData["isCreate"] as bool?;
+}
+
+<div class="control-group">
+    @Html.EditorFor(m => m, null, new { @class = "", placeholder = ""});
+</div>
+
+    @Html.DropDownListFor(m => m, "小学、初中、高中、技校、中专、大专、本课、硕士、博士、不限"
+  .Split(new Char[] { '、' }).AsQueryable().Select(i => new SelectListItem()
+  {
+      Text = i,
+      Value = i
+  }), "", new { @class = "chosen-select" })

@@ -1,0 +1,26 @@
+﻿@model TH.WebUI.ViewModels.PostEditViewModel
+
+@{
+    ViewBag.Title = "编辑";
+}
+
+<h2>编辑</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.EditorForModel()
+
+    <p>
+        <input type="submit" value="发布" />
+    </p>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/ckeditor")
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('Content');
+    </script>
+}

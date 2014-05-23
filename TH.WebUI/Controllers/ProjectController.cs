@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNet.Identity;
 using TH.Model;
@@ -22,9 +23,21 @@ namespace TH.WebUI.Controllers
 
         //
         // GET: /Project/
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
         {
-            IEnumerable<ProjectIndexViewModel> projects = _projectService.Get().Project().To<ProjectIndexViewModel>().ToList();
+            if (pageIndex < 1 || pageSize < 0)
+            {
+                return HttpNotFound();
+            }
+
+            int recordCount;
+
+            IEnumerable<ProjectIndexViewModel> projects = _projectService.Get(pageIndex, pageSize, out recordCount).Project().To<ProjectIndexViewModel>().ToList();
+
+            ViewData["recordCount"] = recordCount;
+
+            //
             return View(projects);
         }
 
@@ -38,16 +51,9 @@ namespace TH.WebUI.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            var pro = new Project
-            {
-                Title = model.Title,
-                Company = model.Company,
-                Publisher = new User { Id = User.Identity.GetUserId() },
-                CreatedDate = DateTime.Now,
-                City = ControllerContext.HttpContext.Request.UserHostAddress,
-                ContactPerson = model.ContactPerson,
-                Telephones = model.Telephones
-            };
+            var pro = Mapper.Map<ProjectCreateViewModel, Project>(model);
+            pro.PublisherId = User.Identity.GetUserId();
+            pro.City = ControllerContext.HttpContext.Request.UserHostAddress;
             _projectService.Create(pro);
 
             return RedirectToAction("Details", new { id = pro.Id });
@@ -60,18 +66,7 @@ namespace TH.WebUI.Controllers
         public ActionResult Details(int id)
         {
             Project project = _projectService.GetById(id);
-            var proDetails = new ProjectDetailsViewModel()
-            {
-                Company = project.Company,
-                City = project.City,
-                ContactPerson = project.ContactPerson,
-                ProjectName = project.ProjectName,
-                Require = project.Require,
-                StartTime = project.StartTime,
-                TimeLimit = project.TimeLimit,
-                Title = project.Title,
-                Telephones = project.Telephones
-            };
+            var proDetails = Mapper.Map<Project, ProjectDetailsViewModel>(project);
 
             return View(proDetails);
         }
@@ -80,26 +75,12 @@ namespace TH.WebUI.Controllers
         public ActionResult Edit(int id)
         {
             Project project = _projectService.GetById(id);
-            if (project.Publisher.Id != User.Identity.GetUserId())
+            if (project.PublisherId != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            var projectEdit = new ProjectEditViewModel
-            {
-                Id = project.Id,
-                Company = project.Company,
-                City = project.City,
-                ContactPerson = project.ContactPerson,
-                ProjectName = project.ProjectName,
-                Require = project.Require,
-                StartTime = project.StartTime,
-                TimeLimit = project.TimeLimit,
-                ValidDate = project.ValidDate,
-                Telephones = project.Telephones,
-                Title = project.Title,
-                Content = project.Content
-            };
+            var projectEdit = Mapper.Map<Project, ProjectEditViewModel>(project);
 
             return View(projectEdit);
         }
@@ -107,25 +88,18 @@ namespace TH.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(ProjectEditViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             Project project = _projectService.GetById(model.Id);
 
-            if (project.Publisher.Id != User.Identity.GetUserId())
+            if (project.PublisherId != User.Identity.GetUserId())
             {
                 return HttpNotFound();
             }
 
-            project.Id = model.Id;
-            project.Company = model.Company;
-            project.City = model.City;
-            project.ContactPerson = model.ContactPerson;
-            project.ProjectName = model.ProjectName;
-            project.Require = model.Require;
-            project.StartTime = model.StartTime;
-            project.TimeLimit = model.TimeLimit;
-            project.ValidDate = model.ValidDate;
-            project.Telephones = model.Telephones;
-            project.Title = model.Title;
-            project.Content = model.Content;
+            Mapper.Map(model, project);
 
             _projectService.Update(project);
 

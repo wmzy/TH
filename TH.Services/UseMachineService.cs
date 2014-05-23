@@ -13,9 +13,9 @@ namespace TH.Services
         UseMachine GetById(int id);
         IQueryable<UseMachine> GetByUserId(string userId);
 
-        void Create(UseMachine job);
+        void Create(UseMachine useMachine);
 
-        void Update(UseMachine job);
+        void Update(UseMachine useMachine);
 
         void OwnerDelete(string ownerId, int id);
     }
@@ -46,12 +46,12 @@ namespace TH.Services
             throw new NotImplementedException();
         }
 
-        public void Create(UseMachine job)
+        public void Create(UseMachine useMachine)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(UseMachine job)
+        public void Update(UseMachine useMachine)
         {
             throw new NotImplementedException();
         }

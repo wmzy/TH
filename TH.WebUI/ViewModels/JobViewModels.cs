@@ -33,22 +33,17 @@ namespace TH.WebUI.ViewModels
         [DisplayName("招聘单位或经营个体")]
         [Required]
         public string Company { set; get; }     // 招聘单位或经营个体
-        [UIHint("ChosenJobName")]
         [DisplayName("职位名称")]
         public string Name { get; set; }        // 职位名称
         [DisplayName("招聘人数")]
         [Range(1, 100)]
         public int? RecruitCount { get; set; }  // 招聘人数
-        [UIHint("ChosenLocation")]
         [DisplayName("工作地点")]
         public string Location { get; set; }    // 工作地点
-        [UIHint("ChosenEducationRequire")]
         [DisplayName("学历要求")]
         public string EducationRequire { get; set; }    // 学历要求
-        [UIHint("ChosenWorkYears")]
         [DisplayName("工作年限")]
         public string WorkYears { get; set; }  // 工作年限
-        [UIHint("ChosenWage")]
         [DisplayName("薪资范围")]
         public string Wage { get; set; }      // 薪资范围
         [MaxLength(500)]
@@ -113,22 +108,17 @@ namespace TH.WebUI.ViewModels
         [DisplayName("招聘单位或经营个体")]
         [Required]
         public string Company { set; get; }     // 招聘单位或经营个体
-        [UIHint("ChosenJobName")]
         [DisplayName("职位名称")]
         public string Name { get; set; }        // 职位名称
         [DisplayName("招聘人数")]
         [Range(1, 100)]
         public int? RecruitCount { get; set; }  // 招聘人数
-        [UIHint("ChosenLocation")]
         [DisplayName("工作地点")]
         public string Location { get; set; }    // 工作地点
-        [UIHint("ChosenEducationRequire")]
         [DisplayName("学历要求")]
         public string EducationRequire { get; set; }    // 学历要求
-        [UIHint("ChosenWorkYears")]
         [DisplayName("工作年限")]
         public string WorkYears { get; set; }  // 工作年限
-        [UIHint("ChosenWage")]
         [DisplayName("薪资范围")]
         public string Wage { get; set; }      // 薪资范围
         [MaxLength(500)]

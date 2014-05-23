@@ -22,6 +22,8 @@ namespace TH.Services
         void Update(Project project);
 
         IQueryable<Project> Get();
+
+        IQueryable<Project> Get(int pageIndex, int pageSize, out int recordCount);
     }
     public class ProjectService : IProjectService
     {
@@ -57,6 +59,12 @@ namespace TH.Services
 
 
         public IQueryable<Project> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IQueryable<Project> Get(int pageIndex, int pageSize, out int recordCount)
         {
             throw new NotImplementedException();
         }

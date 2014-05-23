@@ -27,11 +27,19 @@ namespace TH.WebUI
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/pagedlist").Include(
+                "~/Content/PagedList.css"));
+
             bundles.Add(new StyleBundle("~/Content/chosen").Include("~/Content/chosen/chosen.css"));
             bundles.Add(new ScriptBundle("~/bundles/chosen").Include("~/Scripts/chosen.jquery.js"));
 
             bundles.Add(new StyleBundle("~/Content/DataTables").Include("~/Content/DataTables/jquery.dataTables.css"));
             bundles.Add(new ScriptBundle("~/bundles/DataTables").Include("~/Scripts/jquery.dataTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/selectize").Include("~/Content/selectize.bootstrap3.css"));
+            bundles.Add(new ScriptBundle("~/bundles/selectize").Include("~/Scripts/selectize.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include("~/Scripts/ckeditor/ckeditor.js"));
         }
     }
 }

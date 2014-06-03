@@ -12,6 +12,7 @@ namespace TH.Services
     public interface IJobService : IService
     {
         IQueryable<Job> Get(int pageIndex, int pageSize, out int recordCount);
+        IQueryable<Job> Get();
 
         IQueryable<Job> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
 
@@ -41,7 +42,11 @@ namespace TH.Services
         public IQueryable<Job> Get(int pageIndex, int pageSize, out int recordCount)
         {
             recordCount = _jobRepository.Count(m => true);
-            return _jobRepository.Get(m => true, pageIndex, pageSize, m => m.CreatedDate);
+            return _jobRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
+        }
+        public IQueryable<Job> Get()
+        {
+            return _jobRepository.Get().OrderByDescending(j => j.CreateDate);
         }
 
         public IQueryable<Job> GetByUserId(string userId)
@@ -52,7 +57,7 @@ namespace TH.Services
         public IEnumerable<Job> GetByLocation(string location,int pageIndex, int pageSize, out int recordCount)
         {
             recordCount = _jobRepository.Count(m => true);
-            return _jobRepository.Get(m => m.Location == location, pageIndex, pageSize, m => m.CreatedDate);
+            return _jobRepository.Get(m => m.Location == location, pageIndex, pageSize, m => m.CreateDate);
         }
 
 
@@ -73,7 +78,7 @@ namespace TH.Services
         {
             var job = GetById(id);
 
-            if (job.Publisher.Id == ownerId)
+            if (job != null && job.PublisherId == ownerId)
             {
                 _jobRepository.Delete(job);
                 _unitOfWork.Commit();

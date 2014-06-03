@@ -1,40 +1,125 @@
 ﻿@{
     ViewBag.Title = "首页";
 }
-<h3>发布供求信息</h3>
-<ul class="round">
-    <li class="one">
-        @Html.ActionLink("招聘", "Index", "Job");
-        @Html.ActionLink("求职", "Index", "JobHunting");
-    </li>
-    <li class="two">
-        @Html.ActionLink("工程招标、发包工程", "");
-        @Html.ActionLink("承揽工程", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("出租、出售工程机械", "");
-        @Html.ActionLink("求租、求购工程机械", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("出租、出售工程设备及小型机具", "");
-        @Html.ActionLink("求租、求购工程设备及小型机具", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("出售建筑材料", "");
-        @Html.ActionLink("求购建筑材料", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("试验、检测", "");
-        @Html.ActionLink("寻找试验、检测资质单位", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("聘用证件持有人（兼职）", "");
-        @Html.ActionLink("证件注册、挂靠", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("融资、贷款", "");
-    </li>
-    <li class="two">
-        @Html.ActionLink("相关供求信息", "");
-    </li>
-</ul>
+<div class="jumbotron">
+    <h1>Hello, world!</h1>
+    <ul>
+        <li class="one">
+            @Html.ActionLink("招聘", "Index", "Job");
+            @Html.ActionLink("求职", "Index", "JobHunting");
+        </li>
+        <li class="two">
+            @Html.ActionLink("工程招标、发包工程", "");
+            @Html.ActionLink("承揽工程", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("出租、出售工程机械", "");
+            @Html.ActionLink("求租、求购工程机械", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("出租、出售工程设备及小型机具", "");
+            @Html.ActionLink("求租、求购工程设备及小型机具", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("出售建筑材料", "");
+            @Html.ActionLink("求购建筑材料", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("试验、检测", "");
+            @Html.ActionLink("寻找试验、检测资质单位", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("聘用证件持有人（兼职）", "");
+            @Html.ActionLink("证件注册、挂靠", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("融资、贷款", "");
+        </li>
+        <li class="two">
+            @Html.ActionLink("相关供求信息", "");
+        </li>
+    </ul>
+</div>
+<div class="content-block">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Job" data-toggle="tab">招聘</a></li>
+        <li><a href="#JobHunting" data-toggle="tab">求职</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="Job">
+            1hhjgkjghh会更加宽广和混合交火高考激光键合根据客户更加宽广和烘干机烘干后根据顾客会根据客户关怀激光
+            键合根是鬼斧神工风高放火据客户更的沙发上对方是大渡水复渡水法师大法仿盛大发生电导滴定顶顶顶顶顶顶顶顶顶顶顶顶时代风尚大典
+        </div>
+        <div class="tab-pane" id="JobHunting">2</div>
+    </div>
+</div>
+<div class="content-block">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Project" data-toggle="tab">工程招标、发包工程</a></li>
+        <li><a href="#ContractProject" data-toggle="tab">承揽工程</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Project">1</div>
+        <div class="tab-pane" id="ContractProject">2</div>
+    </div>
+</div>
+<div class="content-block">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Machine" data-toggle="tab">出租、出售工程机械</a></li>
+        <li><a href="#UseMachine" data-toggle="tab">求租、求购工程机械</a></li>
+        <li><a href="#Equipment" data-toggle="tab">出租、出售工程设备及小型机具</a></li>
+        <li><a href="#UseEquipment" data-toggle="tab">求租、求购工程设备及小型机具</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Machine">...</div>
+        <div class="tab-pane" id="UseMachine">...</div>
+        <div class="tab-pane" id="Equipment">...</div>
+        <div class="tab-pane" id="UseEquipment">...</div>
+    </div>
+
+</div>
+<div class="content-block">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#BuildingMaterial" data-toggle="tab">出售建筑材料</a></li>
+        <li><a href="#BuyBuildingMaterial" data-toggle="tab">求购建筑材料</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="BuildingMaterial">...</div>
+        <div class="tab-pane" id="BuyBuildingMaterial">...</div>
+    </div>
+</div>
+<div class="content-block">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Detection" data-toggle="tab">试验、检测</a></li>
+        <li><a href="#RequireDetection" data-toggle="tab">寻找试验、检测资质单位</a></li>
+        <li><a href="#Credential" data-toggle="tab">聘用证件持有人（兼职）</a></li>
+        <li><a href="#RequireCredential" data-toggle="tab">证件注册、挂靠</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Detection">...</div>
+        <div class="tab-pane" id="RequireDetection">...</div>
+        <div class="tab-pane" id="Credential">...</div>
+        <div class="tab-pane" id="RequireCredential">...</div>
+    </div>
+</div>
+<div class="content-block">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Financing" data-toggle="tab">融资、贷款</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Financing">...</div>
+    </div>
+</div>
+<div class="content-block">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#OtherInfo" data-toggle="tab">相关供求信息</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="OtherInfo">...</div>
+    </div>
+</div>
+
+
+

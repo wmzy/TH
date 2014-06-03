@@ -22,7 +22,7 @@ namespace TH.WebUI.ViewModels
         public string Location { get; set; }    // 工作地点
         [DisplayName("薪资范围")]
         public string Wage { get; set; }      // 薪资范围
-        public DateTime? CreatedDate { get; set; }   //发布时间
+        public DateTime? CreateDate { get; set; }   //发布时间
     }
 
     public class JobCreateViewModel
@@ -94,6 +94,7 @@ namespace TH.WebUI.ViewModels
         public string ContactPerson { set; get; }    // 联系人
         [DisplayName("联系电话")]
         public string Telephones { get; set; }      // 联系电话
+        public DateTime CreateDate { get; set; }   //发布时间
     }
 
     public class JobEditViewModel

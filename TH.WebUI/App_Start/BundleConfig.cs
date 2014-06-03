@@ -42,6 +42,8 @@ namespace TH.WebUI
                 "~/Scripts/selectize.user.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include("~/Scripts/ckeditor/ckeditor.js"));
+
+            bundles.Add(new StyleBundle("~/Content/PageList").Include("~/Content/PageList.css"));
         }
     }
 }

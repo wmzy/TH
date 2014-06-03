@@ -9,7 +9,7 @@ namespace TH.WebUI.ViewModels
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public DateTime? CreatedDate { get; set; }   //发布时间
+        public DateTime? CreateDate { get; set; }   //发布时间
         public DateTime? ValidDate { get; set; }     // 有效期
 
         //联系方式Contact

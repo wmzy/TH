@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TH.WebUI.ViewModels.InfoViewModel>
+﻿@model IEnumerable<TH.WebUI.ViewModels.InfosViewModel>
 @{
     ViewBag.Title = "我发布的信息";
 }
@@ -13,29 +13,84 @@
             <th>标题</th>
             <th>分类</th>
             <th>发布日期</th>
+            <th>状态</th>
             <th>操作</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var m in Model)
+        @foreach (var infos in Model)
         {
-            <tr>
-                <td>@Html.ActionLink(m.Title, "Details", m.ControllerName, new { id = m.Id })</td>
-                <td>@Html.ActionLink(m.Genre, "Index", m.ControllerName, new { id = m.Id })</td>
-                <td>@m.CreateDate</td>
-                <td>@Html.ActionLink("删除", "Delete", m.ControllerName, new { id = m.Id }, new { @class = "btn btn-default btn-lg" }) 
-                @Html.ActionLink("编辑", "Edit", m.ControllerName, new { id = m.Id }, new { @class = "btn btn-default btn-lg" })</td>
-            </tr>
+            foreach (var info in infos.Infos)
+            {
+                var state = "未发布";
+                if (info.ValidDate != null)
+                {
+                    if (((DateTime) (info.ValidDate)).CompareTo(DateTime.Now) <= 0)
+                    {
+                        state = "已过期";
+                    }
+                    else
+                    {
+                        var ts = ((DateTime) (info.ValidDate)).Subtract(DateTime.Now);
+                        state = "还有 " + ts.Days + "天过期";
+                    }
+                }
+                
+                <tr>
+                    <td>@Html.ActionLink(info.Title, "Details", infos.ControllerName, new { id = info.Id }, new { target = "_blank" })</td>
+                    <td>@Html.ActionLink(infos.Genre, "Index", infos.ControllerName, null, new { target = "_blank" })</td>
+                    <td>@info.CreateDate</td>
+                    <td>@state</td>
+                    <td>
+                        @Html.ActionLink("删除", "Delete", infos.ControllerName, new { id = info.Id }, new { @class = "btn btn-danger", delete = "" })
+                        @Html.ActionLink("编辑", "Edit", infos.ControllerName, new { id = info.Id }, new { @class = "btn btn-primary", target = "_blank" })
+                        @Html.ActionLink("续期", "Settlement", infos.ControllerName, new { id = info.Id }, new { @class = "btn btn-primary", target = "_blank" })
+                    </td>
+                </tr>
+            }
+
         }
     </tbody>
 </table>
-
+<form id="delete" class="hidden">
+    @Html.AntiForgeryToken()
+</form>
 @section scripts
 {
     @Scripts.Render("~/bundles/DataTables")
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#table_info').dataTable();
+        $(function() {
+            $("[delete]").click(function() { // 必须放到dataTable初始化之前，否则不能选中所有dom，只能选中第一页显示的dom
+                var row = oTable.fnGetPosition($(this).parents("tr").get(0));
+                if (confirm("确定删除第" + row + "行数据？")) {
+                    $.post(this.href, $("#delete").serialize(), function(data) {
+                        if (data && data.result === "Success") {
+                            oTable.fnDeleteRow(row);
+                            alert("已删除");
+                        }
+                    }, "json");
+                }
+
+                return false;
+            });
+            var oTable = $('#table_info').dataTable({
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据",
+                    "sProcessing": "<img src='./loading.gif' />"
+                }
+            });
+
         });
     </script>
 }

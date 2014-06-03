@@ -1,0 +1,67 @@
+﻿@model TH.WebUI.ViewModels.SettlementViewModel
+
+@{
+    ViewBag.Title = "结算-" + @Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+@if ((Model.ValidDate ?? DateTime.Now).CompareTo(DateTime.Now) <= 0)
+{
+    <p>当前信息已创建，但未发布。请使用相应财富值购买信息展示时间。</p>
+}
+else
+{
+    <p>当前信息的有效期为： @Model.ValidDate</p>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            <div class="col-md-10">
+                延长发布 @Html.EditorFor(model => model.DelayDays) 天
+                @Html.ValidationMessageFor(model => model.DelayDays)
+            </div>
+        </div>
+        <div>发布至<span id="ValidDate" data-original="@(Model.ValidDate ?? DateTime.Now)">@((Model.ValidDate ?? DateTime.Now).AddDays(Model.DelayDays))</span></div>
+        <div>剩余财富值:<span id="WealthValue" data-original="@Model.WealthValue">@(Model.WealthValue - Model.DelayDays)</span></div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="提交" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#DelayDays").on("change", function () {
+                var dd = parseInt($(this).val() || "0");
+                if (dd < 0) {
+                    dd = 0;
+                    $(this).val(0);
+                }
+                var $wv = $("#WealthValue");
+                var wvo = parseInt($wv.data("original") || "0");
+                if (dd > wvo) {
+                    dd = wvo;
+                    $(this).val(dd);
+                }
+                $wv.text(wvo - dd);
+
+                var $vd = $("#ValidDate");
+                var vdt = new Date($vd.data("original"));
+                vdt.setDate(vdt.getDate() + dd);
+                $vd.text(vdt.getFullYear() + "/" + vdt.getMonth() + "/" + vdt.getDate());
+            });
+        });
+    </script>
+}

@@ -7,7 +7,7 @@
             var groups = options[0].split(",");
             options = options[1].split(",");
             for (var i = groups.length - 1; i >= 0; --i) {
-                optgroupsArr.push({ value: groups[i], label: groups[i] })
+                optgroupsArr.push({ value: groups[i], label: groups[i] });
                 var opt = options[i].split(":");
                 for (var j = opt.length - 1; j >= 0; --j) {
                     optionsArr.push({ text: opt[j], value: opt[j], optgroup: groups[i] });
@@ -27,4 +27,4 @@
             maxItems: 1
         });
     });
-}());
+});

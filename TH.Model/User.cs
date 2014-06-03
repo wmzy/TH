@@ -20,16 +20,19 @@ namespace TH.Model
         public string AboutMe { get; set; }
         public DateTime CreateDate { get; set; }
         public string City { get; set; }
+        public int WealthValue { get; set; }    // 财富值
 
-        // PublishedInfos
+        #region PublishedInfos
         public virtual ICollection<Job> Jobs { get; set; }
         public virtual ICollection<JobHunting> JobHuntings { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
         public virtual ICollection<ContractProject> ContractProjects { get; set; }
+        #endregion
 
         public User()
         {
             CreateDate = DateTime.Now;
+            WealthValue = 100;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TH.WebUI.ViewModels
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public DateTime? CreatedDate { get; set; }   //发布时间
+        public DateTime? CreateDate { get; set; }   //发布时间
         public string Name { get; set; }//姓名	
         public string Nation { get; set; }//民族	
         public int? Age { get; set; }    //年龄	
@@ -60,7 +60,7 @@ namespace TH.WebUI.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public string City { get; set; }
-        public DateTime? CreatedDate { get; set; }   //发布时间
+        public DateTime? CreateDate { get; set; }   //发布时间
         public User Publisher { get; set; }     // 发布者
 
         public string Telephones { get; set; }      // 联系电话

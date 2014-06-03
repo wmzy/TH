@@ -14,6 +14,13 @@ namespace TH.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "InfoPage",
+                url: "{controller}/{action}/Page/{pageIndex}",
+                defaults: new { action = "Index", pageIndex = UrlParameter.Optional },
+                constraints: new { pageIndex = @"\d+" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

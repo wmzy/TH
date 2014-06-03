@@ -35,7 +35,7 @@ namespace TH.Services
         public IQueryable<JobHunting> Get(int pageIndex, int pageSize, out int recordCount)
         {
             recordCount = _jobHuntingRepository.Count(m => true);
-            return _jobHuntingRepository.Get(m => true, pageIndex, pageSize, m => m.CreatedDate);
+            return _jobHuntingRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
         }
 
 

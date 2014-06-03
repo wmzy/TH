@@ -1,9 +1,36 @@
-﻿@model TH.WebUI.ViewModels.JobDetailsViewModel
+﻿@using AutoMapper.Internal
+@model TH.WebUI.ViewModels.JobDetailsViewModel
 @{
     ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Title</h2>
-@Html.DisplayForModel()
+<article>
+    <h2>@Model.Title</h2>
+    <h3>@Html.ActionLink(Model.Company, "Index") 发布于 @Model.CreateDate</h3>
+    <section>
+        <h3>基本信息</h3>
+        <ul>
+            <li>职位名称: @Model.Name</li>
+            <li>招聘人数: @(Model.RecruitCount.ToNullSafeString() ?? "若干")</li>
+            <li>工作地点: @Model.Location</li>
+            <li>学历要求: @Model.EducationRequire</li>
+            <li>工作年限: @Model.WorkYears</li>
+            <li>薪资范围: @Model.Wage</li>
+        </ul>
+        <h3>职位描述</h3>
+        <p>
+            @Model.JobDescription
+        </p>
+        <h3>招聘单位或个体简介</h3>
+        <p>
+            @Model.CompanyIntroduction
+        </p>
+        <h3>联系方式</h3>
+        <ul>
+            <li>联系人: @Model.ContactPerson</li>
+            <li>联系电话: @Model.Telephones</li>
+        </ul>
+    </section>
+</article>
 

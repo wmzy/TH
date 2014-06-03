@@ -24,13 +24,69 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("招聘", "Index", "Job")</li>
-                    <li>@Html.ActionLink("求职", "Index", "JobHunting")</li>
-                    <li>@Html.ActionLink("工程", "Index", "Project")</li>
-                    <li>@Html.ActionLink("承包工程", "Index", "ContractProject")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> 职工
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">@Html.ActionLink("招聘", "Index", "Job")</li>
+                            <li role="presentation">@Html.ActionLink("求职", "Index", "JobHunting")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-wrench"></span> 工程
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">@Html.ActionLink("工程招标、发包工程", "Index", "Project")</li>
+                            <li role="presentation">@Html.ActionLink("承揽工程", "Index", "ContractProject")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-road"></span> 器械
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">@Html.ActionLink("出租、出售工程机械", "Index", "Machine")</li>
+                            <li role="presentation">@Html.ActionLink("求租、求购工程机械", "Index", "UseMachine")</li>
+                            <li role="presentation">@Html.ActionLink("出租、出售工程设备及小型机具", "Index", "Equipment")</li>
+                            <li role="presentation">@Html.ActionLink("求租、求购工程设备及小型机具", "Index", "UseEquipment")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-tree-conifer"></span> 建材
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">@Html.ActionLink("出售建筑材料", "Index", "BuildingMaterial")</li>
+                            <li role="presentation">@Html.ActionLink("求购建筑材料", "Index", "BuyBuildingMaterial")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-credit-card"></span> 资质
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">@Html.ActionLink("试验、检测", "Index", "Detection")</li>
+                            <li role="presentation">@Html.ActionLink("寻找试验、检测资质单位", "Index", "RequireDetection")</li>
+                            <li role="presentation">@Html.ActionLink("聘用证件持有人（兼职）", "Index", "Credential")</li>
+                            <li role="presentation">@Html.ActionLink("证件注册、挂靠", "Index", "RequireCredential")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("资金", "Index", "Financing")</li>
+                    <li>@Html.ActionLink("其它", "Index", "OtherInfo")</li>
+
                     <li>@Html.ActionLink("行业论坛", "Index", "Bbs")</li>
                     <li>@Html.ActionLink("关于", "About", "Home")</li>
                     <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation">@Html.TextBox("SearchKeys", null, new{@class="form-control", placeholder="Search"})</li>
+                    </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -47,5 +103,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $(function() {
+            $("#SearchKeys").click(function () { return false; });
+        });
+    </script>
 </body>
 </html>

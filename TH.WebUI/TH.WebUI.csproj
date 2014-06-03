@@ -64,6 +64,7 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -228,6 +229,7 @@
     <Compile Include="ViewModels\ProjectViewModels.cs" />
     <Compile Include="ViewModels\RequireCredentialViewModels.cs" />
     <Compile Include="ViewModels\RequireDetectionViewModels.cs" />
+    <Compile Include="ViewModels\SettlementViewModel.cs" />
     <Compile Include="ViewModels\UseEquipmentViewModels.cs" />
     <Compile Include="ViewModels\UseMachineViewModels.cs" />
   </ItemGroup>
@@ -254,6 +256,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\selectize.bootstrap3.css" />
     <Content Include="favicon.ico" />
+    <Content Include="favicon_.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -3993,6 +3996,7 @@
     <Content Include="Views\Bbs\EditPost.cshtml" />
     <Content Include="Views\Bbs\Post.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Selectize.cshtml" />
+    <Content Include="Views\Shared\Settlement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

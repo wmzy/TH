@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.RecruitCount)
-            @Html.TextBoxFor(m => m.RecruitCount, new { @class = "form-control", placeholder = "一个100以内的正整数" })
+            @Html.TextBoxFor(m => m.RecruitCount, new { @class = "form-control", placeholder = "一个100以内的正整数", type = "number" })
             @Html.ValidationMessageFor(m => m.RecruitCount)
         </div>
         <div class="form-group">

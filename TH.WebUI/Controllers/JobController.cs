@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /Job/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<JobIndexViewModel> jobs = _jobService.Get(pageIndex, pageSize, out recordCount).Project().To<JobIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var jobsPage = _jobService.Get()
+                .Project().To<JobIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(jobs);
+            return View(jobsPage);
         }
 
         //
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _jobService.Create(job);
 
-            return RedirectToAction("Details", new { id = job.Id });
+            return RedirectToAction("Settlement", new { id = job.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var job = _jobService.GetById(id);
+            var model = Mapper.Map<Job, SettlementViewModel>(job);
+            model.WealthValue = job.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var job = _jobService.GetById(id);
+            if (job.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (job.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new {result = 1, err = "财富值不足"});
+            }
+            if (job.ValidDate == null || ((DateTime)job.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                job.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                job.ValidDate = ((DateTime)job.ValidDate).AddDays(delayDays);
+            }
+            job.Publisher.WealthValue -= 1*delayDays;
+            _jobService.Update(job);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -108,10 +139,13 @@ namespace TH.WebUI.Controllers
             return RedirectToAction("Details", new { id = job.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _jobService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

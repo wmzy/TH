@@ -12,7 +12,7 @@ namespace TH.WebUI.ViewModels
         public int Id { get; set; }
         [DisplayName("标题")]
         public string Title { get; set; }
-        public DateTime? CreatedDate { get; set; }   //发布时间
+        public DateTime? CreateDate { get; set; }   //发布时间
     }
 
     public class RequireDetectionCreateViewModel

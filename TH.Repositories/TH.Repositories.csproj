@@ -98,6 +98,7 @@
     <Compile Include="Repository\RequireDetectionRepository.cs" />
     <Compile Include="Repository\UseEquipmentRepository.cs" />
     <Compile Include="Repository\UseMachineRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="THDbContext.cs" />
   </ItemGroup>
   <ItemGroup>

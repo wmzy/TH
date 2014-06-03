@@ -63,6 +63,7 @@
     <Compile Include="EquipmentService.cs" />
     <Compile Include="FinancingService.cs" />
     <Compile Include="MachineService.cs" />
+    <Compile Include="ManageInfoService.cs" />
     <Compile Include="OtherInfoService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="JobHuntingService.cs" />

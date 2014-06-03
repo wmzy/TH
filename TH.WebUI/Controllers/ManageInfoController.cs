@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNet.Identity;
+using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
 
@@ -13,107 +16,29 @@ namespace TH.WebUI.Controllers
     public class ManageInfoController : Controller
     {
         private readonly IJobService _jobService;
-        public ManageInfoController(IJobService jobService)
+        private readonly IManageInfoService _manageInfoService;
+        public ManageInfoController(IJobService jobService, IManageInfoService manageInfoService)
         {
             _jobService = jobService;
+            _manageInfoService = manageInfoService;
         }
+
         //
         // GET: /ManageInfo/
         public ActionResult Index()
         {
-
-            var jobs = _jobService.GetByUserId(User.Identity.GetUserId());
-            var infoView = jobs.Select(j => new InfoViewModel
+            var model = new List<InfosViewModel>();
+            var jobs = new InfosViewModel
             {
-                Id = j.Id,
-                Title = j.Title,
-                CreateDate = j.CreatedDate,
+                Infos = _manageInfoService.GetByUserId("Job", User.Identity.GetUserId()).Project().To<InfoViewModel>(),
                 Genre = "招聘信息",
                 ControllerName = "Job"
-            }).ToList();
+            };
+            model.Add(jobs);
 
-            //infoView.AddRange(othos);
+            //infoView.Add(othos);
 
-            return View(infoView);
-        }
-
-        //
-        // GET: /ManageInfo/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /ManageInfo/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /ManageInfo/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /ManageInfo/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /ManageInfo/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /ManageInfo/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /ManageInfo/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
     }
 }

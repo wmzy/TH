@@ -85,6 +85,10 @@ namespace TH.WebUI.Mappings
             Mapper.CreateMap<Post, PostDetailsViewModel>();
             Mapper.CreateMap<Post, PostEditViewModel>();
             Mapper.CreateMap<Comment, CommentViewModel>().ForMember(cvm => cvm.UserName, opt => opt.MapFrom(c => c.User.UserName));
+
+            Mapper.CreateMap<InfoBase, InfoViewModel>();
+            Mapper.CreateMap<InfoBase, SettlementViewModel>();
+
         }
     }
 }

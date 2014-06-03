@@ -36,7 +36,7 @@ namespace TH.WebUI.ViewModels
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public DateTime CreatedDate { get; set; }   //发布时间
+        public DateTime CreateDate { get; set; }   //发布时间
 
         //联系方式Contact
         public string Telephones { get; set; }      // 联系电话';'分隔

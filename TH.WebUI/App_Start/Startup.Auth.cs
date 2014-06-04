@@ -33,6 +33,13 @@ namespace TH.WebUI
             //   appSecret: "");
 
             //app.UseGoogleAuthentication();
+
+            //测试环境下请确保您的网站使用的是80端口,
+            //试图使用非80端口访问腾讯接口会有非法redirect_url错误.
+            //https://github.com/tinysnake/microsoft-owin-security-qq
+            //app.UseQQConnectAuthentication(
+            //    appId: "your app id",
+            //    appSecret: "your app secret");
         }
     }
 }

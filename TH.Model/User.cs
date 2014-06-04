@@ -10,7 +10,6 @@ namespace TH.Model
         public string Nickname { get; set; }
 
         public string QQ { get; set; }
-        public string Email { get; set; }
         public string Phone { get; set; }
         public string MobilePhone { get; set; }
         public string Address { get; set; }

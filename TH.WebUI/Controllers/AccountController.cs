@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using TH.Model;
 using TH.Repositories;
+using TH.WebUI.Mailers;
 using TH.WebUI.ViewModels;
 
 namespace TH.WebUI.Controllers
@@ -80,7 +83,7 @@ namespace TH.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User() { UserName = model.UserName };
+                var user = new User() { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -180,6 +183,87 @@ namespace TH.WebUI.Controllers
 
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
             return View(model);
+        }
+
+
+        //
+        // GET: /Account/BeforePasswordReset
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/BeforePasswordReset
+
+        //http://stackoverflow.com/a/698879/208922
+
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            var user = await UserManager.FindByEmailAsync(model.Email);
+
+            if (null != user)
+            {
+                //Generating a token
+                var token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+
+                if (!string.IsNullOrEmpty(token))
+                {
+                    //send the email
+                    IUserMailer mailer = new UserMailer();
+                    await mailer.PasswordReset(user.Id, user.Email, token).SendAsync();
+                }
+            }
+
+            return RedirectToAction("PasswordReset", new { token = string.Empty, message = "We have sent a password reset request if the email is verified." });
+        }
+
+        //
+        // GET: /Account/PasswordReset
+        [AllowAnonymous]
+        public ActionResult PasswordReset(string message)
+        {
+            ViewBag.StatusMessage = message ?? "";
+            return View();
+        }
+
+        //
+        // POST: /Account/PasswordReset
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PasswordReset(PasswordResetViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string message = null;
+                //reset the password
+                var result = await UserManager.ResetPasswordAsync(model.Token, model.Token, model.Password);
+                if (result.Succeeded)
+                {
+                    message = "The password has been reset.";
+                    return RedirectToAction("PasswordResetCompleted", new { message = message });
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // GET: /Account/PasswordResetCompleted
+        [AllowAnonymous]
+        public ActionResult PasswordResetCompleted(string message)
+        {
+            ViewBag.StatusMessage = message ?? "";
+            return View();
         }
 
         //
@@ -380,7 +464,8 @@ namespace TH.WebUI.Controllers
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
             }
 

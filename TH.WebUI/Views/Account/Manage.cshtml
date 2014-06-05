@@ -6,24 +6,62 @@
 
 <h2>@ViewBag.Title。</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div class="row">
-    <div class="col-md-12">
-        @if (ViewBag.HasLocalPassword)
-        {
-            @Html.Partial("_ChangePasswordPartial")
-        }
-        else
-        {
-            @Html.Partial("_SetPasswordPartial")
-        }
+<p>你已使用以下身份登录: <strong>@User.Identity.GetUserName()</strong>。</p>
 
-        <section id="externalLogins">
-            @Html.Action("RemoveAccountList")
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+<div class="content-block">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#BaseInfo" data-toggle="tab">基本信息</a></li>
+        <li><a href="#Recharge" data-toggle="tab">充值</a></li>
+        <li><a href="#Password" data-toggle="tab">密码</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="BaseInfo">
+            @Html.Partial("_BaseInfoPartial", ViewBag.UserInfo as UserInfoViewModel)
+        </div>
+        <div class="tab-pane" id="Recharge">
+            @Html.Partial("_RechargePartial", ViewBag as ViewDataDictionary)
+        </div>
+        <div class="tab-pane" id="Password">
+            <p class="text-success">@ViewBag.StatusMessage</p>
+            <div class="row">
+                <div class="col-md-12">
+                    @if (ViewBag.HasLocalPassword)
+                    {
+                        @Html.Partial("_ChangePasswordPartial")
+                    }
+                    else
+                    {
+                        @Html.Partial("_SetPasswordPartial")
+                    }
+
+                    <section id="externalLogins">
+                        @Html.Action("RemoveAccountList")
+                        @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function() {
+            $("form").each(function() {
+                var $form = $(this);
+                $form.find("input[type='button']").click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: $form.attr("action"),
+                        data: $form.serialize(),
+                        success: function(data) {
+                            alert(data.result);
+                        }
+                    });
+                });
+            });
+        })
+    </script>
 }

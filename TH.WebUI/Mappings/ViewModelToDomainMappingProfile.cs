@@ -68,6 +68,8 @@ namespace TH.WebUI.Mappings
             Mapper.CreateMap<PostCreateViewModel, Post>();
             Mapper.CreateMap<PostEditViewModel, Post>();
             Mapper.CreateMap<CommentFormViewModel, Comment>();
+
+            Mapper.CreateMap<UserInfoViewModel, User>();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -132,7 +133,7 @@ namespace TH.WebUI.Controllers
 
         //
         // GET: /Account/Manage
-        public ActionResult Manage(ManageMessageId? message)
+        public async Task<ViewResult> Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "你的密码已更改。"
@@ -142,6 +143,11 @@ namespace TH.WebUI.Controllers
                 : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            ViewBag.UserInfo = Mapper.Map<User, UserInfoViewModel>(user);
+            ViewBag.WealthValue = user.WealthValue;
+
             return View();
         }
 
@@ -196,6 +202,47 @@ namespace TH.WebUI.Controllers
             return View(model);
         }
 
+        //
+        // POST: /Account/Recharge
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Recharge(RechargeViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (model.WealthValue > 0)
+                {
+                    user.WealthValue += model.WealthValue;
+                    var result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        return Json(new {result = "succeeded"});
+                    }
+                }
+            }
+            return Json(new {result = "Err"});
+        }
+
+        //
+        // POST: /Account/Recharge
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> BaseInfo(UserInfoViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                Mapper.Map<UserInfoViewModel, User>(model, user);
+                var result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return Json(new { result = "succeeded" });
+                }
+
+            }
+            return Json(new { result = "Err" });
+        }
 
         //
         // GET: /Account/BeforePasswordReset

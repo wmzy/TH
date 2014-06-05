@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace TH.WebUI.ViewModels
 {
@@ -93,5 +94,37 @@ namespace TH.WebUI.ViewModels
 
 
         public string UserId { get; set; }
+    }
+
+    public class UserInfoViewModel
+    {
+        [Display(Name = "姓名")]
+        public string RealName { get; set; }
+        [Display(Name = "QQ号码")]
+        public string QQ { get; set; }
+        [Display(Name = "电话号")]
+        public string Phone { get; set; }
+        [Display(Name = "手机号")]
+        public string MobilePhone { get; set; }
+        [Required]
+        [Display(Name = "E-mail 地址")]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Display(Name = "住址")]
+        public string Address { get; set; }
+        [Display(Name = "城市")]
+        public string City { get; set; }
+        [Display(Name = "生日")]
+        public DateTime? Birthday { get; set; }
+        [Display(Name = "性别")]
+        public string Sex { get; set; }
+        [Display(Name = "个人简介")]
+        public string AboutMe { get; set; }
+    }
+    public class RechargeViewModel
+    {
+        [Required]
+        [Display(Name = "购买财富值量")]
+        public int WealthValue { get; set; }
     }
 }

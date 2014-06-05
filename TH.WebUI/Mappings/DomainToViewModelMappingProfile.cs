@@ -89,6 +89,7 @@ namespace TH.WebUI.Mappings
             Mapper.CreateMap<InfoBase, InfoViewModel>();
             Mapper.CreateMap<InfoBase, SettlementViewModel>();
 
+            Mapper.CreateMap<User, UserInfoViewModel>();
         }
     }
 }

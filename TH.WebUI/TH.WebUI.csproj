@@ -87,6 +87,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.QQ">
+      <HintPath>..\packages\Microsoft.Owin.Security.QQ.0.1.2\lib\Microsoft.Owin.Security.QQ.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Mvc.Mailer">
       <HintPath>..\packages\MvcMailer.4.5\lib\45\Mvc.Mailer.dll</HintPath>
@@ -4016,6 +4019,8 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\PasswordResetCompleted.cshtml" />
     <Content Include="Views\Shared\Message.cshtml" />
+    <Content Include="Views\Account\_BaseInfoPartial.cshtml" />
+    <Content Include="Views\Account\_RechargePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

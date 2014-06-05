@@ -21,16 +21,16 @@ namespace TH.WebUI.Mailers
 			});
 		}
  
-		public virtual MvcMailMessage PasswordReset(string userId, string email, string token)
+		public virtual MvcMailMessage PasswordReset(string userId, string userName, string email, string token)
 		{
 		    ViewData["Title"] = "重置密码";
-		    ViewData["userName"] = "ww";
+            ViewData["userName"] = userName;
 		    ViewData["token"] = token;
 		    ViewData["userId"] = userId;
             
 			return Populate(x =>
 			{
-                x.Subject = "[天鸿路桥信息网]找回您的帐户密码";
+                x.Subject = "天鸿路桥信息网-找回您的帐户密码";
 				x.ViewName = "PasswordReset";
                 x.To.Add(email);
 			});

@@ -5,6 +5,6 @@ namespace TH.WebUI.Mailers
     public interface IUserMailer
     {
 			MvcMailMessage Welcome();
-            MvcMailMessage PasswordReset(string userId, string email, string token);
+            MvcMailMessage PasswordReset(string userId, string userName, string email, string token);
 	}
 }

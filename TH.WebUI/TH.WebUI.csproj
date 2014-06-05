@@ -188,6 +188,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DependencyResolverConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\HitCounters.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="ViewModels\JobViewModels.cs" />
     <Compile Include="ViewModels\MachineViewModels.cs" />
     <Compile Include="ViewModels\ManageInfoViewModels.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\OtherInfoViewModels.cs" />
     <Compile Include="ViewModels\PostViewModels.cs" />
     <Compile Include="ViewModels\ProjectViewModels.cs" />
@@ -266,7 +268,6 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\selectize.bootstrap3.css" />
     <Content Include="favicon.ico" />
-    <Content Include="favicon_.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -4013,6 +4014,8 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\PasswordReset.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\PasswordResetCompleted.cshtml" />
+    <Content Include="Views\Shared\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

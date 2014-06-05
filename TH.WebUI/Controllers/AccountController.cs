@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using TH.Model;
 using TH.Repositories;
@@ -21,17 +23,26 @@ namespace TH.WebUI.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<User>(new UserStore<User>(new THDbContext())))
         {
         }
 
-        public AccountController(UserManager<User> userManager)
+        public AccountController(THUserManager userManager)
         {
-            UserManager = userManager;
+            _userManager = userManager;
         }
 
-        public UserManager<User> UserManager { get; private set; }
-
+        private THUserManager _userManager;
+        public THUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<THUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -215,19 +226,25 @@ namespace TH.WebUI.Controllers
                 {
                     //send the email
                     IUserMailer mailer = new UserMailer();
-                    await mailer.PasswordReset(user.Id, user.Email, token).SendAsync();
+                    mailer.PasswordReset(user.Id, user.UserName, user.Email, token).SendAsync();
                 }
             }
 
-            return RedirectToAction("PasswordReset", new { token = string.Empty, message = "We have sent a password reset request if the email is verified." });
+            return View("Message", new MessageViewModel { Title = "", Message = "我们已经将重置密码的连接发送到了您的邮箱，请在有效期内查收。" });
         }
 
         //
         // GET: /Account/PasswordReset
         [AllowAnonymous]
-        public ActionResult PasswordReset(string message)
+        public ActionResult PasswordReset(string userId, string token)
         {
-            ViewBag.StatusMessage = message ?? "";
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return View("Message", new MessageViewModel { Title = "重置密码的连接已过期", Message = "重置密码的连接已过期。" });
+            }
+
+            ViewData["UserId"] = userId;
+            ViewData["Token"] = token;
             return View();
         }
 
@@ -242,7 +259,7 @@ namespace TH.WebUI.Controllers
             {
                 string message = null;
                 //reset the password
-                var result = await UserManager.ResetPasswordAsync(model.Token, model.Token, model.Password);
+                var result = await UserManager.ResetPasswordAsync(model.UserId, model.Token, model.Password);
                 if (result.Succeeded)
                 {
                     message = "The password has been reset.";

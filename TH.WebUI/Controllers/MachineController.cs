@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /Machine/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<MachineIndexViewModel> machines = _machineService.Get(pageIndex, pageSize, out recordCount).Project().To<MachineIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var machinesPage = _machineService.Get()
+                .Project().To<MachineIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(machines);
+            return View(machinesPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             Machine machine = _machineService.GetById(id);
             var machineDetails = Mapper.Map<Machine, MachineDetailsViewModel>(machine);
-            
+
             return View(machineDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _machineService.Create(machine);
 
-            return RedirectToAction("Details", new { id = machine.Id });
+            return RedirectToAction("Settlement", new { id = machine.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var machine = _machineService.GetById(id);
+            var model = Mapper.Map<Machine, SettlementViewModel>(machine);
+            model.WealthValue = machine.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var machine = _machineService.GetById(id);
+            if (machine.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (machine.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (machine.ValidDate == null || ((DateTime)machine.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                machine.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                machine.ValidDate = ((DateTime)machine.ValidDate).AddDays(delayDays);
+            }
+            machine.Publisher.WealthValue -= 1 * delayDays;
+            _machineService.Update(machine);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var machineEdit = Mapper.Map<Machine, MachineEditViewModel>(machine);
-            
+
             return View(machineEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, machine);
-            
+
             _machineService.Update(machine);
 
             return RedirectToAction("Details", new { id = machine.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _machineService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

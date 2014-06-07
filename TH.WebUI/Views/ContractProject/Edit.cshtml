@@ -1,8 +1,70 @@
 ﻿@model TH.WebUI.ViewModels.ContractProjectEditViewModel
-
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Edit";
 }
 
-<h2>title</h2>
+@section Styles {
+    @Styles.Render("~/Content/selectize")
+}
+
+<h2>修改招聘信息</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>修改招聘信息</legend>
+        @Html.HiddenFor(m => m.Id)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "一个吸引人的标题" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Company)
+            @Html.TextBoxFor(m => m.Company, new { @class = "form-control", placeholder = "企业或经营个体" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content)
+            @Html.TextBoxFor(m => m.Content, new { @class = "selectize", placeholder = "承揽工程内容", data_create = "true", data_options = "管理,工人;公司总经理:公司副总经理:会计:出纳:项目经理:项目副经理:项目总工:人力专员:行政专员:技术员:工程部长:试验检测工程师:试验员:安全员:领工员:测量员:资料员:后勤管理:造价师:预算员:总监:监理员:园林景观设计:市政技术员:市政工程师:给排水设计师,电工:泥瓦工:砌石工:振捣工:木工:钢筋工:焊工:张拉工:拌和站操作工:机械修理工:汽修工:力工:小车司机:挖掘机司机:装载机司机:平地机司机:推土机司机:压路机司机:架桥机操作工:自卸车司机:吊车司机:摊铺机司机:厨师" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConstructionExperience)
+            @Html.TextBoxFor(m => m.ConstructionExperience, new { @class = "form-control", placeholder = "施工经验", type = "number" })
+            @Html.ValidationMessageFor(m => m.ConstructionExperience)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Performance)
+            @Html.TextBoxFor(m => m.Performance, new { @class = "selectize", placeholder = "以往业绩", data_create = "true", data_options = "呼和浩特:阿拉善盟:巴彦淖尔市:鄂尔多斯市:包头市:乌兰察布市:锡林郭勒盟:赤峰市:通辽市:兴安盟:呼伦贝尔市" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Introduction)
+            @Html.TextAreaFor(m => m.Introduction, new { @class = "form-control", placeholder = "企业或个人简介" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ContactPerson)
+            @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", placeholder = "联系人" })
+            @Html.ValidationMessageFor(m => m.ContactPerson)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telephones)
+            @Html.TextBoxFor(m => m.Telephones, new { @class = "form-control", placeholder = "联系电话，多个电话用 , 分隔" })
+            @Html.ValidationMessageFor(m => m.Telephones)
+        </div>
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/selectize")
+}
+
+
+
+

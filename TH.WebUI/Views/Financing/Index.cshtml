@@ -1,0 +1,48 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<TH.WebUI.ViewModels.FinancingIndexViewModel>
+
+@{
+    ViewBag.Title = "招聘";
+}
+@section Styles{
+    @Styles.Render("~/Content/PageList")
+}
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>招聘信息</h2></div>
+    <div class="panel-body">
+        <p>...</p>
+    </div>
+    <ul class="list-group">
+        @foreach (var j in Model)
+{
+    <li class="list-group-item">
+        <a href="@Url.Action("Details", new { id = j.Id })" target="_blank" data-original-title="
+            <h4>@j.Title</h4>
+            <ul class='list-unstyled'>
+                <li>企业名称:@j.CompanyName</li>
+                <li>融资范围:@j.Range</li>
+                <li>贷款条件:@j.Condition</li>
+                <li>贷款额度:@j.Quota</li>
+                <li>利息:@j.Interest</li>
+                <li>发布时间:@j.CreateDate</li>
+            </ul>">
+            @j.Title
+        </a>
+    </li>
+}
+    </ul>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { pageIndex = page }))
+<p>
+    @Html.ActionLink("我要发布", "Create", null, new { @class = "btn btn-primary" })
+</p>
+@section scripts
+{
+    <script type="text/javascript">
+        $("a").tooltip({
+            placement: "right",
+            html: true
+        });
+    </script>
+}

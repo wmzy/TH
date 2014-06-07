@@ -4021,6 +4021,69 @@
     <Content Include="Views\Shared\Message.cshtml" />
     <Content Include="Views\Account\_BaseInfoPartial.cshtml" />
     <Content Include="Views\Account\_RechargePartial.cshtml" />
+    <Content Include="Views\BuildingMaterial\Index.cshtml" />
+    <Content Include="Views\UseMachine\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\UseEquipment\Index.cshtml" />
+    <Content Include="Views\RequireDetection\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\RequireCredential\Index.cshtml" />
+    <Content Include="Views\OtherInfo\Index.cshtml" />
+    <Content Include="Views\Machine\Index.cshtml" />
+    <Content Include="Views\Financing\Index.cshtml" />
+    <Content Include="Views\Equipment\Index.cshtml" />
+    <Content Include="Views\Detection\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\Credential\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\BuyBuildingMaterial\Index.cshtml">
+      <SubType>
+      </SubType>
+    </Content>
+    <Content Include="Views\Machine\Create.cshtml" />
+    <Content Include="Views\Machine\Details.cshtml" />
+    <Content Include="Views\Machine\Edit.cshtml" />
+    <Content Include="Views\OtherInfo\Create.cshtml" />
+    <Content Include="Views\OtherInfo\Details.cshtml" />
+    <Content Include="Views\OtherInfo\Edit.cshtml" />
+    <Content Include="Views\RequireCredential\Create.cshtml" />
+    <Content Include="Views\RequireCredential\Details.cshtml" />
+    <Content Include="Views\RequireCredential\Edit.cshtml" />
+    <Content Include="Views\RequireDetection\Create.cshtml" />
+    <Content Include="Views\RequireDetection\Details.cshtml" />
+    <Content Include="Views\RequireDetection\Edit.cshtml" />
+    <Content Include="Views\UseEquipment\Create.cshtml" />
+    <Content Include="Views\UseEquipment\Details.cshtml" />
+    <Content Include="Views\UseEquipment\Edit.cshtml" />
+    <Content Include="Views\UseMachine\Create.cshtml" />
+    <Content Include="Views\UseMachine\Details.cshtml" />
+    <Content Include="Views\UseMachine\Edit.cshtml" />
+    <Content Include="Views\Financing\Create.cshtml" />
+    <Content Include="Views\Financing\Details.cshtml" />
+    <Content Include="Views\Financing\Edit.cshtml" />
+    <Content Include="Views\Equipment\Create.cshtml" />
+    <Content Include="Views\Equipment\Details.cshtml" />
+    <Content Include="Views\Equipment\Edit.cshtml" />
+    <Content Include="Views\Detection\Create.cshtml" />
+    <Content Include="Views\Detection\Details.cshtml" />
+    <Content Include="Views\Detection\Edit.cshtml" />
+    <Content Include="Views\Credential\Create.cshtml" />
+    <Content Include="Views\Credential\Details.cshtml" />
+    <Content Include="Views\Credential\Edit.cshtml" />
+    <Content Include="Views\BuyBuildingMaterial\Create.cshtml" />
+    <Content Include="Views\BuyBuildingMaterial\Details.cshtml" />
+    <Content Include="Views\BuyBuildingMaterial\Edit.cshtml" />
+    <Content Include="Views\BuildingMaterial\Create.cshtml" />
+    <Content Include="Views\BuildingMaterial\Details.cshtml" />
+    <Content Include="Views\BuildingMaterial\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

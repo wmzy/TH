@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /UseEquipment/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<UseEquipmentIndexViewModel> useEquipments = _useEquipmentService.Get(pageIndex, pageSize, out recordCount).Project().To<UseEquipmentIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var useEquipmentsPage = _useEquipmentService.Get()
+                .Project().To<UseEquipmentIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(useEquipments);
+            return View(useEquipmentsPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             UseEquipment useEquipment = _useEquipmentService.GetById(id);
             var useEquipmentDetails = Mapper.Map<UseEquipment, UseEquipmentDetailsViewModel>(useEquipment);
-            
+
             return View(useEquipmentDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _useEquipmentService.Create(useEquipment);
 
-            return RedirectToAction("Details", new { id = useEquipment.Id });
+            return RedirectToAction("Settlement", new { id = useEquipment.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var useEquipment = _useEquipmentService.GetById(id);
+            var model = Mapper.Map<UseEquipment, SettlementViewModel>(useEquipment);
+            model.WealthValue = useEquipment.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var useEquipment = _useEquipmentService.GetById(id);
+            if (useEquipment.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (useEquipment.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (useEquipment.ValidDate == null || ((DateTime)useEquipment.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                useEquipment.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                useEquipment.ValidDate = ((DateTime)useEquipment.ValidDate).AddDays(delayDays);
+            }
+            useEquipment.Publisher.WealthValue -= 1 * delayDays;
+            _useEquipmentService.Update(useEquipment);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var useEquipmentEdit = Mapper.Map<UseEquipment, UseEquipmentEditViewModel>(useEquipment);
-            
+
             return View(useEquipmentEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, useEquipment);
-            
+
             _useEquipmentService.Update(useEquipment);
 
             return RedirectToAction("Details", new { id = useEquipment.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _useEquipmentService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

@@ -2,43 +2,29 @@
     ViewBag.Title = "首页";
 }
 <div class="jumbotron">
-    <h1>Hello, world!</h1>
-    <ul>
-        <li class="one">
-            @Html.ActionLink("招聘", "Index", "Job");
-            @Html.ActionLink("求职", "Index", "JobHunting");
-        </li>
-        <li class="two">
-            @Html.ActionLink("工程招标、发包工程", "");
-            @Html.ActionLink("承揽工程", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("出租、出售工程机械", "");
-            @Html.ActionLink("求租、求购工程机械", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("出租、出售工程设备及小型机具", "");
-            @Html.ActionLink("求租、求购工程设备及小型机具", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("出售建筑材料", "");
-            @Html.ActionLink("求购建筑材料", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("试验、检测", "");
-            @Html.ActionLink("寻找试验、检测资质单位", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("聘用证件持有人（兼职）", "");
-            @Html.ActionLink("证件注册、挂靠", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("融资、贷款", "");
-        </li>
-        <li class="two">
-            @Html.ActionLink("相关供求信息", "");
-        </li>
-    </ul>
+    <h1>天鸿路桥信息网</h1>
+    <p>
+        天鸿路桥信息网专注于路桥行业的信息服务，提供内蒙地区路桥行业的全方位信息服务。
+    </p>
+    <p>
+        在这里您可以为您的项目寻找可靠的 @Html.ActionLink("人才", "Index", "JobHunting")、便利的
+        @Html.ActionLink("机械", "Index", "Machine")、@Html.ActionLink("机具", "Index", "Equipment")，以及丰富的
+        @Html.ActionLink("建材", "Index", "BuildingMaterial")。您也可以为您的工程项目
+        @Html.ActionLink("招标", "Create", "Project")或者寻找 @Html.ActionLink("资金", "Index", "Financing")
+    </p>
+    <p>
+        当然，如果您想找一份路桥行业相关的工作，或者通过我们的平台提供一些相关服务，您也可以享受到我们的便利，比如
+        @Html.ActionLink("证件挂靠", "Create", "RequireCredential")、@Html.ActionLink("项目检测", "Index", "Detection")等。
+    </p>
+    <p>
+        如果想参与行业间的互动与交流，您还可以访问我们的 @Html.ActionLink("论坛", "Index", "Bbs")。
+    </p>
+    <p>
+        如果您还没有加入我们，点击下面的按钮注册吧！
+    </p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Register", "Account")" role="button">注册</a>
+    </p>
 </div>
 <div class="content-block">
     <!-- Nav tabs -->

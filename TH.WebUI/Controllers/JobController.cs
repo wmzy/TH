@@ -147,5 +147,10 @@ namespace TH.WebUI.Controllers
             _jobService.OwnerDelete(User.Identity.GetUserId(), id);
             return Json(new { result = "Success" });
         }
+
+        public ActionResult Filter()
+        {
+            return View();
+        }
     }
 }

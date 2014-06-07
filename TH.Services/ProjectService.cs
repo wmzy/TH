@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TH.Model;
 using TH.Repositories;
 using TH.Repositories.Infrastructure;
@@ -12,27 +11,45 @@ namespace TH.Services
 {
     public interface IProjectService : IService
     {
+        IQueryable<Project> Get(int pageIndex, int pageSize, out int recordCount);
+        IQueryable<Project> Get();
+
+        Project GetById(int id);
+        IQueryable<Project> GetByUserId(string userId);
 
         void Create(Project project);
 
-        Project GetById(int id);
-
-        void OwnerDelete(string p, int id);
-
         void Update(Project project);
 
-        IQueryable<Project> Get();
-
-        IQueryable<Project> Get(int pageIndex, int pageSize, out int recordCount);
+        void OwnerDelete(string ownerId, int id);
     }
     public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public ProjectService(IProjectRepository prejectRepository, IUnitOfWork unitOfWork)
+        public ProjectService(IProjectRepository projectRepository, IUnitOfWork unitOfWork)
         {
-            _projectRepository = prejectRepository;
+            _projectRepository = projectRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        public Project GetById(int id)
+        {
+            return _projectRepository.Get(m => m.Id == id).FirstOrDefault();
+        }
+        public IQueryable<Project> Get(int pageIndex, int pageSize, out int recordCount)
+        {
+            recordCount = _projectRepository.Count(m => true);
+            return _projectRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
+        }
+        public IQueryable<Project> Get()
+        {
+            return _projectRepository.Get().OrderByDescending(j => j.CreateDate);
+        }
+
+        public IQueryable<Project> GetByUserId(string userId)
+        {
+            return _projectRepository.Get(j => j.Publisher.Id == userId);
         }
 
         public void Create(Project project)
@@ -41,32 +58,22 @@ namespace TH.Services
             _unitOfWork.Commit();
         }
 
-        public Project GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OwnerDelete(string p, int id)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public void Update(Project project)
         {
-            throw new NotImplementedException();
+            _projectRepository.Update(project);
+            _unitOfWork.Commit();
         }
 
-
-        public IQueryable<Project> Get()
+        public void OwnerDelete(string ownerId, int id)
         {
-            throw new NotImplementedException();
-        }
+            var project = GetById(id);
 
-
-        public IQueryable<Project> Get(int pageIndex, int pageSize, out int recordCount)
-        {
-            throw new NotImplementedException();
+            if (project != null && project.PublisherId == ownerId)
+            {
+                _projectRepository.Delete(project);
+                _unitOfWork.Commit();
+            }
         }
     }
 }

@@ -16,6 +16,6 @@ namespace TH.Model
         public string Manufacturer { get; set; }    //生产厂家
         public string Location { get; set; }    //经销厂址
         public string Price { get; set; }    //价格
-        public string Image { get; set; }    //机械图片
+        public string Image { get; set; }    //建筑材料图片
     }
 }

@@ -1,0 +1,70 @@
+﻿@model UseMachineCreateViewModel
+@using TH.WebUI.ViewModels
+
+@{
+    ViewBag.Title = "发布招聘信息";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/selectize")
+}
+
+<h2>发布招聘信息</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>发布招聘信息</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class="form-control", placeholder = "一个吸引人的标题" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "selectize", placeholder = "机械名称", data_create = "true", data_options = "挖掘机:装载机:平地机:自卸车:推土机:振动压路机:沥青混凝土摊铺机:水泥混凝土摊铺机:双钢轮压路机:胶轮压路机:羊角碾:冲击压路机:拖振:拖板车:胶轮挖掘机:洒水车:油罐车:加油车:吊车:混凝土罐车:混凝土泵车:架桥机:滑模机:铣刨机:钎孔钻:冲击钻:旋挖钻机:循环钻机:碎石桩机:水泥混凝土拌和机:沥青混凝土拌和站:灰土拌和站:发电机组:破碎锤:沥青洒布车:运梁车" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Model)
+            @Html.TextBoxFor(m => m.Model, new { @class = "selectize", placeholder = "型号", data_create = "true", data_options = "挖掘机,装载机,平地机,自卸车,推土机,振动压路机,混凝土罐车;50-100:100-200:200-250:250-300:300-400:400-500:500-600:600-700:700-1000,30以下:30:30-50:50:50以上,160以下:py160,py160-py180:py180:py180以上,5方—10方:10方-15方:15方-20方:20方-25方:25方以上,50-100马力:100-200马力:200-300马力:300-400马力,5吨以下:5-10吨:10-15吨:15-20吨:20吨-30吨:30吨以上,5方以下:5方:6方:7方:8方:9方:10方:12方:12方以上" })
+            @Html.ValidationMessageFor(m => m.Model)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Condition)
+            @Html.TextBoxFor(m => m.Condition, new { @class = "selectize", placeholder = "新旧程度或出场日期", data_options = "一成:二成:三成:四成:五成:六成:七成:八成:九成:最近15年" })
+            @Html.ValidationMessageFor(m => m.Condition)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Location)
+            @Html.TextBoxFor(m => m.Location, new { @class = "selectize", placeholder = "机械使用位置", data_create = "true", data_options = "呼和浩特:阿拉善盟:巴彦淖尔市:鄂尔多斯市:包头市:乌兰察布市:锡林郭勒盟:赤峰市:通辽市:兴安盟:呼伦贝尔市" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Duration)
+            @Html.TextBoxFor(m => m.Duration, new { @class = "selectize", placeholder = "使用时长", data_options = "10天以下:10天-20天:20-30天:1个月-2个月:2个月-3个月:3个月以上" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.UseWay)
+            @Html.TextBoxFor(m => m.UseWay, new { @class = "selectize", placeholder = "使用方式: 购买/租用", data_options = "购买:租用" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ContactPerson)
+            @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", placeholder = "联系人" })
+            @Html.ValidationMessageFor(m => m.ContactPerson)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telephones)
+            @Html.TextBoxFor(m => m.Telephones, new { @class = "form-control", placeholder = "联系电话，多个电话用 , 分隔" })
+            @Html.ValidationMessageFor(m => m.Telephones)
+        </div>
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+</fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/selectize")
+}

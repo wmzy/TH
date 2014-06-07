@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /BuyBuildingMaterial/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<BuyBuildingMaterialIndexViewModel> buyBuildingMaterials = _buyBuildingMaterialService.Get(pageIndex, pageSize, out recordCount).Project().To<BuyBuildingMaterialIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var buyBuildingMaterialsPage = _buyBuildingMaterialService.Get()
+                .Project().To<BuyBuildingMaterialIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(buyBuildingMaterials);
+            return View(buyBuildingMaterialsPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             BuyBuildingMaterial buyBuildingMaterial = _buyBuildingMaterialService.GetById(id);
             var buyBuildingMaterialDetails = Mapper.Map<BuyBuildingMaterial, BuyBuildingMaterialDetailsViewModel>(buyBuildingMaterial);
-            
+
             return View(buyBuildingMaterialDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _buyBuildingMaterialService.Create(buyBuildingMaterial);
 
-            return RedirectToAction("Details", new { id = buyBuildingMaterial.Id });
+            return RedirectToAction("Settlement", new { id = buyBuildingMaterial.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var buyBuildingMaterial = _buyBuildingMaterialService.GetById(id);
+            var model = Mapper.Map<BuyBuildingMaterial, SettlementViewModel>(buyBuildingMaterial);
+            model.WealthValue = buyBuildingMaterial.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var buyBuildingMaterial = _buyBuildingMaterialService.GetById(id);
+            if (buyBuildingMaterial.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (buyBuildingMaterial.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (buyBuildingMaterial.ValidDate == null || ((DateTime)buyBuildingMaterial.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                buyBuildingMaterial.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                buyBuildingMaterial.ValidDate = ((DateTime)buyBuildingMaterial.ValidDate).AddDays(delayDays);
+            }
+            buyBuildingMaterial.Publisher.WealthValue -= 1 * delayDays;
+            _buyBuildingMaterialService.Update(buyBuildingMaterial);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var buyBuildingMaterialEdit = Mapper.Map<BuyBuildingMaterial, BuyBuildingMaterialEditViewModel>(buyBuildingMaterial);
-            
+
             return View(buyBuildingMaterialEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, buyBuildingMaterial);
-            
+
             _buyBuildingMaterialService.Update(buyBuildingMaterial);
 
             return RedirectToAction("Details", new { id = buyBuildingMaterial.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _buyBuildingMaterialService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

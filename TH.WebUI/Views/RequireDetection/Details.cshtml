@@ -1,0 +1,27 @@
+﻿@using AutoMapper.Internal
+@model TH.WebUI.ViewModels.RequireDetectionDetailsViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article>
+    <h2>@Model.Title</h2>
+    <h3>发布于 @Model.CreateDate</h3>
+    <section>
+        <h3>基本信息</h3>
+        <ul>
+            <li>工程项目名称: @Model.Name</li>
+            <li>需要的资质等级: @Model.QualificationGrade</li>
+            <li>检测地址: @Model.Location</li>
+            <li>需要试验、检测的项目: @Model.Item</li>
+            <li>试验、检测内容: @Model.Contents</li>
+        </ul>
+        <h3>联系方式</h3>
+        <ul>
+            <li>联系人: @Model.ContactPerson</li>
+            <li>联系电话: @Model.Telephones</li>
+        </ul>
+    </section>
+</article>
+

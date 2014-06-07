@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /Financing/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<FinancingIndexViewModel> financings = _financingService.Get(pageIndex, pageSize, out recordCount).Project().To<FinancingIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var financingsPage = _financingService.Get()
+                .Project().To<FinancingIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(financings);
+            return View(financingsPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             Financing financing = _financingService.GetById(id);
             var financingDetails = Mapper.Map<Financing, FinancingDetailsViewModel>(financing);
-            
+
             return View(financingDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _financingService.Create(financing);
 
-            return RedirectToAction("Details", new { id = financing.Id });
+            return RedirectToAction("Settlement", new { id = financing.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var financing = _financingService.GetById(id);
+            var model = Mapper.Map<Financing, SettlementViewModel>(financing);
+            model.WealthValue = financing.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var financing = _financingService.GetById(id);
+            if (financing.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (financing.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (financing.ValidDate == null || ((DateTime)financing.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                financing.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                financing.ValidDate = ((DateTime)financing.ValidDate).AddDays(delayDays);
+            }
+            financing.Publisher.WealthValue -= 1 * delayDays;
+            _financingService.Update(financing);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var financingEdit = Mapper.Map<Financing, FinancingEditViewModel>(financing);
-            
+
             return View(financingEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, financing);
-            
+
             _financingService.Update(financing);
 
             return RedirectToAction("Details", new { id = financing.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _financingService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

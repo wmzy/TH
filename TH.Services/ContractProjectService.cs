@@ -1,5 +1,7 @@
-﻿using System.Linq;
-using System.Linq.Expressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using TH.Model;
 using TH.Repositories;
 using TH.Repositories.Infrastructure;
@@ -10,13 +12,16 @@ namespace TH.Services
     public interface IContractProjectService : IService
     {
         IQueryable<ContractProject> Get(int pageIndex, int pageSize, out int recordCount);
+        IQueryable<ContractProject> Get();
         ContractProject GetById(int id);
         IQueryable<ContractProject> GetByUserId(string userId);
+
         void Create(ContractProject contractProject);
+
         void Update(ContractProject contractProject);
+
         void OwnerDelete(string ownerId, int id);
     }
-
     public class ContractProjectService : IContractProjectService
     {
         private readonly IContractProjectRepository _contractProjectRepository;
@@ -27,19 +32,23 @@ namespace TH.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IQueryable<ContractProject> Get(int pageIndex, int pageSize, out int recordCount)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public ContractProject GetById(int id)
         {
-            return _contractProjectRepository.Get(cp => cp.Id == id).FirstOrDefault();
+            return _contractProjectRepository.Get(m => m.Id == id).FirstOrDefault();
+        }
+        public IQueryable<ContractProject> Get(int pageIndex, int pageSize, out int recordCount)
+        {
+            recordCount = _contractProjectRepository.Count(m => true);
+            return _contractProjectRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
+        }
+        public IQueryable<ContractProject> Get()
+        {
+            return _contractProjectRepository.Get().OrderByDescending(j => j.CreateDate);
         }
 
         public IQueryable<ContractProject> GetByUserId(string userId)
         {
-            throw new System.NotImplementedException();
+            return _contractProjectRepository.Get(j => j.Publisher.Id == userId);
         }
 
         public void Create(ContractProject contractProject)
@@ -48,13 +57,22 @@ namespace TH.Services
             _unitOfWork.Commit();
         }
 
+
         public void Update(ContractProject contractProject)
         {
-            throw new System.NotImplementedException();
+            _contractProjectRepository.Update(contractProject);
+            _unitOfWork.Commit();
         }
 
         public void OwnerDelete(string ownerId, int id)
         {
+            var contractProject = GetById(id);
+
+            if (contractProject != null && contractProject.PublisherId == ownerId)
+            {
+                _contractProjectRepository.Delete(contractProject);
+                _unitOfWork.Commit();
+            }
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿@using AutoMapper.Internal
+@model TH.WebUI.ViewModels.EquipmentDetailsViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article>
+    <h2>@Model.Title</h2>
+    <h3> 发布于 @Model.CreateDate</h3>
+    <section>
+        <h3>基本信息</h3>
+        <ul>
+            <li>设备名称: @Model.Name</li>
+            <li>型号: @Model.Model</li>
+            <li>设备所在位置: @Model.Location</li>
+            <li>新旧程度或出场日期: @Model.Condition</li>
+            <li>生产厂家: @Model.Manufacturer</li>
+            <li>售价或租金: @Model.Price</li>
+            <li>服务方式: @Model.ServiceWay</li>
+        </ul>
+        <h3>机械图片</h3>
+        <p>
+            @Model.Image
+        </p>
+        <h3>联系方式</h3>
+        <ul>
+            <li>联系人: @Model.ContactPerson</li>
+            <li>联系电话: @Model.Telephones</li>
+        </ul>
+    </section>
+</article>
+

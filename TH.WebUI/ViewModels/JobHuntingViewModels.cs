@@ -16,9 +16,8 @@ namespace TH.WebUI.ViewModels
         public string Name { get; set; }//姓名	
         public string Nation { get; set; }//民族	
         public int? Age { get; set; }    //年龄	
-        public int? WorkYears { get; set; }    //工作年限	
+        public string WorkYears { get; set; }    //工作年限	
         public string Education { get; set; }    //学历	
-        public string WorkExperience { get; set; }    //工作经验	
         public string Job { get; set; }    //求职岗位	
     }
 
@@ -40,13 +39,11 @@ namespace TH.WebUI.ViewModels
         [DisplayName("年龄")]
         public int? Age { get; set; }       //年龄
         [DisplayName("工作年限")]
-        public int? WorkYears { get; set; }    //工作年限
-        [UIHint("ChosenEducationRequire")]
+        public string WorkYears { get; set; }    //工作年限
         [DisplayName("学历")]
         public string Education { get; set; }    //学历
         [DisplayName("工作经验")]
         public string WorkExperience { get; set; }    //工作经验
-        [UIHint("ChosenJobName")]
         [DisplayName("求职岗位")]
         public string Job { get; set; }    //求职岗位
         [DisplayName("薪资要求")]
@@ -59,16 +56,15 @@ namespace TH.WebUI.ViewModels
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string City { get; set; }
+        [DisplayName("联系人")]
+        public string ContactPerson { set; get; }    // 联系人
         public DateTime? CreateDate { get; set; }   //发布时间
         public User Publisher { get; set; }     // 发布者
-
         public string Telephones { get; set; }      // 联系电话
-        public int Views { set; get; }      //浏览量
         public string Name { get; set; }    //姓名	
         public string Nation { get; set; }  //民族	
         public int? Age { get; set; }       //年龄	
-        public int? WorkYears { get; set; }     //工作年限	
+        public string WorkYears { get; set; }     //工作年限	
         public string Education { get; set; }    //学历	
         public string WorkExperience { get; set; }    //工作经验
         public string Job { get; set; }    //求职岗位	
@@ -78,7 +74,6 @@ namespace TH.WebUI.ViewModels
 
     public class JobHuntingEditViewModel
     {
-        [UIHint("HiddenInput")]
         [Required]
         public int Id { get; set; }
         [DisplayName("标题")]
@@ -95,13 +90,11 @@ namespace TH.WebUI.ViewModels
         [DisplayName("年龄")]
         public int? Age { get; set; }       //年龄
         [DisplayName("工作年限")]
-        public int? WorkYears { get; set; }    //工作年限
-        [UIHint("ChosenEducationRequire")]
+        public string WorkYears { get; set; }    //工作年限
         [DisplayName("学历")]
         public string Education { get; set; }    //学历
         [DisplayName("工作经验")]
         public string WorkExperience { get; set; }    //工作经验
-        [UIHint("ChosenJobName")]
         [DisplayName("求职岗位")]
         public string Job { get; set; }    //求职岗位
         [DisplayName("薪资要求")]

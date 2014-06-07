@@ -1,0 +1,25 @@
+﻿@using AutoMapper.Internal
+@model TH.WebUI.ViewModels.OtherInfoDetailsViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article>
+    <h2>@Model.Title</h2>
+    <h3>发布于 @Model.CreateDate</h3>
+    <section>
+        <h3>基本信息</h3>
+        <ul>
+            <li>企业或个人名称: @Model.CompanyName</li>
+            <li>供求内容: @Model.Content</li>
+            <li>价格: @Model.Price</li>
+        </ul>
+        <h3>联系方式</h3>
+        <ul>
+            <li>联系人: @Model.ContactPerson</li>
+            <li>联系电话: @Model.Telephones</li>
+        </ul>
+    </section>
+</article>
+

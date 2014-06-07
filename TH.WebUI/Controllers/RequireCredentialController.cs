@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /RequireCredential/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<RequireCredentialIndexViewModel> requireCredentials = _requireCredentialService.Get(pageIndex, pageSize, out recordCount).Project().To<RequireCredentialIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var requireCredentialsPage = _requireCredentialService.Get()
+                .Project().To<RequireCredentialIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(requireCredentials);
+            return View(requireCredentialsPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             RequireCredential requireCredential = _requireCredentialService.GetById(id);
             var requireCredentialDetails = Mapper.Map<RequireCredential, RequireCredentialDetailsViewModel>(requireCredential);
-            
+
             return View(requireCredentialDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _requireCredentialService.Create(requireCredential);
 
-            return RedirectToAction("Details", new { id = requireCredential.Id });
+            return RedirectToAction("Settlement", new { id = requireCredential.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var requireCredential = _requireCredentialService.GetById(id);
+            var model = Mapper.Map<RequireCredential, SettlementViewModel>(requireCredential);
+            model.WealthValue = requireCredential.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var requireCredential = _requireCredentialService.GetById(id);
+            if (requireCredential.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (requireCredential.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (requireCredential.ValidDate == null || ((DateTime)requireCredential.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                requireCredential.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                requireCredential.ValidDate = ((DateTime)requireCredential.ValidDate).AddDays(delayDays);
+            }
+            requireCredential.Publisher.WealthValue -= 1 * delayDays;
+            _requireCredentialService.Update(requireCredential);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var requireCredentialEdit = Mapper.Map<RequireCredential, RequireCredentialEditViewModel>(requireCredential);
-            
+
             return View(requireCredentialEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, requireCredential);
-            
+
             _requireCredentialService.Update(requireCredential);
 
             return RedirectToAction("Details", new { id = requireCredential.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _requireCredentialService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

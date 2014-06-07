@@ -1,0 +1,28 @@
+﻿@using AutoMapper.Internal
+@model TH.WebUI.ViewModels.FinancingDetailsViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article>
+    <h2>@Model.Title</h2>
+    <h3> 发布于 @Model.CreateDate</h3>
+    <section>
+        <h3>基本信息</h3>
+        <ul>
+            <li>企业名称:@Model.CompanyName</li>
+            <li>融资范围:@Model.Range</li>
+            <li>贷款条件:@Model.Condition</li>
+            <li>贷款额度:@Model.Quota</li>
+            <li>利息:@Model.Interest</li>
+            <li>发布时间:@Model.CreateDate</li>
+        </ul>
+        <h3>联系方式</h3>
+        <ul>
+            <li>联系人: @Model.ContactPerson</li>
+            <li>联系电话: @Model.Telephones</li>
+        </ul>
+    </section>
+</article>
+

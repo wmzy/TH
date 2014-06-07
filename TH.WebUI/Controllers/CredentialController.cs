@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /Credential/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<CredentialIndexViewModel> credentials = _credentialService.Get(pageIndex, pageSize, out recordCount).Project().To<CredentialIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var credentialsPage = _credentialService.Get()
+                .Project().To<CredentialIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(credentials);
+            return View(credentialsPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             Credential credential = _credentialService.GetById(id);
             var credentialDetails = Mapper.Map<Credential, CredentialDetailsViewModel>(credential);
-            
+
             return View(credentialDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _credentialService.Create(credential);
 
-            return RedirectToAction("Details", new { id = credential.Id });
+            return RedirectToAction("Settlement", new { id = credential.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var credential = _credentialService.GetById(id);
+            var model = Mapper.Map<Credential, SettlementViewModel>(credential);
+            model.WealthValue = credential.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var credential = _credentialService.GetById(id);
+            if (credential.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (credential.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (credential.ValidDate == null || ((DateTime)credential.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                credential.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                credential.ValidDate = ((DateTime)credential.ValidDate).AddDays(delayDays);
+            }
+            credential.Publisher.WealthValue -= 1 * delayDays;
+            _credentialService.Update(credential);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var credentialEdit = Mapper.Map<Credential, CredentialEditViewModel>(credential);
-            
+
             return View(credentialEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, credential);
-            
+
             _credentialService.Update(credential);
 
             return RedirectToAction("Details", new { id = credential.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _credentialService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

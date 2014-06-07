@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNet.Identity;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace TH.WebUI.Controllers
 {
@@ -23,23 +25,27 @@ namespace TH.WebUI.Controllers
 
         //
         // GET: /JobHunting/
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+
+        [AllowAnonymous]
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-            IEnumerable<JobHuntingIndexViewModel> jobHuntings = _jobHuntingService.Get(pageIndex, pageSize, out recordCount).Project().To<JobHuntingIndexViewModel>().ToList();
+            var jobHuntingsPage = _jobHuntingService.Get()
+                .Project().To<JobHuntingIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
-            ViewData["recordCount"] = recordCount;
-
-            return View(jobHuntings);
+            //
+            return View(jobHuntingsPage);
         }
 
         //
-        // GET: /JobHunting/Details/5
+        // GET: /JobHunting/Details/{id}
+
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             JobHunting jobHunting = _jobHuntingService.GetById(id);
@@ -48,30 +54,58 @@ namespace TH.WebUI.Controllers
             return View(jobHuntingDetails);
         }
 
-        //
-        // GET: /JobHunting/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /JobHunting/Create
         [HttpPost]
         public ActionResult Create(JobHuntingCreateViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
-            var job = Mapper.Map<JobHuntingCreateViewModel, JobHunting>(model);
 
-            job.PublisherId = User.Identity.GetUserId();
-            job.City = ControllerContext.HttpContext.Request.UserHostAddress;
-            _jobHuntingService.Create(job);
+            var jobHunting = Mapper.Map<JobHuntingCreateViewModel, JobHunting>(model);
 
-            return RedirectToAction("Details", new { id = job.Id });
+            jobHunting.PublisherId = User.Identity.GetUserId();
+            jobHunting.City = ControllerContext.HttpContext.Request.UserHostAddress;
+
+            _jobHuntingService.Create(jobHunting);
+
+            return RedirectToAction("Settlement", new { id = jobHunting.Id });
         }
 
-        //
-        // GET: /JobHunting/Edit/5
+        public ActionResult Settlement(int id)
+        {
+            var jobHunting = _jobHuntingService.GetById(id);
+            var model = Mapper.Map<JobHunting, SettlementViewModel>(jobHunting);
+            model.WealthValue = jobHunting.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var jobHunting = _jobHuntingService.GetById(id);
+            if (jobHunting.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (jobHunting.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (jobHunting.ValidDate == null || ((DateTime)jobHunting.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                jobHunting.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                jobHunting.ValidDate = ((DateTime)jobHunting.ValidDate).AddDays(delayDays);
+            }
+            jobHunting.Publisher.WealthValue -= 1 * delayDays;
+            _jobHuntingService.Update(jobHunting);
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Edit(int id)
         {
             JobHunting jobHunting = _jobHuntingService.GetById(id);
@@ -85,8 +119,6 @@ namespace TH.WebUI.Controllers
             return View(jobHuntingEdit);
         }
 
-        //
-        // POST: /JobHunting/Edit/5
         [HttpPost]
         public ActionResult Edit(JobHuntingEditViewModel model)
         {
@@ -100,7 +132,6 @@ namespace TH.WebUI.Controllers
             {
                 return HttpNotFound();
             }
-
             Mapper.Map(model, jobHunting);
 
             _jobHuntingService.Update(jobHunting);
@@ -108,12 +139,13 @@ namespace TH.WebUI.Controllers
             return RedirectToAction("Details", new { id = jobHunting.Id });
         }
 
-        //
-        // GET: /JobHunting/Delete/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _jobHuntingService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

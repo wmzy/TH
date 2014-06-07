@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNet.Identity;
+using PagedList;
 using TH.Model;
-using TH.Repositories.Infrastructure;
 using TH.Services;
 using TH.WebUI.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace TH.WebUI.Controllers
 {
@@ -24,22 +25,21 @@ namespace TH.WebUI.Controllers
 
         //
         // GET: /ContractProject/
+
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<ContractProjectIndexViewModel> contractProjects = _contractProjectService.Get(pageIndex, pageSize, out recordCount).Project().To<ContractProjectIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var contractProjectsPage = _contractProjectService.Get()
+                .Project().To<ContractProjectIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(contractProjects);
+            return View(contractProjectsPage);
         }
 
         //
@@ -48,9 +48,10 @@ namespace TH.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Details(int id)
         {
-            var contractProject = _contractProjectService.GetById(id);
-            var model = Mapper.Map<ContractProject, ContractProjectDetailsViewModel>(contractProject);
-            return View(model);
+            ContractProject contractProject = _contractProjectService.GetById(id);
+            var contractProjectDetails = Mapper.Map<ContractProject, ContractProjectDetailsViewModel>(contractProject);
+
+            return View(contractProjectDetails);
         }
 
         public ActionResult Create()
@@ -62,14 +63,49 @@ namespace TH.WebUI.Controllers
         public ActionResult Create(ContractProjectCreateViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
-            ContractProject contractProject = Mapper.Map<ContractProjectCreateViewModel, ContractProject>(model);
-            contractProject.City = ControllerContext.HttpContext.Request.UserHostAddress;
+
+            var contractProject = Mapper.Map<ContractProjectCreateViewModel, ContractProject>(model);
+
             contractProject.PublisherId = User.Identity.GetUserId();
+            contractProject.City = ControllerContext.HttpContext.Request.UserHostAddress;
 
             _contractProjectService.Create(contractProject);
 
-            return RedirectToAction("Details", new {id = contractProject.Id});
+            return RedirectToAction("Settlement", new { id = contractProject.Id });
         }
+
+        public ActionResult Settlement(int id)
+        {
+            var contractProject = _contractProjectService.GetById(id);
+            var model = Mapper.Map<ContractProject, SettlementViewModel>(contractProject);
+            model.WealthValue = contractProject.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var contractProject = _contractProjectService.GetById(id);
+            if (contractProject.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (contractProject.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (contractProject.ValidDate == null || ((DateTime)contractProject.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                contractProject.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                contractProject.ValidDate = ((DateTime)contractProject.ValidDate).AddDays(delayDays);
+            }
+            contractProject.Publisher.WealthValue -= 1 * delayDays;
+            _contractProjectService.Update(contractProject);
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Edit(int id)
         {
             ContractProject contractProject = _contractProjectService.GetById(id);
@@ -78,9 +114,9 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
 
-            var jobEdit = Mapper.Map<ContractProject, ContractProjectEditViewModel>(contractProject);
+            var contractProjectEdit = Mapper.Map<ContractProject, ContractProjectEditViewModel>(contractProject);
 
-            return View(jobEdit);
+            return View(contractProjectEdit);
         }
 
         [HttpPost]
@@ -103,10 +139,13 @@ namespace TH.WebUI.Controllers
             return RedirectToAction("Details", new { id = contractProject.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _contractProjectService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
-	}
+    }
 }

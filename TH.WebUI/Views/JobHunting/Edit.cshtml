@@ -1,9 +1,77 @@
-﻿
+﻿@model TH.WebUI.ViewModels.JobHuntingEditViewModel
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-@Html.EditorForModel()
+@section Styles {
+    @Styles.Render("~/Content/selectize")
+}
+
+<h2>修改招聘信息</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>修改招聘信息</legend>
+        @Html.HiddenFor(m => m.Id)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "一个吸引人的标题" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "selectize", placeholder = "姓名", data_create = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nation)
+            @Html.TextBoxFor(m => m.Nation, new { @class = "form-control", placeholder = "民族" })
+            @Html.ValidationMessageFor(m => m.Nation)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Age)
+            @Html.TextBoxFor(m => m.Age, new { @class = "form-control", placeholder = "年龄", type = "number" })
+            @Html.ValidationMessageFor(m => m.Age)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Education)
+            @Html.TextBoxFor(m => m.Education, new { @class = "selectize", placeholder = "学历", data_create = "true", data_options = "呼和浩特:阿拉善盟:巴彦淖尔市:鄂尔多斯市:包头市:乌兰察布市:锡林郭勒盟:赤峰市:通辽市:兴安盟:呼伦贝尔市" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WorkExperience)
+            @Html.TextBoxFor(m => m.WorkExperience, new { @class = "selectize", placeholder = "工作经验", data_options = "小学:初中:高中:技校:中专:大专:本课:硕士:博士:不限" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WorkYears)
+            @Html.TextBoxFor(m => m.WorkYears, new { @class = "selectize", placeholder = "工作年限", data_options = "应届毕业:1—10年:10年以上" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Wage)
+            @Html.TextBoxFor(m => m.Wage, new { @class = "selectize", placeholder = "薪资范围", data_options = "1000-2000元:2000-3000元:3000-4000元:4000-5000元:5000-8000元:8000-10000元:10000-15000元:15000以上:面议" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Introduction)
+            @Html.TextAreaFor(m => m.Introduction, new { @class = "form-control", placeholder = "个人简介" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telephones)
+            @Html.TextBoxFor(m => m.Telephones, new { @class = "form-control", placeholder = "联系电话，多个电话用 , 分隔" })
+            @Html.ValidationMessageFor(m => m.Telephones)
+        </div>
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/selectize")
+}
+
+
+
 

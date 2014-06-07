@@ -1,0 +1,72 @@
+﻿@model TH.WebUI.ViewModels.BuildingMaterialEditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/selectize")
+}
+
+<h2>修改招聘信息</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>修改招聘信息</legend>
+        @Html.HiddenFor(m => m.Id)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "一个吸引人的标题" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "selectize", placeholder = "建材名称", data_create = "true", data_options = "管理,工人;公司总经理:公司副总经理:会计:出纳:项目经理:项目副经理:项目总工:人力专员:行政专员:技术员:工程部长:试验检测工程师:试验员:安全员:领工员:测量员:资料员:后勤管理:造价师:预算员:总监:监理员:园林景观设计:市政技术员:市政工程师:给排水设计师,电工:泥瓦工:砌石工:振捣工:木工:钢筋工:焊工:张拉工:拌和站操作工:机械修理工:汽修工:力工:小车司机:挖掘机司机:装载机司机:平地机司机:推土机司机:压路机司机:架桥机操作工:自卸车司机:吊车司机:摊铺机司机:厨师" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Location)
+            @Html.TextBoxFor(m => m.Location, new { @class = "selectize", placeholder = "经销厂址", data_create = "true", data_options = "呼和浩特:阿拉善盟:巴彦淖尔市:鄂尔多斯市:包头市:乌兰察布市:锡林郭勒盟:赤峰市:通辽市:兴安盟:呼伦贝尔市" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Model)
+            @Html.TextBoxFor(m => m.Model, new { @class = "selectize", placeholder = "规格、型号", data_options = "小学:初中:高中:技校:中专:大专:本课:硕士:博士:不限" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Manufacturer)
+            @Html.TextBoxFor(m => m.Manufacturer, new { @class = "selectize", placeholder = "生产厂家", data_options = "应届毕业:1—10年:10年以上" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { @class = "selectize", placeholder = "价格", data_options = "1000-2000元:2000-3000元:3000-4000元:4000-5000元:5000-8000元:8000-10000元:10000-15000元:15000以上:面议" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Image)
+            @Html.TextAreaFor(m => m.Image, new { @class = "form-control", placeholder = "建筑材料图片" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ContactPerson)
+            @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", placeholder = "联系人" })
+            @Html.ValidationMessageFor(m => m.ContactPerson)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telephones)
+            @Html.TextBoxFor(m => m.Telephones, new { @class = "form-control", placeholder = "联系电话，多个电话用 , 分隔" })
+            @Html.ValidationMessageFor(m => m.Telephones)
+        </div>
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/selectize")
+}
+
+
+
+

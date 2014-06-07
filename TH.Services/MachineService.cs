@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TH.Model;
+using TH.Repositories;
 using TH.Repositories.Infrastructure;
 using TH.Repositories.Repository;
 
@@ -10,7 +12,11 @@ namespace TH.Services
     public interface IMachineService : IService
     {
         IQueryable<Machine> Get(int pageIndex, int pageSize, out int recordCount);
-        IEnumerable<Machine> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount);
+        IQueryable<Machine> Get();
+
+        IQueryable<Machine> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount);    // 按工作地点分类
+
+        Machine GetById(int id);
         IQueryable<Machine> GetByUserId(string userId);
 
         void Create(Machine machine);
@@ -18,53 +24,69 @@ namespace TH.Services
         void Update(Machine machine);
 
         void OwnerDelete(string ownerId, int id);
-
-        Machine GetById(int id);
     }
-
     public class MachineService : IMachineService
     {
         private readonly IMachineRepository _machineRepository;
         private readonly IUnitOfWork _unitOfWork;
-
         public MachineService(IMachineRepository machineRepository, IUnitOfWork unitOfWork)
         {
             _machineRepository = machineRepository;
             _unitOfWork = unitOfWork;
         }
 
+        public Machine GetById(int id)
+        {
+            return _machineRepository.Get(m => m.Id == id).FirstOrDefault();
+        }
         public IQueryable<Machine> Get(int pageIndex, int pageSize, out int recordCount)
         {
-            throw new NotImplementedException();
+            recordCount = _machineRepository.Count(m => true);
+            return _machineRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
         }
-
-        public IEnumerable<Machine> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount)
+        public IQueryable<Machine> Get()
         {
-            throw new NotImplementedException();
+            return _machineRepository.Get().OrderByDescending(j => j.CreateDate);
         }
 
         public IQueryable<Machine> GetByUserId(string userId)
         {
-            throw new NotImplementedException();
+            return _machineRepository.Get(j => j.Publisher.Id == userId);
         }
+
+        public IEnumerable<Machine> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount)
+        {
+            recordCount = _machineRepository.Count(m => true);
+            return _machineRepository.Get(m => m.Location == location, pageIndex, pageSize, m => m.CreateDate);
+        }
+
 
         public void Create(Machine machine)
         {
-            throw new NotImplementedException();
+            _machineRepository.Add(machine);
+            _unitOfWork.Commit();
         }
+
 
         public void Update(Machine machine)
         {
-            throw new NotImplementedException();
+            _machineRepository.Update(machine);
+            _unitOfWork.Commit();
         }
 
         public void OwnerDelete(string ownerId, int id)
         {
-            throw new NotImplementedException();
+            var machine = GetById(id);
+
+            if (machine != null && machine.PublisherId == ownerId)
+            {
+                _machineRepository.Delete(machine);
+                _unitOfWork.Commit();
+            }
         }
 
 
-        public Machine GetById(int id)
+        IQueryable<Machine> IMachineService.GetByLocation(string location, int pageIndex, int pageSize, out int recordCount)
         {
             throw new NotImplementedException();
         }

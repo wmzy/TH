@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TH.Model;
+using TH.Repositories;
 using TH.Repositories.Infrastructure;
 using TH.Repositories.Repository;
 
@@ -10,7 +12,7 @@ namespace TH.Services
     public interface ICredentialService : IService
     {
         IQueryable<Credential> Get(int pageIndex, int pageSize, out int recordCount);
-        IQueryable<Credential> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount);
+        IQueryable<Credential> Get();
         Credential GetById(int id);
         IQueryable<Credential> GetByUserId(string userId);
 
@@ -20,51 +22,57 @@ namespace TH.Services
 
         void OwnerDelete(string ownerId, int id);
     }
-
     public class CredentialService : ICredentialService
     {
         private readonly ICredentialRepository _credentialRepository;
         private readonly IUnitOfWork _unitOfWork;
-
         public CredentialService(ICredentialRepository credentialRepository, IUnitOfWork unitOfWork)
         {
             _credentialRepository = credentialRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public IQueryable<Credential> Get(int pageIndex, int pageSize, out int recordCount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Credential> GetByLocation(string location, int pageIndex, int pageSize, out int recordCount)
-        {
-            throw new NotImplementedException();
-        }
-
         public Credential GetById(int id)
         {
-            throw new NotImplementedException();
+            return _credentialRepository.Get(m => m.Id == id).FirstOrDefault();
+        }
+        public IQueryable<Credential> Get(int pageIndex, int pageSize, out int recordCount)
+        {
+            recordCount = _credentialRepository.Count(m => true);
+            return _credentialRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
+        }
+        public IQueryable<Credential> Get()
+        {
+            return _credentialRepository.Get().OrderByDescending(j => j.CreateDate);
         }
 
         public IQueryable<Credential> GetByUserId(string userId)
         {
-            throw new NotImplementedException();
+            return _credentialRepository.Get(j => j.Publisher.Id == userId);
         }
 
         public void Create(Credential credential)
         {
-            throw new NotImplementedException();
+            _credentialRepository.Add(credential);
+            _unitOfWork.Commit();
         }
+
 
         public void Update(Credential credential)
         {
-            throw new NotImplementedException();
+            _credentialRepository.Update(credential);
+            _unitOfWork.Commit();
         }
 
         public void OwnerDelete(string ownerId, int id)
         {
-            throw new NotImplementedException();
+            var credential = GetById(id);
+
+            if (credential != null && credential.PublisherId == ownerId)
+            {
+                _credentialRepository.Delete(credential);
+                _unitOfWork.Commit();
+            }
         }
     }
 }

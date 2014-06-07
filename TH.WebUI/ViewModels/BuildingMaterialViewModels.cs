@@ -13,6 +13,11 @@ namespace TH.WebUI.ViewModels
         [DisplayName("标题")]
         public string Title { get; set; }
         public DateTime? CreateDate { get; set; }   //发布时间
+        public string Name { get; set; }    //建材名称	
+        public string Model { get; set; }   //规格、型号
+        public string Manufacturer { get; set; }    //生产厂家
+        public string Location { get; set; }    //经销厂址
+        public string Price { get; set; }    //价格
     }
 
     public class BuildingMaterialCreateViewModel
@@ -26,6 +31,18 @@ namespace TH.WebUI.ViewModels
         [DisplayName("联系电话")]
         [Required]
         public string Telephones { get; set; }      // 联系电话';'分隔
+        [DisplayName("建材名称")]
+        public string Name { get; set; }    //建材名称	
+        [DisplayName("规格、型号")]
+        public string Model { get; set; }   //规格、型号
+        [DisplayName("生产厂家")]
+        public string Manufacturer { get; set; }    //生产厂家
+        [DisplayName("经销厂址")]
+        public string Location { get; set; }    //经销厂址
+        [DisplayName("价格")]
+        public string Price { get; set; }    //价格
+        [DisplayName("建筑材料图片")]
+        public string Image { get; set; }    //建筑材料图片
     }
 
     public class BuildingMaterialDetailsViewModel
@@ -36,6 +53,18 @@ namespace TH.WebUI.ViewModels
         public string ContactPerson { set; get; }    // 联系人
         [DisplayName("联系电话")]
         public string Telephones { get; set; }      // 联系电话
+        public DateTime? CreateDate { get; set; }   //发布时间
+        public string Name { get; set; }    //建材名称	
+        [DisplayName("规格、型号")]
+        public string Model { get; set; }   //规格、型号
+        [DisplayName("生产厂家")]
+        public string Manufacturer { get; set; }    //生产厂家
+        [DisplayName("经销厂址")]
+        public string Location { get; set; }    //经销厂址
+        [DisplayName("价格")]
+        public string Price { get; set; }    //价格
+        [DisplayName("建筑材料图片")]
+        public string Image { get; set; }    //建筑材料图片
     }
 
     public class BuildingMaterialEditViewModel
@@ -53,5 +82,17 @@ namespace TH.WebUI.ViewModels
         [DisplayName("联系电话")]
         [Required]
         public string Telephones { get; set; }      // 联系电话';'分隔
+        [DisplayName("建材名称")]
+        public string Name { get; set; }    //建材名称	
+        [DisplayName("规格、型号")]
+        public string Model { get; set; }   //规格、型号
+        [DisplayName("生产厂家")]
+        public string Manufacturer { get; set; }    //生产厂家
+        [DisplayName("经销厂址")]
+        public string Location { get; set; }    //经销厂址
+        [DisplayName("价格")]
+        public string Price { get; set; }    //价格
+        [DisplayName("建筑材料图片")]
+        public string Image { get; set; }    //建筑材料图片
     }
 }

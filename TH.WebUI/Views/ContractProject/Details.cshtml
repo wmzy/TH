@@ -1,8 +1,30 @@
-﻿@model TH.WebUI.ViewModels.ContractProjectDetailsViewModel
-
+﻿@using AutoMapper.Internal
+@model TH.WebUI.ViewModels.ContractProjectDetailsViewModel
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
-@Html.DisplayForModel()
+<article>
+    <h2>@Model.Title</h2>
+    <h3>@Html.ActionLink(Model.Company, "Index") 发布于 @Model.CreateDate</h3>
+    <section>
+        <h3>基本信息</h3>
+        <ul>
+            <li>企业或经营个体: @Model.Company</li>
+            <li>承揽工程内容: @Model.Content</li>
+            <li>施工经验: @Model.ConstructionExperience</li>
+            <li>以往业绩: @Model.Performance</li>
+        </ul>
+        <h3>企业或个人简介</h3>
+        <p>
+            @Model.Introduction
+        </p>
+        <h3>联系方式</h3>
+        <ul>
+            <li>联系人: @Model.ContactPerson</li>
+            <li>联系电话: @Model.Telephones</li>
+        </ul>
+    </section>
+</article>
+

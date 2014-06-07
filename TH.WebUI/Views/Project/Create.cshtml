@@ -1,8 +1,70 @@
-﻿@model dynamic
+﻿@model ProjectCreateViewModel
+@using TH.WebUI.ViewModels
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "发布招聘信息";
 }
 
-<h2>title</h2>
+@section Styles {
+    @Styles.Render("~/Content/selectize")
+}
+
+<h2>发布招聘信息</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>发布招聘信息</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "一个吸引人的标题" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Company)
+            @Html.TextBoxFor(m => m.Company, new { @class = "form-control", placeholder = "企业或经营个体" })
+            @Html.ValidationMessageFor(m => m.Company)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ProjectName)
+            @Html.TextBoxFor(m => m.ProjectName, new { @class = "form-control", placeholder = "项目名称" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content)
+            @Html.TextBoxFor(m => m.Content, new { @class = "selectize", placeholder = "招标或发包内容", data_create = "true", data_options = "隧道:土方:桥梁:涵洞:混凝土预制:预应力梁板预制:沥青路面:混凝土路面:滑模:沥青混凝土拌合:水稳料拌合:混凝土拌合:梁板吊装:桩基础施工:旋挖钻施工:碎石桩:强夯:沥青站转运建站:钢护栏:防护隔离网:标志标线:打井:路基防护:市政管道:给排水:园林绿化:路灯:雕塑:监理:设计:其它" })
+            @Html.ValidationMessageFor(m => m.Content)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.StartTime)
+            @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control", placeholder = "工程开始时间", type="date" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TimeLimit)
+            @Html.TextBoxFor(m => m.TimeLimit, new { @class = "form-control", placeholder = "多少个月", type = "number" }) 
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Require)
+            @Html.TextAreaFor(m => m.Require, new { @class = "form-control", placeholder = "要求" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ContactPerson)
+            @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", placeholder = "联系人" })
+            @Html.ValidationMessageFor(m => m.ContactPerson)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Telephones)
+            @Html.TextBoxFor(m => m.Telephones, new { @class = "form-control", placeholder = "联系电话，多个电话用 , 分隔" })
+            @Html.ValidationMessageFor(m => m.Telephones)
+        </div>
+        <p>
+            <input type="submit" value="发布" />
+        </p>
+</fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/selectize")
+}

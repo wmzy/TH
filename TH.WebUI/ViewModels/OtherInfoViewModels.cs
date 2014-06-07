@@ -13,6 +13,8 @@ namespace TH.WebUI.ViewModels
         [DisplayName("标题")]
         public string Title { get; set; }
         public DateTime? CreateDate { get; set; }   //发布时间
+        public string CompanyName { get; set; }    //企业或个人名称
+        public string Content { set; get; }     //	供求内容
     }
 
     public class OtherInfoCreateViewModel
@@ -26,6 +28,12 @@ namespace TH.WebUI.ViewModels
         [DisplayName("联系电话")]
         [Required]
         public string Telephones { get; set; }      // 联系电话';'分隔
+        [DisplayName("企业或个人名称")]
+        public string CompanyName { get; set; }    //企业或个人名称
+        [DisplayName("供求内容")]
+        public string Content { set; get; }     //	供求内容
+        [DisplayName("价格")]
+        public string Price { get; set; }       //价格
     }
 
     public class OtherInfoDetailsViewModel
@@ -36,6 +44,10 @@ namespace TH.WebUI.ViewModels
         public string ContactPerson { set; get; }    // 联系人
         [DisplayName("联系电话")]
         public string Telephones { get; set; }      // 联系电话
+        public DateTime? CreateDate { get; set; }   //发布时间
+        public string CompanyName { get; set; }    //企业或个人名称
+        public string Content { set; get; }     //	供求内容
+        public string Price { get; set; }       //价格
     }
 
     public class OtherInfoEditViewModel
@@ -53,5 +65,11 @@ namespace TH.WebUI.ViewModels
         [DisplayName("联系电话")]
         [Required]
         public string Telephones { get; set; }      // 联系电话';'分隔
+        [DisplayName("企业或个人名称")]
+        public string CompanyName { get; set; }    //企业或个人名称
+        [DisplayName("供求内容")]
+        public string Content { set; get; }     //	供求内容
+        [DisplayName("价格")]
+        public string Price { get; set; }       //价格
     }
 }

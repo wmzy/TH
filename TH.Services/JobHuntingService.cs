@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TH.Model;
 using TH.Repositories;
 using TH.Repositories.Infrastructure;
@@ -13,10 +12,11 @@ namespace TH.Services
     public interface IJobHuntingService : IService
     {
         IQueryable<JobHunting> Get(int pageIndex, int pageSize, out int recordCount);
-
-        void Create(JobHunting job);
-
+        IQueryable<JobHunting> Get();
         JobHunting GetById(int id);
+        IQueryable<JobHunting> GetByUserId(string userId);
+
+        void Create(JobHunting jobHunting);
 
         void Update(JobHunting jobHunting);
 
@@ -32,23 +32,31 @@ namespace TH.Services
             _unitOfWork = unitOfWork;
         }
 
+        public JobHunting GetById(int id)
+        {
+            return _jobHuntingRepository.Get(m => m.Id == id).FirstOrDefault();
+        }
         public IQueryable<JobHunting> Get(int pageIndex, int pageSize, out int recordCount)
         {
             recordCount = _jobHuntingRepository.Count(m => true);
             return _jobHuntingRepository.Get(m => true, pageIndex, pageSize, m => m.CreateDate);
         }
-
-
-        public void Create(JobHunting job)
+        public IQueryable<JobHunting> Get()
         {
-            _jobHuntingRepository.Add(job);
+            return _jobHuntingRepository.Get().OrderByDescending(j => j.CreateDate);
+        }
+
+        public IQueryable<JobHunting> GetByUserId(string userId)
+        {
+            return _jobHuntingRepository.Get(j => j.Publisher.Id == userId);
+        }
+
+        public void Create(JobHunting jobHunting)
+        {
+            _jobHuntingRepository.Add(jobHunting);
             _unitOfWork.Commit();
         }
 
-        public JobHunting GetById(int id)
-        {
-            return _jobHuntingRepository.Get(m => m.Id == id).FirstOrDefault();
-        }
 
         public void Update(JobHunting jobHunting)
         {
@@ -60,10 +68,11 @@ namespace TH.Services
         {
             var jobHunting = GetById(id);
 
-            if (jobHunting.Publisher.Id != ownerId) return;
-
-            _jobHuntingRepository.Delete(jobHunting);
-            _unitOfWork.Commit();
+            if (jobHunting != null && jobHunting.PublisherId == ownerId)
+            {
+                _jobHuntingRepository.Delete(jobHunting);
+                _unitOfWork.Commit();
+            }
         }
     }
 }

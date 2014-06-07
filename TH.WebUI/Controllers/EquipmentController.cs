@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using PagedList;
 using TH.Model;
 using TH.Services;
 using TH.WebUI.ViewModels;
@@ -26,21 +27,19 @@ namespace TH.WebUI.Controllers
         // GET: /Equipment/
 
         [AllowAnonymous]
-        public ActionResult Index(int pageIndex = 1, int pageSize = 10)
+        public ActionResult Index(int pageIndex = 1, int pageSize = 3)
         {
             if (pageIndex < 1 || pageSize < 0)
             {
                 return HttpNotFound();
             }
 
-            int recordCount;
-
-            IEnumerable<EquipmentIndexViewModel> equipments = _equipmentService.Get(pageIndex, pageSize, out recordCount).Project().To<EquipmentIndexViewModel>().ToList();
-
-            ViewData["recordCount"] = recordCount;
+            var equipmentsPage = _equipmentService.Get()
+                .Project().To<EquipmentIndexViewModel>()
+                .ToPagedList(pageIndex, pageSize);
 
             //
-            return View(equipments);
+            return View(equipmentsPage);
         }
 
         //
@@ -51,10 +50,10 @@ namespace TH.WebUI.Controllers
         {
             Equipment equipment = _equipmentService.GetById(id);
             var equipmentDetails = Mapper.Map<Equipment, EquipmentDetailsViewModel>(equipment);
-            
+
             return View(equipmentDetails);
         }
-        
+
         public ActionResult Create()
         {
             return View();
@@ -72,7 +71,39 @@ namespace TH.WebUI.Controllers
 
             _equipmentService.Create(equipment);
 
-            return RedirectToAction("Details", new { id = equipment.Id });
+            return RedirectToAction("Settlement", new { id = equipment.Id });
+        }
+
+        public ActionResult Settlement(int id)
+        {
+            var equipment = _equipmentService.GetById(id);
+            var model = Mapper.Map<Equipment, SettlementViewModel>(equipment);
+            model.WealthValue = equipment.Publisher.WealthValue;
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Settlement(int id, int delayDays)
+        {
+            var equipment = _equipmentService.GetById(id);
+            if (equipment.PublisherId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            if (equipment.Publisher.WealthValue < 1 * delayDays)
+            {
+                return Json(new { result = 1, err = "财富值不足" });
+            }
+            if (equipment.ValidDate == null || ((DateTime)equipment.ValidDate).CompareTo(DateTime.Now) >= 0)
+            {
+                equipment.ValidDate = DateTime.Now.AddDays(delayDays);
+            }
+            else
+            {
+                equipment.ValidDate = ((DateTime)equipment.ValidDate).AddDays(delayDays);
+            }
+            equipment.Publisher.WealthValue -= 1 * delayDays;
+            _equipmentService.Update(equipment);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -84,7 +115,7 @@ namespace TH.WebUI.Controllers
             }
 
             var equipmentEdit = Mapper.Map<Equipment, EquipmentEditViewModel>(equipment);
-            
+
             return View(equipmentEdit);
         }
 
@@ -102,16 +133,19 @@ namespace TH.WebUI.Controllers
                 return HttpNotFound();
             }
             Mapper.Map(model, equipment);
-            
+
             _equipmentService.Update(equipment);
 
             return RedirectToAction("Details", new { id = equipment.Id });
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             _equipmentService.OwnerDelete(User.Identity.GetUserId(), id);
-            return RedirectToAction("Index");
+            return Json(new { result = "Success" });
         }
     }
 }

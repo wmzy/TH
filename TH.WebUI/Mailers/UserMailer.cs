@@ -1,4 +1,3 @@
-using System.Security.Policy;
 using Mvc.Mailer;
 
 namespace TH.WebUI.Mailers

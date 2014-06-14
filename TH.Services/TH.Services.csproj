@@ -76,13 +76,9 @@
     <Compile Include="UseMachineService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TH.Extensions\TH.Extensions.csproj">
-      <Project>{05a3ff74-cf0f-406b-b2ca-87ba8a1052f8}</Project>
-      <Name>TH.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TH.Model\TH.Model.csproj">
+    <ProjectReference Include="..\TH.Model\TH.Models.csproj">
       <Project>{e0741d13-c605-4c76-b2e2-e26e66de2a36}</Project>
-      <Name>TH.Model</Name>
+      <Name>TH.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\TH.Repositories\TH.Repositories.csproj">
       <Project>{6a187e08-37e9-4eb4-9f2c-3df8aa326eb3}</Project>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="88057720-c556-4a30-a682-874bbcae86f5" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="8c105f94-d8be-475e-a511-75b456220b69" name="TH‎.Repositories">
+      <childLayers>
+        <layer Id="e7acb540-b058-4a85-918c-096cfb5b44f2" name="THDbContext">
+          <references>
+            <reference Id="15f431e3-cbfe-4349-9dce-7c0fc629f8d9" name="THDbContext">
+              <ArtifactNode Label="THDbContext" Category="CodeSchema_Class" Id="(Assembly=../TH.Repositories/bin/Debug/TH.Repositories.dll Namespace=TH.Repositories Type=THDbContext)" />
+              <ExpandedNode Id="(Assembly=TH.Repositories Namespace=TH.Repositories Type=THDbContext)" Label="THDbContext" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="de086471-b8dc-4fff-b91c-8b26827bde0c" name="UnitOfWork">
+          <references>
+            <reference Id="9c1fe8aa-efbb-4313-bd0f-4087a737dd26" name="IUnitOfWork">
+              <ArtifactNode Label="IUnitOfWork" Category="CodeSchema_Interface" Id="(Assembly=../TH.Repositories/bin/Debug/TH.Repositories.dll Namespace=TH.Repositories.Infrastructure Type=IUnitOfWork)" />
+              <ExpandedNode Id="(Assembly=TH.Repositories Namespace=TH.Repositories.Infrastructure Type=IUnitOfWork)" Label="IUnitOfWork" Category="CodeSchema_Interface">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="e44ee8ba-3726-49fb-b807-0d7250dde6e3" name="Repository‎">
+          <references>
+            <reference Id="8823c940-0ede-4abc-9419-545315ab5d5c" name="IRepository‎&lt;TEntity‎&gt;">
+              <ArtifactNode Label="IRepository‎&lt;TEntity‎&gt;" Category="CodeSchema_Interface" Id="(Assembly=../TH.Repositories/bin/Debug/TH.Repositories.dll Namespace=TH.Repositories.Infrastructure Type=(Name=IRepository GenericParameterCount=1))" />
+              <ExpandedNode Id="(Assembly=TH.Repositories Namespace=TH.Repositories.Infrastructure Type=(Name=IRepository GenericParameterCount=1))" Label="IRepository‎&lt;TEntity‎&gt;" Category="CodeSchema_Interface">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="f5707898-292d-476c-98d4-1fa3cae01aa0" name="Configuration">
+          <references>
+            <reference Id="a242ba2a-5580-4003-89fc-bb92577b2486" name="TH‎.Repositories‎.Configuration">
+              <ArtifactNode Label="TH‎.Repositories‎.Configuration" Category="CodeSchema_Namespace" Id="(Namespace=TH.Repositories.Configuration)" />
+              <ExpandedNode Id="(Assembly=TH.Repositories)" Label="TH.Repositories.dll" Category="CodeSchema_Assembly">
+                <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+              </ExpandedNode>
+              <ExpandedNode Id="(Namespace=TH.Repositories.Configuration)" Label="TH‎.Repositories‎.Configuration" Category="CodeSchema_Namespace">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="6056ed30-7a6c-44b0-a8ed-da6af49bfa53" name="仓储">
+          <references>
+            <reference Id="78d5045a-7ee5-48dd-a4e4-2d06dfa1bf5d" name="TH‎.Repositories‎.Repository">
+              <ArtifactNode Label="TH‎.Repositories‎.Repository" Category="CodeSchema_Namespace" Id="(Namespace=TH.Repositories.Repository)" />
+              <ExpandedNode Id="(Assembly=TH.Repositories)" Label="TH.Repositories.dll" Category="CodeSchema_Assembly">
+                <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+              </ExpandedNode>
+              <ExpandedNode Id="(Namespace=TH.Repositories.Repository)" Label="TH‎.Repositories‎.Repository" Category="CodeSchema_Namespace">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="9fce85dc-84b6-4dff-89e4-1ae4d45c4428" name="Migrations">
+          <references>
+            <reference Id="6bb2e79c-da7a-41aa-9d6e-6448eb328872" name="TH‎.Repositories‎.Migrations">
+              <ArtifactNode Label="TH‎.Repositories‎.Migrations" Category="CodeSchema_Namespace" Id="(Namespace=TH.Repositories.Migrations)" />
+              <ExpandedNode Id="(Assembly=TH.Repositories)" Label="TH.Repositories.dll" Category="CodeSchema_Assembly">
+                <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+              </ExpandedNode>
+              <ExpandedNode Id="(Namespace=TH.Repositories.Migrations)" Label="TH‎.Repositories‎.Migrations" Category="CodeSchema_Namespace">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+      <references>
+        <reference Id="0ec3f691-6046-41a7-b7b9-04eb2f9b8607" name="TH‎.Repositories">
+          <ArtifactNode Label="TH‎.Repositories" Category="CodeSchema_Namespace" Id="(Namespace=TH.Repositories)" />
+          <ExpandedNode Id="(Assembly=TH.Repositories)" Label="TH.Repositories.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=TH.Repositories)" Label="TH‎.Repositories" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="154292f5-226e-400d-a966-d6a129ed87ba" name="EntityFramework.dll">
+      <references>
+        <reference Id="620f6c3d-10e8-41c1-b2e3-539a32598258" name="EntityFramework.dll">
+          <ArtifactNode Label="EntityFramework.dll" Category="CodeSchema_Assembly" Id="(Assembly=../packages/EntityFramework.6.1.1-beta1/lib/net45/EntityFramework.dll)">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=EntityFramework)" Label="EntityFramework.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="975f2023-d620-4b0c-b739-1d91772fa2e2" name="TH.Services">
+      <childLayers>
+        <layer Id="d79192b0-aa08-4656-befb-ca1b1f04ce12" name="业务逻辑服务层" />
+      </childLayers>
+      <references>
+        <reference Id="a89d450e-347a-4c06-82ac-aff3022086ea" name="TH.Services">
+          <ArtifactNode Label="TH.Services" Category="CodeSchema_Project" Id="(Assembly=../TH.Services/TH.Services.csproj)" />
+          <ExpandedNode Id="(Assembly=TH.Services)" Label="TH.Services.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="8541aae9-9206-4733-8fb3-4f7d5826b4b7" name="TH.Models">
+      <childLayers>
+        <layer Id="8dee6a89-0b95-4690-922f-7b47d878125a" name="领域层模型" />
+      </childLayers>
+      <references>
+        <reference Id="57c970e0-b2f7-4c4a-b877-81306c274b81" name="TH.Models">
+          <ArtifactNode Label="TH.Models" Category="CodeSchema_Project" Id="(Assembly=../TH.Model/TH.Models.csproj)" />
+          <ExpandedNode Id="(Assembly=TH.Model)" Label="TH.Model.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="29e0d955-a4ec-4f1b-9266-22549daf6f0b" name="TH‎.WebUI">
+      <childLayers>
+        <layer Id="7f57de7a-dcbb-4f46-a20e-08bbf9e77d65" name="ViewModels">
+          <references>
+            <reference Id="9a9eea13-053b-40bd-86b9-5b4073085ed4" name="TH‎.WebUI‎.ViewModels">
+              <ArtifactNode Label="TH‎.WebUI‎.ViewModels" Category="CodeSchema_Namespace" Id="(Namespace=TH.WebUI.ViewModels)" />
+              <ExpandedNode Id="(Assembly=TH.WebUI)" Label="TH.WebUI.dll" Category="CodeSchema_Assembly">
+                <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+              </ExpandedNode>
+              <ExpandedNode Id="(Namespace=TH.WebUI.ViewModels)" Label="TH‎.WebUI‎.ViewModels" Category="CodeSchema_Namespace">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="2f811e75-ad58-4e9c-9557-7a5330bbd88d" name="AutoMapper.dll" />
+        <layer Id="adbbe720-8435-4acb-8bcf-71b112cf976f" name="ASP.NETMVC" />
+      </childLayers>
+      <references>
+        <reference Id="9de88de3-68ec-44ce-be51-c771b143d365" name="TH‎.WebUI">
+          <ArtifactNode Label="TH‎.WebUI" Category="CodeSchema_Namespace" Id="(Namespace=TH.WebUI)" />
+          <ExpandedNode Id="(Assembly=TH.WebUI)" Label="TH.WebUI.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=TH.WebUI)" Label="TH‎.WebUI" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="e5a20ca6-5886-4609-87a0-378d0e095e57" name="TH‎.WebUI‎.ViewModels">
+          <ArtifactNode Label="TH‎.WebUI‎.ViewModels" Category="CodeSchema_Namespace" Id="(Namespace=TH.WebUI.ViewModels)" />
+          <ExpandedNode Id="(Assembly=TH.WebUI)" Label="TH.WebUI.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=TH.WebUI.ViewModels)" Label="TH‎.WebUI‎.ViewModels" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="6c2b2447-b5e5-423c-81cd-e8d4b8d61c3a" name="Autofac&#xD;&#xA;" />
+  </layers>
+</layerModel>

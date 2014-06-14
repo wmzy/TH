@@ -1,0 +1,865 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="7ebbff6e-3acd-42e7-847a-65ef68dc4156"
+  name="Repository"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="3cf0be5c-fda4-45a9-be1e-5a5522c9a2a0"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DTH.Repositories.Repository"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="2fb0a432-f426-48e7-97b4-9782d690fab2"
+        name="ICredentialRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="73b939c4-96ae-4610-b896-1c5f9f19185d"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DICredentialRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="87eb4784-ba24-4165-8af6-758a3d0dab69"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e85e33fb-a75c-42b8-88cb-39c69be10d6f">
+                <propertyInstance
+                  Id="dbde852a-78d3-4fcb-88b2-0e24e9e58b98"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4b62b493-2278-4963-9d07-df68d2d55ee8">
+                <propertyInstance
+                  Id="853c82e7-fdba-4f79-b641-53bfedea985c"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9dced12a-28e8-4e07-845b-7b460a3a609b">
+                <propertyInstance
+                  Id="9d4341c3-627f-4156-a197-76fa411f3d56"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4e4e8707-08fd-492e-9ee3-32d56abf6afc">
+                <propertyInstance
+                  Id="2bfd6398-1fbf-443e-80e0-650220be133a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="7028f647-b957-487c-a433-3a2a4fc5e91a"
+        name="IDetectionRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="b2acc869-7134-44fb-9bea-21f43a628137"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIDetectionRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="14ff5875-86b5-46c0-bdda-1db259f02431"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ec46e7f5-e922-4fcd-92a1-4eef6c64bde3">
+                <propertyInstance
+                  Id="9d2b5035-46a7-4094-a6eb-79fd9d8d2e86"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ad0d242e-5704-4a42-baf4-fa47d6e78e35">
+                <propertyInstance
+                  Id="f29229cf-cc95-4e4a-87a0-261633dbbd83"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6152b427-1d88-4262-9951-e62a6fd39e4d">
+                <propertyInstance
+                  Id="dc802e05-4c0c-4a64-a272-8c02b09620a9"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cb4615d0-3e03-48e8-a4d4-e725f32bd240">
+                <propertyInstance
+                  Id="6732dbc0-8abf-4a9d-b4e3-102c6af9cf3a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="4b74c5aa-749f-43d4-bb94-c7c2d7b933aa"
+        name="IEquipmentRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="6eb0beaa-8e51-4607-8330-e0d46fca8ef9"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIEquipmentRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="93b10cc0-ac99-4c64-bff3-90332d86a91a"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4821d65c-1a5e-410f-b5e1-9b8ed4bf4429">
+                <propertyInstance
+                  Id="07f6967a-706e-4501-9159-47fb66f388c3"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c9afcb17-f2ba-4e8e-9daa-976b4f66c776">
+                <propertyInstance
+                  Id="c9a97c19-b3f4-4ea7-9203-b418165e3b8d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0c5e5063-c248-453a-903b-315a6824f808">
+                <propertyInstance
+                  Id="70099acc-d90e-4a53-ac8c-ebe125263182"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="417e277f-fe73-4b7c-a0df-cade61185439">
+                <propertyInstance
+                  Id="a831a7fe-35be-4ca7-a006-268abcbc3310"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="1adce3ed-a1af-4328-8414-9bf8f30c2580"
+        name="IFinancingRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="fc54703d-c702-44dc-8d85-9c2472b20cc3"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIFinancingRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c3bf2147-2c5d-4943-aab2-78faa29ff1c0"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c16f9146-c4a8-4ccf-b908-7ce4a5e4809e">
+                <propertyInstance
+                  Id="be7587e2-3736-4e68-bd20-62f713ce151f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="848a7e4e-3276-452c-ab2a-6f996a564153">
+                <propertyInstance
+                  Id="34ba2a68-f4db-48d4-b3de-d22a66a93b6e"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="48bd7cfa-dbd5-4444-a72b-80c72ffc6219">
+                <propertyInstance
+                  Id="fe321f92-d15a-4e85-924b-cfa80aebaa25"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bd2f5a21-5720-48db-8685-9c39975c014e">
+                <propertyInstance
+                  Id="8e64c25d-5abe-408d-8914-6725525316ad"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f86955a7-01f9-4a11-a483-1c6916f48adb"
+        name="IBuildingMaterialRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="861e1f33-9bce-47f0-954d-dc81229caa10"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIBuildingMaterialRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="06fb7054-fbec-474c-a9ba-f73301c93461"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e27ea620-0435-4ca5-81ab-1322bdbdba56">
+                <propertyInstance
+                  Id="07eeb59c-33e1-4376-8f2e-02a82a59e581"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="413d19c5-2d77-4663-a2ef-35cdd63b300c">
+                <propertyInstance
+                  Id="3f0210e6-04b6-495f-9705-9c9df5e398ff"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="db1eb51b-191c-420c-8ac4-8191c3c88bc8">
+                <propertyInstance
+                  Id="6ca63f37-2d8c-4c4e-b2bf-50058994a0e1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c8a47643-d9bb-4e34-a121-261e0c97f73d">
+                <propertyInstance
+                  Id="99259ce0-8d75-4914-8b36-f66d803e7f53"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="e4ee00fd-c99a-4a0a-9df5-357a387bdde4"
+        name="IJobHuntingRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="6e90822b-ca5b-4099-b74d-0471aa29e731"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIJobHuntingRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4b2075b7-46a4-4a88-bb30-aa89f0d585c4"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="97ba22ed-cb34-480a-a577-49d155f10f53">
+                <propertyInstance
+                  Id="2823ca73-d742-4a8e-82da-e89d474cfc05"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="941c968f-2e2a-4831-bb64-7e1fe3f6c10c">
+                <propertyInstance
+                  Id="03b6f83f-7a61-497b-820e-3f48144bb3a0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="faee1241-459f-445d-8d9f-04681c4b91b1">
+                <propertyInstance
+                  Id="93f06f0e-6b5f-434a-a661-ae8068c85757"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ff873780-b2f5-422a-af7b-102e9812615f">
+                <propertyInstance
+                  Id="3ff82cb7-5be5-4648-98a0-7a033cbf3c40"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="96af4eb4-4fae-4dcb-a5c5-2662d15822ff"
+        name="IJobRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="e920c672-e382-4d8d-a184-35df7a885170"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIJobRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b1788cad-e748-4219-b8ef-60d35425e1a3"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f5953265-232f-4686-a9e6-95d7e4bb9f32">
+                <propertyInstance
+                  Id="ba1b838a-fde3-45b5-b99a-980b2a71fe8f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="675c5e65-0c17-488e-82cc-139cc378a914">
+                <propertyInstance
+                  Id="b5bd338b-2685-4ac6-8fbf-510e3671280d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="dd4d86c1-53da-4de2-9614-2eed1ba96fbe">
+                <propertyInstance
+                  Id="d9592e54-7fdc-4c82-8395-57fd397f455b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ec153f81-1205-4a0a-9ca3-afe1b17cc250">
+                <propertyInstance
+                  Id="4c8a68e8-b04b-423c-87f9-c45245ea1e85"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="6370dc13-1603-4208-ad86-e90d1cfef978"
+        name="IMachineRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="efbadb6c-f912-4d62-947c-621b671b0b6e"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIMachineRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="58701c6c-9626-4561-a43d-7efc00110140"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e60b68cb-d0da-429a-87f4-78339602a65e">
+                <propertyInstance
+                  Id="b48c8a86-f1c0-4fd9-a787-9c862b41c093"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="94719cf5-e3b1-479e-a803-6f1db48ce18e">
+                <propertyInstance
+                  Id="c5d00d4c-33bb-431a-a1bb-5205267e4673"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f08b24e7-3098-436e-bb63-0b9fff17b902">
+                <propertyInstance
+                  Id="232a8d71-f107-4c6b-99b4-cd4d629aea0e"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b7523e43-b145-4236-9e67-4412a09af8b3">
+                <propertyInstance
+                  Id="39f7340c-104b-4677-b99f-fc8b74a40c8d"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="26540fed-ee7b-4dfe-9d54-00c484f51877"
+        name="IOtherInfoRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="3eae29d8-3da0-4683-8847-7abdb05fc6db"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIOtherInfoRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="d155ad81-5a56-467a-abd9-a99333a620d5"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d1e49b51-bf5c-4d1f-8a7b-d59f0a05c8d2">
+                <propertyInstance
+                  Id="b185b12b-e76a-423f-aa19-d7f6781fa444"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1f540332-9750-456e-94d9-d5fb2e21349e">
+                <propertyInstance
+                  Id="7e1508d5-f080-46ac-84a5-89a5abe00381"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="48753ec4-9b85-4d97-99e5-83db5262bae7">
+                <propertyInstance
+                  Id="bd5042a0-91d0-4f21-adce-169088d4c75b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="66ac1d65-bded-4f82-975c-718c6c4abc7f">
+                <propertyInstance
+                  Id="0649ad1e-daf9-4343-8714-d9272858beb9"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="4b648c43-0141-4afe-b7d2-6277cc189607"
+        name="IPostRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="c4a8bad5-1ff3-4705-b8b1-585a60925908"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIPostRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="883822b4-fa94-4763-8ba7-8b964d33e8ff"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="777e651a-fbf9-4562-8f89-7442a86ef9ac">
+                <propertyInstance
+                  Id="42a6b1c7-83a1-4aba-be3b-13718da4dfd1"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="16fab10c-6d80-496b-8537-593f2ed24e5b">
+                <propertyInstance
+                  Id="cf6cd715-11c8-4057-8b11-4dcbf120f4c0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ab95b532-36da-4fb9-8adb-85b484ff2814">
+                <propertyInstance
+                  Id="96a63949-1e00-4d15-a1ff-fb4667710e59"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="091207ca-6f11-48ff-b299-c016a63afa5f">
+                <propertyInstance
+                  Id="8f5e78a6-a0f1-4298-b93b-1ae5827932d5"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="737b6061-520d-4d04-8d96-985979977d2c"
+        name="IBuyBuildingMaterialRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="57d15eaa-6671-4130-a6a2-8941d5af997f"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIBuyBuildingMaterialRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="22f76746-1d74-46da-bc86-ea9fa4746a5e"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="588983ef-388c-4254-aad4-373347a64983">
+                <propertyInstance
+                  Id="9bbb1897-230d-4d8a-a179-9dd1f491cece"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="611199b4-6988-4f72-852b-ceeded23c5aa">
+                <propertyInstance
+                  Id="737ec3bb-8e6a-4dc5-91de-d30b326af954"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="69133bfb-15ca-4e79-83f4-7d2ae1b00baf">
+                <propertyInstance
+                  Id="01e4108b-de94-4455-96d1-35f7bea1a61a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="94c24154-a005-4c66-be1c-2229a8557312">
+                <propertyInstance
+                  Id="5281842c-63fd-43c3-bbd1-06ab89791e89"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="8860a7d4-628c-43c1-b89f-fa2bc891714e"
+        name="IProjectRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="c868290e-f05f-4658-aec2-a57f0a4a8840"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIProjectRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="21eeb9c2-50c8-437f-9be2-16bee112cb60"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d344780d-d5f2-47af-a3d4-a3ee5fde8c2e">
+                <propertyInstance
+                  Id="aa8fde26-77ff-4a0f-961a-482c32ce6866"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="04923d53-259f-4203-b326-1c4478db5b67">
+                <propertyInstance
+                  Id="43461a36-f848-4dcb-89a0-28195e9763a5"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d788a07d-17cf-4abe-8dd9-816146919d8c">
+                <propertyInstance
+                  Id="92d57e89-17e4-4fc1-961b-47fffd61c3e6"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d7f6b1f8-29a4-4114-b531-d4060320d721">
+                <propertyInstance
+                  Id="8c7dcaf6-33bb-4ddb-9fb0-18cb4fa8b460"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="78299085-a408-4972-b7cc-b2b71037a76a"
+        name="IRequireCredentialRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="8ec9ab85-58d7-43a7-8c16-df4abdd02ce6"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIRequireCredentialRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="3dd76950-a72f-49ea-82d5-3421d7355855"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="82eda3fc-23e4-4e6f-a893-30e651cc1539">
+                <propertyInstance
+                  Id="74dbd6f6-8da2-4813-8a8a-2198819c51e3"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e03fa760-e9d3-40d6-86c9-83c66a370c14">
+                <propertyInstance
+                  Id="3a3fa0b2-22ef-4f90-a914-fbc933c63b65"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4f11f2ea-1a1e-4ad4-bae3-249ce85b517b">
+                <propertyInstance
+                  Id="370f2306-497b-46e5-bf16-1b6912e53cca"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3f1568fb-23ca-4cf1-80ec-97cc7a8c7460">
+                <propertyInstance
+                  Id="46008338-f594-42e6-b05c-c785a73e562e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="1dd75ce9-3b88-4eaa-a845-0e64dab82d72"
+        name="IRequireDetectionRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="d0696922-0f05-4818-873b-e42ba1898016"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIRequireDetectionRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="15c803ba-3527-4af7-96c5-d2de53f976c1"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4b58885c-1753-441a-80c6-1c06a57982f9">
+                <propertyInstance
+                  Id="998e2878-2ac7-471e-9eee-334d5c9aa6a9"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4fe154b4-700e-4c25-8fed-c34da4181e68">
+                <propertyInstance
+                  Id="05784e9f-ba1f-4bcf-b4d3-0d6b0d9f0f1f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4d991c29-9a5f-4ea1-bb7a-54f582d431b6">
+                <propertyInstance
+                  Id="96a27b91-5552-417f-8f59-02ce7619f891"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bddefcb5-9fa3-4c59-b4ff-e70fffbff448">
+                <propertyInstance
+                  Id="13d70891-5c09-4e57-899b-f9d8f8aa1102"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="28264f2a-2cdb-4d6f-8d49-ed3d93ca24d9"
+        name="IUseEquipmentRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="b592377d-c70c-4e22-a52e-be594694c900"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIUseEquipmentRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="fb7f787f-7f39-43bc-8c83-65756042f64b"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6500b52a-0e3e-4bc1-a297-23d2409b3aaf">
+                <propertyInstance
+                  Id="5a9bd5d3-109e-41c4-89d6-5c1bd6f2af5d"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="36888c4d-012b-4e76-8bcb-5f5bd08d9e00">
+                <propertyInstance
+                  Id="1095c4eb-793e-40f4-83db-13f1749a21fa"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="70e115a8-baf6-4845-8f4f-59718f7f5d9b">
+                <propertyInstance
+                  Id="ad0a0e52-829e-4df6-8be1-8bc44f63fddb"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0f470bc9-150d-46d5-bd23-20a524f2ebbd">
+                <propertyInstance
+                  Id="5209b329-ff93-47dc-9456-beed32800570"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="8d29883f-87fd-4532-8688-da0ffa8c4d80"
+        name="IUseMachineRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="5c31c7ac-17b4-47a9-a0dd-5eacda3a7bb5"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIUseMachineRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="657044fd-19bd-4e44-84ad-b6c9210b3e4d"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="18933477-baa3-41eb-9fee-5a27cfc8b15f">
+                <propertyInstance
+                  Id="f1f1a593-1059-418c-993d-4c19894b7fd8"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a45b3631-5fd6-497f-ad69-e2cfc9f4b0a0">
+                <propertyInstance
+                  Id="7f26c0bf-3c87-4b9b-9fa0-e35ad46e92ff"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1870af4e-1a0f-443d-9801-635d16467393">
+                <propertyInstance
+                  Id="6e74b143-f2f4-41a8-8640-f8f005d8aae9"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cfeca5f6-b69e-49a7-a728-3798eb42d97c">
+                <propertyInstance
+                  Id="53d376ce-1cb9-4877-8980-378d4692a15d"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="bfede75f-8915-4981-93bf-ab9e028e02ed"
+        name="IContractProjectRepository"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="2baadd8f-6fb5-4956-9ad1-7f5aa8886205"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.Repositories%2Fbin%2FDebug%2FTH.Repositories.dll Namespace%3DTH.Repositories.Repository Type%3DIContractProjectRepository"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="89a2a707-5203-4e1a-a174-ed90768c5238"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b0b9ebbd-20d4-440a-9f51-65a16a82ce65">
+                <propertyInstance
+                  Id="9a617cc2-42d1-4e30-be60-b22f443513ae"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cb239124-62c2-4889-b146-1b22932b1b23">
+                <propertyInstance
+                  Id="2574b91c-bfa6-4c1d-beb5-cbe59febe123"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cf64610c-c22d-4526-b025-439663249fe6">
+                <propertyInstance
+                  Id="a90798af-3afb-4ab4-801f-ed0ae9b06ce2"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6b5ab5da-a8fa-4472-855d-12db0ced7d67">
+                <propertyInstance
+                  Id="70e7f4f8-1d4e-4f07-a36a-158638caec33"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

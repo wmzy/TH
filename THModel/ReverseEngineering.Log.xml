@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///D:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="代码生成/文本转换记录">
+  <MessageClass Name="Message" Label="消息" Option="显示提供相关信息的消息" />
+  <MessageClass Name="Warning" Label="警告" Option="显示警告" />
+  <MessageClass Name="Error" Label="错误" Option="显示错误" />
+  <MessageClass Name="Property" Label="属性" Option="显示元数据" />
+  <MessageClass Name="Diagnostic" Label="消息" Option="显示诊断消息" />
+  <Message Timestamp="2014-06-10T09:49:41" Importance="High" Text="已启动反向工程。" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “bd04be69-dc38-452c-8c9d-41707c045758”-  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “Integer”-  (PrimitiveType)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “String”-  (PrimitiveType)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::System”-  (Package)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中:  “THModel::System::DateTime”-  (Class)   (已进行部分反向工程 - 定义未更新) " />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中:  “THModel::System::Nullable”-  (Class)   (已进行部分反向工程 - 定义未更新) " />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中:  “THModel::System::Nullable&lt;Int32‎&gt;”-  (Class)   (已进行部分反向工程 - 定义未更新) " />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH”-  (Package)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI”-  (Package)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels”-  (Package)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Medium" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel”-  (Class)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Company”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::CompanyIntroduction”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::ContactPerson”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::EducationRequire”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::JobCreateViewModel”-  (Operation)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::JobDescription”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Location”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Name”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::RecruitCount”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Requirements”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Telephones”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Title”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::Wage”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobCreateViewModel::WorkYears”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Medium" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel”-  (Class)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Company”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::CompanyIntroduction”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::ContactPerson”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::CreateDate”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::EducationRequire”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::JobDescription”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::JobDetailsViewModel”-  (Operation)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Location”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Name”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::RecruitCount”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Requirements”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Telephones”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Title”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::Wage”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobDetailsViewModel::WorkYears”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Medium" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel”-  (Class)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Company”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::CompanyIntroduction”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::ContactPerson”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::EducationRequire”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Id”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::JobDescription”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::JobEditViewModel”-  (Operation)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Location”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Name”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::RecruitCount”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Requirements”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Telephones”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Title”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::Wage”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下元素反向工程到 UML 模型中: “THModel::TH::WebUI::ViewModels::JobEditViewModel::WorkYears”-  (Property)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下关系反向工程到 UML 模型中:  THModel::TH::WebUI::ViewModels::JobCreateViewModel 到 THModel::System::Nullable&lt;Int32‎&gt; (Association)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下关系反向工程到 UML 模型中:  THModel::TH::WebUI::ViewModels::JobDetailsViewModel 到 THModel::System::DateTime (Association)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下关系反向工程到 UML 模型中:  THModel::TH::WebUI::ViewModels::JobDetailsViewModel 到 THModel::System::Nullable&lt;Int32‎&gt; (Association)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="Diagnostic" Text="已将以下关系反向工程到 UML 模型中:  THModel::TH::WebUI::ViewModels::JobEditViewModel 到 THModel::System::Nullable&lt;Int32‎&gt; (Association)" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="High" Text="已对(3)个类型进行完全反向工程。" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="High" Text="已对(3)个类型进行部分反向工程。  这些类型未包含在原始选定内容中，因此未对其整个定义进行反向工程。  相反，此浅表操作只确保这些类型存在于 UML 模型中，因为需要用它们来完全描述其他元素。" />
+  <Message Timestamp="2014-06-10T09:49:43" Importance="High" Text="反向工程操作已完成，出现了(0)个错误和(0)个警告。" />
+</Log>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="2b4108e6-65a9-4f3f-b644-079e039b07e2"
   name="WebUI"
@@ -16,6 +16,80 @@
         Id="b68058bd-fb00-4027-9bee-4929eb971ffc"
         LastKnownName="ViewModels"
         LastKnownLocation="Package1_0948.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="8971a9e3-c4bd-468b-9bc7-d0d903ebd125"
+        LastKnownName="Controllers"
+        LastKnownLocation="Package1_1124.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d53f6967-a107-4d88-b836-379328b28882"
+        name="THUserManager"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="37f25554-7db0-44f5-847a-3f53c756f0e8"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI Type%3DTHUserManager"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f17517ec-e52e-424f-b4b7-23300c7e7c48"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bd58b473-6ba2-4db5-a937-608a998b0ffe">
+                <propertyInstance
+                  Id="2af7ff7a-56e4-4779-a6b5-4fff96e7f9f4"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5722dcc0-aa87-4e65-81ca-398b395b3aa1">
+                <propertyInstance
+                  Id="97e7c7c0-4405-46c7-a2ca-7404469a1550"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cc0073c3-2cf9-4e31-8e99-ea5fae8b5167">
+                <propertyInstance
+                  Id="814623a1-8751-477e-9f17-5e02bc5677ba"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bb3d54a1-c1e8-4e02-a498-54fc65c20f53">
+                <propertyInstance
+                  Id="eb386f08-6fcd-4970-a62b-27e40254b0ff"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e8151866-cbe4-4357-a680-c8f512fab2f0">
+                <propertyInstance
+                  Id="88510476-b519-48d9-b378-fdccf1a2d9e3"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="a5674fbd-4c0c-45e0-a8b0-f101f1e80125"
+            isSubstitutable="false">
+            <classMoniker
+              Id="70ef16b0-fbe9-4ab6-adbe-77c7b82f84fc"
+              LastKnownName="UserManager&lt;User‎&gt;"
+              LastKnownLocation="Package9_2336.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
 </package>

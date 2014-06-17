@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="2356d058-9ace-4776-958f-fbd1d3b246e3" name="仓储层类" linkedPackageId="153da1fb-ec7e-4659-bac6-7fe79f4990fe" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="38122fe6-0ebc-4cf9-9725-6664f6e9c868">
-      <profileInstance Id="11a38172-cd5e-4780-881b-43a645fb69cb" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="1ca0e763-9cad-4eeb-8dff-a085793653ca">
-      <profileInstance Id="b62dc43c-b2ec-4f90-9ee8-2181919c3631" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="fe563437-1484-47c3-b311-8b54bc4e87fb">
-      <profileInstance Id="39457fa3-0bd0-4f8c-bbdf-8e087c9d734e" name="CSharpProfile">
-        <elementDefinition Id="2bbebcb5-f56d-420a-ba28-4fdb44c9ca28" />
-      </profileInstance>
-      <elementDefinition Id="cba890e4-6d8e-4619-990a-7b84a276c6b0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="2356d058-9ace-4776-958f-fbd1d3b246e3" name="仓储层类" linkedPackageId="153da1fb-ec7e-4659-bac6-7fe79f4990fe" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="5b4a93b4-cc60-4d4e-9d74-0060cf645996" name="THDbContext" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -4438,5 +4418,25 @@
   </packagedElements>
   <package Id="153da1fb-ec7e-4659-bac6-7fe79f4990fe" name="THModel">
     <elementDefinition Id="0b8d170b-e798-492d-800e-4ce3127c1006" />
+    <profileInstances>
+      <packageHasProfileInstances Id="38122fe6-0ebc-4cf9-9725-6664f6e9c868">
+        <profileInstance Id="11a38172-cd5e-4780-881b-43a645fb69cb" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="1ca0e763-9cad-4eeb-8dff-a085793653ca">
+        <profileInstance Id="b62dc43c-b2ec-4f90-9ee8-2181919c3631" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fe563437-1484-47c3-b311-8b54bc4e87fb">
+        <profileInstance Id="39457fa3-0bd0-4f8c-bbdf-8e087c9d734e" name="CSharpProfile">
+          <elementDefinition Id="2bbebcb5-f56d-420a-ba28-4fdb44c9ca28" />
+        </profileInstance>
+        <elementDefinition Id="cba890e4-6d8e-4619-990a-7b84a276c6b0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

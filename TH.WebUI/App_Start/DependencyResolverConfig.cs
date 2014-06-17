@@ -14,10 +14,10 @@ namespace TH.WebUI
         {
             //Autofac初始化过程
 
-            // Create a ContainerBuilder
+            // 创建一个 ContainerBuilder
             var builder = new ContainerBuilder();
 
-            // Register components.
+            // 注册组件
             builder.RegisterControllers(Assembly.GetExecutingAssembly());//注册所有的Controller
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerHttpRequest();
@@ -29,13 +29,13 @@ namespace TH.WebUI
             builder.RegisterAssemblyTypes(typeof(IService).Assembly).Where(
                 t => t.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerHttpRequest();
             
-            // Build the container and store it for later use.
+            // 构建容器并保存它
             var container = builder.Build();
 
-            // use in ASP.NET MVC
+            // 应用到 ASP.NET MVC
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            // more: https://github.com/autofac/Autofac/wiki/Getting-Started
+            // 参考: https://github.com/autofac/Autofac/wiki/Getting-Started
         }
     }
 }

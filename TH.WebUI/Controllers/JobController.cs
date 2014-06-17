@@ -38,7 +38,6 @@ namespace TH.WebUI.Controllers
                 .Project().To<JobIndexViewModel>()
                 .ToPagedList(pageIndex, pageSize);
 
-            //
             return View(jobsPage);
         }
 

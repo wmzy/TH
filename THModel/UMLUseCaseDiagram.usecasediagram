@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="a9f05389-6204-4508-964d-2be48d769f51" name="UMLUseCaseDiagram" linkedPackageId="c52fb933-757c-4115-8fc8-e812efecb27d" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="a9f05389-6204-4508-964d-2be48d769f51" name="UMLUseCaseDiagram" linkedPackageId="c52fb933-757c-4115-8fc8-e812efecb27d" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <packagedElements>
     <useCaseModelRootHasTypes>
       <subsystem Id="e79f7bc2-550b-4c7f-978b-264ab2fb388b" name="用户信息发布管理" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -349,6 +349,29 @@
         </subjects>
       </useCase>
     </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="e67d5a95-e22d-4241-8124-1e8e5d4fe5c3" name="匿名用户" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fb64ac15-c32e-4e5d-b3ab-9395a2b460b8" />
+        <targetEnds>
+          <association Id="3e2e2a19-f405-46a0-8576-1c35180f3b7f" isDerived="false" sourceEndRoleName="匿名用户" targetEndRoleName="查看已发布信息" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4dae9de3-fbc9-4b0c-b034-d793c0922efb" LastKnownName="查看已发布信息" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b5ebd946-5451-4f11-aa13-d246d3a0ae4a" name="匿名用户" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5733b8f9-8168-447a-95e4-781d923d1d44" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cddc3acf-b334-400c-9603-2f027c229599" name="查看已发布信息" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ba507cbf-1162-47f3-bb85-ee14ccee9734" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ed2c4a74-10f0-4b5d-92f7-d1549e42109e" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="c52fb933-757c-4115-8fc8-e812efecb27d" name="THModel">
     <elementDefinition Id="0b8d170b-e798-492d-800e-4ce3127c1006" />

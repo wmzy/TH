@@ -17,5 +17,11 @@
         LastKnownName="AspNet"
         LastKnownLocation="Package8_2336.uml" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="f4496e2c-2ed7-42a3-acb7-e2161d22dc9d"
+        LastKnownName="Owin"
+        LastKnownLocation="Package3_1124.uml" />
+    </packageHasNamedElement>
   </packagedElements>
 </package>

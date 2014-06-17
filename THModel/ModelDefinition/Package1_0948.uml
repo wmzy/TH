@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="b68058bd-fb00-4027-9bee-4929eb971ffc"
   name="ViewModels"
@@ -8247,6 +8247,412 @@
             </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="65281918-d796-4d60-b254-957f09365a66"
+        name="LoginViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="3e1c238b-2cff-4951-8d67-5c0b4cac5169"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DLoginViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="a2b7942a-d7f2-4182-8211-4cf1957bebd8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="957b0cd5-72e5-452a-ba84-e7ce1fa3db90">
+                <propertyInstance
+                  Id="3e3df7dc-45b7-42ca-bc84-8456184333cf"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="892b8afb-a789-431e-a0de-4ca2add4cb87">
+                <propertyInstance
+                  Id="e89bbc3f-001c-4aad-9cbc-5396fdb6d628"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ed8c33eb-a01b-4a44-b590-bbe42d28cee6">
+                <propertyInstance
+                  Id="28f44974-42ee-4be5-add0-81aea5d2d2ed"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7f4521cf-ddfc-4969-ac2e-2aced0c0d594">
+                <propertyInstance
+                  Id="9fa217fb-9ef5-4aae-925d-a8890575df96"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e8ca242b-5fa1-4c54-9d48-3a97378e7690">
+                <propertyInstance
+                  Id="0a6f39ca-ec60-4a94-a23d-d33cd02a52ad"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3586bc2c-efb0-4ac5-9605-fa645e174f75"
+        name="RegisterViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="ca4a856e-3ced-4380-82fc-b2c548f751b5"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DRegisterViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="40b3c1a6-181e-405b-9dea-c24b615c8e18"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="59f4035f-d7f5-4399-9896-d3ef137b6dd6">
+                <propertyInstance
+                  Id="79fb5048-c545-4d5f-9f00-51ebbf1abacd"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="15645c99-804c-471f-919e-2a8bd748943a">
+                <propertyInstance
+                  Id="2234d294-cd59-4f18-b390-d65e37e1a617"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="95f1c4b6-89d8-4db3-8763-ae7db8894904">
+                <propertyInstance
+                  Id="317b9d6e-e0c8-4f57-bd8d-78b57f1545a4"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3e525c08-afe0-4702-895e-20eb5e44803b">
+                <propertyInstance
+                  Id="322f3c3f-5e77-4b78-8726-ea468d15f02f"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="975197cd-c9b0-45ea-8934-0e6257d29a59">
+                <propertyInstance
+                  Id="0727fba2-1783-4c48-b199-9ed81a6def9a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7ea576ae-6967-4bda-b916-641866adb925"
+        name="ManageUserViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="26087667-138e-49da-802c-c647f559ba8a"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DManageUserViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9903b975-ca14-4251-848f-84fcaf832889"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7f5c24a8-c7ba-4422-a7f2-0aa298461140">
+                <propertyInstance
+                  Id="0bd16395-128e-4350-ab9a-0250383162d0"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9490274c-27f5-4305-961c-e5d8cc40005b">
+                <propertyInstance
+                  Id="34a2f54b-cdf6-4614-a4d8-00fe5135c876"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6473f463-7de5-484c-9ee1-5045bcdbbf43">
+                <propertyInstance
+                  Id="f520b55f-a4a6-43f3-965a-78783fe050a1"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d305ee46-8029-49b7-ab03-4af5cad68130">
+                <propertyInstance
+                  Id="55b785a2-709a-44c6-940a-43d18aae3150"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="17d70eaa-12a4-4aa8-86a1-6ca9f0b4f5e5">
+                <propertyInstance
+                  Id="1cc7597b-5176-4e9e-b721-66e3c3470728"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4101dbde-dd30-4b2b-90a1-3b72e5203fde"
+        name="RechargeViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="69e1b025-35f8-4bc8-9e73-5547225f4978"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DRechargeViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="36de3d98-1bab-4899-a7c6-0ef1ef21deb8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5362d267-db62-4735-b122-4b533e22806c">
+                <propertyInstance
+                  Id="83bce42e-b7cc-4873-8569-5e7c517731ce"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d1b7c3be-b6e1-40bf-9fb0-dce44b8f0447">
+                <propertyInstance
+                  Id="cf92942c-daed-41c1-bdc7-22adbf2c9d5c"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d4e39a31-44dc-4d2a-a185-85fdb3aff5d9">
+                <propertyInstance
+                  Id="474ebe0c-afc1-4606-a2b0-52e636145aca"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7301d942-d9a8-4ad7-bf53-590fdb25c1d1">
+                <propertyInstance
+                  Id="b8062e2d-b04b-431e-96f0-1ef995bb9b22"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7213f030-d756-41a8-9d2b-2ef8e53c6ecf">
+                <propertyInstance
+                  Id="1c24d717-92af-4d15-81d8-f4ccaebc4588"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="aeb87673-57e3-44e4-8d98-097a9f8b3b92"
+        name="ForgotPasswordViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="6d2920c0-4a5f-40de-9b47-5d940e6f2010"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DForgotPasswordViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="82a471cf-930b-438b-8f0d-b4af72f65c42"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="78943eeb-6366-4bd5-ada1-1f561be73211">
+                <propertyInstance
+                  Id="732ff983-fc58-4cf2-8d37-d175d3c8131e"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cc74b5a9-0e93-4c9e-8b95-1a0efb03259b">
+                <propertyInstance
+                  Id="cc1d50cb-8aea-4540-8d69-9a4e87834752"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fada337c-1683-4505-a96f-389c20bcd9fc">
+                <propertyInstance
+                  Id="e4f026a3-f619-4b7e-bdd3-b3669ff3461f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="abb16eed-b92c-4755-af58-ae60f6e8c0fe">
+                <propertyInstance
+                  Id="73b648c3-b51e-41eb-b297-58d0b6dfb14c"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9eef8d0e-c356-4225-8a7e-062348d67c57">
+                <propertyInstance
+                  Id="e63fca8f-c0b9-4c07-81ac-9463186b0c2e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ff343822-d429-474e-9d82-958c7a42c104"
+        name="PasswordResetViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="fbcbbb4c-5677-4467-9196-033993636cf7"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DPasswordResetViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="5175b40a-5705-4966-9566-f83ac3d90031"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="666540a0-e210-401a-ac45-91f95c7c8adc">
+                <propertyInstance
+                  Id="bb4d48f4-61da-4c0c-bc4a-33fa5afd731f"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="15a73e1f-e9d2-4d05-921d-6d693594d7eb">
+                <propertyInstance
+                  Id="14e1e96b-7ff4-404c-8f76-9711a422fdb5"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="642665ee-5240-42bc-bd48-8a8c8faaba7b">
+                <propertyInstance
+                  Id="a2a19618-c8fd-40a3-af25-09a184c316af"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fad838d9-4122-4a7c-9515-e2580f7fbaf3">
+                <propertyInstance
+                  Id="8f350b5b-7953-4926-b002-8966610f1b98"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9450bdb8-a30b-44ff-ba59-c30bd9349c45">
+                <propertyInstance
+                  Id="0fa5a261-6c8e-4479-9bcb-276d9660f77b"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="768d4a0e-04f4-451a-b615-d75888355141"
+        name="ExternalLoginConfirmationViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a4fb201d-85e6-4e8a-80c7-4db58f616c96"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FF:%2Fgit%2Fwmzy%2FTH%2FTH.WebUI%2Fbin%2FTH.WebUI.dll Namespace%3DTH.WebUI.ViewModels Type%3DExternalLoginConfirmationViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="03890cdc-3d3c-4253-9b5b-d68bb5859599"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3c5fff63-b9ef-4d33-87ae-2b7a47986c50">
+                <propertyInstance
+                  Id="119cc353-952c-4118-b325-cec60ec4decb"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e8a18d34-c1dd-4aeb-9e7c-44b299f5bf96">
+                <propertyInstance
+                  Id="de360cea-68ef-4194-9f7d-ae956042533c"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ab5e3f2d-8fe8-4857-a8bb-9642aaf1c184">
+                <propertyInstance
+                  Id="aec5858a-ed55-4914-afab-b3001873cc1b"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2bd952d3-88f3-4d62-818c-d03302a59196">
+                <propertyInstance
+                  Id="393c7e82-4a25-4c7c-b4ea-317b9e632487"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0c87a37e-3328-44c0-9731-ced2ed70d458">
+                <propertyInstance
+                  Id="85e9b328-fab9-4387-9015-5401ef312433"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
       </class>
     </packageHasNamedElement>
   </packagedElements>
